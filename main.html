@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EduSankalp - Free AI-based education platform for underprivileged students (Nursery to Class 12). Learn future skills: AI, coding, development. Blockchain funding, AI anti-cheat system.">
+  <meta name="keywords" content="free education, AI learning, online school, underprivileged students, coding, development skills, future ready, blockchain education">
+  <meta name="author" content="EduSankalp">
+  <meta property="og:title" content="EduSankalp - Revolutionizing Free Education with AI">
+  <meta property="og:description" content="Free, AI-powered education platform transforming futures through technology">
+  <meta property="og:type" content="website">
+  <title>EduSankalp - Free AI-Powered Education for Every Child | Future Skills Learning</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #3b82f6;
+      --accent: #0ea5e9;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header Styles */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      animation: slideDown 0.6s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 1rem;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: calc(100% - 2rem);
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .cta-btn {
+      background: var(--gradient);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
+      padding: 6rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(30px); }
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      color: var(--dark);
+    }
+
+    .hero-highlight {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-4px);
+    }
+
+    /* Stats Section */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stat-card {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 16px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+      animation: scaleIn 0.6s ease-out;
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary);
+      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.1);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 6rem 2rem;
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #64748b;
+      font-size: 1.125rem;
+      margin-bottom: 4rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f7ff 100%);
+      padding: 2.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(37, 99, 235, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .feature-card:nth-child(2) .feature-icon {
+      animation-delay: 0.2s;
+    }
+
+    .feature-card:nth-child(3) .feature-icon {
+      animation-delay: 0.4s;
+    }
+
+    .feature-card:nth-child(4) .feature-icon {
+      animation-delay: 0.6s;
+    }
+
+    .feature-card:nth-child(5) .feature-icon {
+      animation-delay: 0.8s;
+    }
+
+    .feature-card:nth-child(6) .feature-icon {
+      animation-delay: 1s;
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--dark);
+    }
+
+    .feature-card p {
+      color: #64748b;
+      line-height: 1.8;
+    }
+
+    /* Unique Features - Highlighted */
+    .highlight-section {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .highlight-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .highlight-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+      transform: translateY(-5px);
+    }
+
+    .highlight-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .highlight-card p {
+      color: #cbd5e1;
+      line-height: 1.8;
+    }
+
+    /* Pricing/Classes Section */
+    .classes-section {
+      padding: 6rem 2rem;
+      background: white;
+    }
+
+    .class-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .class-card {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f7ff 100%);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .class-card:hover {
+      background: var(--gradient);
+      color: white;
+      border-color: var(--primary);
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+
+    .class-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .class-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .class-desc {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 6rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+      color: white;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-section p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 2rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      color: #cbd5e1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      nav {
+        gap: 0.25rem;
+      }
+
+      nav a {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        padding: 4rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .features-grid,
+      .highlight-grid,
+      .class-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-card {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 1.25rem;
+      }
+
+      nav a {
+        display: none;
+      }
+
+      .cta-btn {
+        display: none;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="#" class="logo">
+        <img src="Elements/EduSankalp_logo.svg" alt="EduSankalp" style="height: 40px;">
+      </a>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#classes">Classes</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="cta-btn">Get Started Free</button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <img src="Elements/student_logo_bg.svg" alt="Student Learning" style="max-width: 200px; height: auto;">
+      </div>
+      <h1>Education Revolutionized by <span class="hero-highlight">AI Technology</span></h1>
+      <p>Free, world-class education for every child from Nursery to Class 12. Learn future-ready skills: AI, coding, development, and more. Empowering underprivileged students with technology and opportunity.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary">Start Learning Now</button>
+        <button class="btn btn-secondary">Watch Demo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stat-card">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Free Education</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">K+</div>
+      <div class="stat-label">Students Empowered</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Expert Courses</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">24/7</div>
+      <div class="stat-label">AI-Powered Support</div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <h2 class="section-title">What Makes Us Different</h2>
+    <p class="section-subtitle">A complete learning ecosystem designed for success</p>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <h3>AI-Powered Learning</h3>
+        <p>Personalized learning paths that adapt to each student's pace and learning style using advanced AI algorithms.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💻</div>
+        <h3>Future Skills Curriculum</h3>
+        <p>Beyond traditional education: AI, coding, web development, cybersecurity, and digital marketing integrated into the curriculum.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🎮</div>
+        <h3>Gamified Learning</h3>
+        <p>Make learning fun with interactive missions, badges, levels, and real-world challenges that keep students engaged.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">👨‍👩‍👧‍👦</div>
+        <h3>Parent Dashboard</h3>
+        <p>Real-time progress tracking, attendance monitoring, and actionable insights to support your child's learning journey.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3>Advanced Analytics</h3>
+        <p>Detailed performance reports, skill mastery tracking, and personalized recommendations for improvement.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Accessible to All</h3>
+        <p>Low bandwidth support, offline learning modes, and mobile-first design for students in underserved communities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlight Section -->
+  <section class="highlight-section">
+    <h2 class="section-title" style="color: white; margin-bottom: 3rem;">Our Revolutionary Features</h2>
+    
+    <div class="highlight-grid">
+      <div class="highlight-card">
+        <h3>🔐 AI Anti-Cheat System</h3>
+        <p>Advanced AI-powered proctoring ensures academic integrity while maintaining a fair and secure testing environment for all students.</p>
+      </div>
+
+      <div class="highlight-card">
+        <h3>⛓️ Blockchain Funding</h3>
+        <p>Transparent, secure blockchain-based funding system. Every donation directly supports NGOs and educational initiatives for underprivileged students.</p>
+      </div>
+
+      <div class="highlight-card">
+        <h3>🚀 Industry-Ready Skills</h3>
+        <p>Learn in-demand skills from industry experts. Job placement assistance and internship opportunities with top tech companies.</p>
+      </div>
+
+      <div class="highlight-card">
+        <h3>🏆 Certification Program</h3>
+        <p>Earn recognized certifications in AI, web development, and digital skills that boost your career prospects.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Classes Section -->
+  <section class="classes-section" id="classes">
+    <h2 class="section-title">Classes & Programs</h2>
+    <p class="section-subtitle">Comprehensive education from Nursery to Class 12 + Future Skills</p>
+    
+    <div class="class-grid">
+      <div class="class-card">
+        <div class="class-icon">🌱</div>
+        <div class="class-name">Nursery</div>
+        <div class="class-desc">Foundational play & basics</div>
+      </div>
+
+      <div class="class-card">
+        <div class="class-icon">📚</div>
+        <div class="class-name">Classes 1-5</div>
+        <div class="class-desc">Core subjects & concepts</div>
+      </div>
+
+      <div class="class-card">
+        <div class="class-icon">🔭</div>
+        <div class="class-name">Classes 6-8</div>
+        <div class="class-desc">Concepts & experiments</div>
+      </div>
+
+      <div class="class-card">
+        <div class="class-icon">🧩</div>
+        <div class="class-name">Classes 9-10</div>
+        <div class="class-desc">Exam prep & applications</div>
+      </div>
+
+      <div class="class-card">
+        <div class="class-icon">🎓</div>
+        <div class="class-name">Classes 11-12</div>
+        <div class="class-desc">Streams & career guidance</div>
+      </div>
+
+      <div class="class-card">
+        <div class="class-icon">💡</div>
+        <div class="class-name">Tech Skills</div>
+        <div class="class-desc">AI, coding & development</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="about">
+    <h2>Join 10,000+ Students Transforming Their Future</h2>
+    <p>Start your free journey to success today. No credit card required.</p>
+    <button class="btn btn-primary">Explore All Courses</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About EduSankalp</h4>
+        <p>Revolutionizing education through AI and technology, making quality learning accessible to every child regardless of background.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#classes">Classes</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="#">Standard Curriculum</a></li>
+          <li><a href="#">AI & Coding</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Digital Skills</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Funding Info</a></li>
+          <li><a href="#">Partnerships</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div style="margin-bottom: 1.5rem; text-align: center;">
+        <img src="Elements/CompileX_logo.png" alt="CompileX" style="height: 40px; margin-bottom: 0.75rem;">
+        <p style="margin: 0.5rem 0; font-size: 0.9rem;">Powered by <span style="color: var(--accent); font-weight: 700;">CompileX</span></p>
+      </div>
+      <p>&copy; 2025 EduSankalp. Free education for all. Powered by cutting-edge AI and blockchain technology.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      });
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.feature-card, .stat-card, .class-card').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Counter animation for stats
+    const countElements = document.querySelectorAll('.stat-number');
+    const startCounting = () => {
+      countElements.forEach(el => {
+        const finalValue = el.textContent;
+        if (finalValue.includes('K+') || finalValue.includes('+')) {
+          // Skip animated counting for K+ format
+          return;
+        }
+      });
+    };
+
+    // Start counting when stats section is visible
+    const statsSection = document.querySelector('.stats');
+    const statsObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        startCounting();
+      }
+    });
+    statsObserver.observe(statsSection);
+  </script>
+</body>
+</html>
