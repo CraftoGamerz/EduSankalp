@@ -4,12 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="EduSankalp - Free AI-based education platform for underprivileged students (Nursery to Class 12). Learn future skills: AI, coding, development. Blockchain funding, AI anti-cheat system.">
-  <meta name="keywords" content="free education, AI learning, online school, underprivileged students, coding, development skills, future ready, blockchain education">
-  <meta name="author" content="EduSankalp">
-  <meta property="og:title" content="EduSankalp - Revolutionizing Free Education with AI">
-  <meta property="og:description" content="Free, AI-powered education platform transforming futures through technology">
-  <meta property="og:type" content="website">
-  <title>EduSankalp - Free AI-Powered Education for Every Child | Future Skills Learning</title>
+  <title>EduSankalp - Free AI-Powered Education for Every Child</title>
   <style>
     * {
       margin: 0;
@@ -27,6 +22,9 @@
       --card: #ffffff;
       --border: #e2e8f0;
       --success: #10b981;
+      --ethereum: #627EEA;
+      --polygon: #8247E5;
+      --hyperledger: #2F3134;
       --gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
     }
 
@@ -86,6 +84,7 @@
       align-items: center;
       gap: 0.5rem;
       transition: transform 0.3s ease;
+      width: 82px;
     }
 
     .logo:hover {
@@ -322,6 +321,417 @@
       font-weight: 600;
     }
 
+    /* Blockchain Payment Section */
+    .blockchain-section {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blockchain-section::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(98, 126, 234, 0.15) 0%, transparent 70%);
+      top: 10%;
+      left: 5%;
+      border-radius: 50%;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .blockchain-section::after {
+      content: '';
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(130, 71, 229, 0.15) 0%, transparent 70%);
+      bottom: 15%;
+      right: 10%;
+      border-radius: 50%;
+      animation: pulse 5s ease-in-out infinite reverse;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 0.8; }
+    }
+
+    .blockchain-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .blockchain-header {
+      text-align: center;
+      color: white;
+      margin-bottom: 4rem;
+    }
+
+    .blockchain-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    .blockchain-header p {
+      font-size: 1.125rem;
+      color: #cbd5e1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .blockchain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .blockchain-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      padding: 2.5rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blockchain-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .blockchain-card:hover::before {
+      left: 100%;
+    }
+
+    .blockchain-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .blockchain-card.ethereum:hover {
+      border-color: var(--ethereum);
+      box-shadow: 0 20px 40px rgba(98, 126, 234, 0.3);
+    }
+
+    .blockchain-card.polygon:hover {
+      border-color: var(--polygon);
+      box-shadow: 0 20px 40px rgba(130, 71, 229, 0.3);
+    }
+
+    .blockchain-card.hyperledger:hover {
+      border-color: #fff;
+      box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
+    }
+
+    .blockchain-icon {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .blockchain-card h3 {
+      font-size: 1.75rem;
+      color: white;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .blockchain-card p {
+      color: #cbd5e1;
+      line-height: 1.8;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .blockchain-features {
+      list-style: none;
+      padding: 0;
+    }
+
+    .blockchain-features li {
+      color: #94a3b8;
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .blockchain-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    .donate-btn {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .donate-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 3rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(90deg);
+    }
+
+    .modal-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .modal-header h3 {
+      color: white;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-header p {
+      color: #cbd5e1;
+    }
+
+    .wallet-status {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .wallet-status.connected {
+      border-color: var(--success);
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .wallet-address {
+      font-family: 'Courier New', monospace;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+    }
+
+    .amount-input {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: white;
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .amount-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .amount-presets {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .preset-btn {
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .preset-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.05);
+    }
+
+    .transaction-details {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      color: #cbd5e1;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .detail-row:last-child {
+      border-bottom: none;
+      font-weight: 700;
+      color: white;
+    }
+
+    .transaction-status {
+      text-align: center;
+      padding: 2rem;
+      color: white;
+    }
+
+    .spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .success-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      animation: scaleIn 0.5s ease-out;
+    }
+
+    .tx-hash {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      word-break: break-all;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    /* Chain Animation */
+    .chain-animation {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.1;
+      pointer-events: none;
+    }
+
+    .chain-link {
+      width: 60px;
+      height: 60px;
+      border: 3px solid white;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 -15px;
+      animation: linkFloat 3s ease-in-out infinite;
+    }
+
+    .chain-link:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    .chain-link:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes linkFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
     /* Features Section */
     .features {
       padding: 6rem 2rem;
@@ -390,32 +800,6 @@
       font-size: 3rem;
       margin-bottom: 1rem;
       display: inline-block;
-      animation: bounce 2s ease-in-out infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .feature-card:nth-child(2) .feature-icon {
-      animation-delay: 0.2s;
-    }
-
-    .feature-card:nth-child(3) .feature-icon {
-      animation-delay: 0.4s;
-    }
-
-    .feature-card:nth-child(4) .feature-icon {
-      animation-delay: 0.6s;
-    }
-
-    .feature-card:nth-child(5) .feature-icon {
-      animation-delay: 0.8s;
-    }
-
-    .feature-card:nth-child(6) .feature-icon {
-      animation-delay: 1s;
     }
 
     .feature-card h3 {
@@ -429,48 +813,7 @@
       line-height: 1.8;
     }
 
-    /* Unique Features - Highlighted */
-    .highlight-section {
-      padding: 6rem 2rem;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      color: white;
-    }
-
-    .highlight-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .highlight-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 2rem;
-      border-radius: 16px;
-      transition: all 0.3s ease;
-    }
-
-    .highlight-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
-      transform: translateY(-5px);
-    }
-
-    .highlight-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
-    }
-
-    .highlight-card p {
-      color: #cbd5e1;
-      line-height: 1.8;
-    }
-
-    /* Pricing/Classes Section */
+    /* Classes Section */
     .classes-section {
       padding: 6rem 2rem;
       background: white;
@@ -604,46 +947,16 @@
         padding: 4rem 1rem;
       }
 
-      .hero h1 {
-        font-size: 1.75rem;
+      .blockchain-section {
+        padding: 4rem 1rem;
       }
 
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
+      .modal-content {
+        padding: 2rem 1.5rem;
       }
 
-      .btn {
-        width: 100%;
-        max-width: 300px;
-      }
-
-      .features-grid,
-      .highlight-grid,
-      .class-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stat-card {
-        padding: 1.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .logo {
-        font-size: 1.25rem;
-      }
-
-      nav a {
-        display: none;
-      }
-
-      .cta-btn {
-        display: none;
-      }
-
-      .section-title {
-        font-size: 1.5rem;
+      .amount-presets {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -652,25 +965,21 @@
   <!-- Header -->
   <header>
     <div class="header-container">
-      <a href="#" class="logo">
-        <img src="Elements/EduSankalp_logo.svg" alt="EduSankalp" style="height: 40px;">
-      </a>
+     
+      <a href="#" class="logo"> <img src="Elements/EduSankalp_logo.svg" alt="EduSankalp"></a>
       <nav>
         <a href="#features">Features</a>
+        <a href="#blockchain">Donate</a>
         <a href="#classes">Classes</a>
         <a href="#about">About</a>
-        <a href="#contact">Contact</a>
       </nav>
-      <button class="cta-btn">Get Started Free</button>
+      <button class="cta-btn" onclick="scrollToBlockchain()">Support Us</button>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <div style="text-align: center; margin-bottom: 2rem;">
-        <img src="Elements/student_logo_bg.svg" alt="Student Learning" style="max-width: 200px; height: auto;">
-      </div>
       <h1>Education Revolutionized by <span class="hero-highlight">AI Technology</span></h1>
       <p>Free, world-class education for every child from Nursery to Class 12. Learn future-ready skills: AI, coding, development, and more. Empowering underprivileged students with technology and opportunity.</p>
       <div class="hero-buttons">
@@ -687,7 +996,7 @@
       <div class="stat-label">Free Education</div>
     </div>
     <div class="stat-card">
-      <div class="stat-number">K+</div>
+      <div class="stat-number">10K+</div>
       <div class="stat-label">Students Empowered</div>
     </div>
     <div class="stat-card">
@@ -699,6 +1008,152 @@
       <div class="stat-label">AI-Powered Support</div>
     </div>
   </section>
+
+  <!-- Blockchain Payment Section -->
+  <section class="blockchain-section" id="blockchain">
+    <div class="chain-animation">
+      <span class="chain-link"></span>
+      <span class="chain-link"></span>
+      <span class="chain-link"></span>
+    </div>
+    
+    <div class="blockchain-content">
+      <div class="blockchain-header">
+        <h2>Support Education Through Blockchain</h2>
+        <p>Make transparent, secure donations using cutting-edge blockchain technology. Every transaction is recorded on the blockchain, ensuring complete transparency and accountability.</p>
+      </div>
+
+      <div class="blockchain-grid">
+        <!-- Ethereum Card -->
+        <div class="blockchain-card ethereum" onclick="openPaymentModal('ethereum')">
+          <div class="blockchain-icon">⟠</div>
+          <h3>Ethereum</h3>
+          <p>The world's leading smart contract platform powering decentralized applications.</p>
+          <ul class="blockchain-features">
+            <li>Fast transactions</li>
+            <li>Smart contract support</li>
+            <li>Global network</li>
+            <li>Secure & transparent</li>
+          </ul>
+          <a  href="donate.html"><button class="donate-btn">Donate with ETH </button></a>
+        </div>
+
+        <!-- Polygon Card -->
+        <div class="blockchain-card polygon" onclick="openPaymentModal('polygon')">
+          <div class="blockchain-icon">⬡</div>
+          <h3>Polygon</h3>
+          <p>Layer 2 scaling solution with low fees and high-speed transactions on Ethereum.</p>
+          <ul class="blockchain-features">
+            <li>Ultra-low gas fees</li>
+            <li>Lightning fast</li>
+            <li>Ethereum compatible</li>
+            <li>Eco-friendly</li>
+          </ul>
+          <a  href="donate.html"><button class="donate-btn">Donate with MATIC</button></a>
+        </div>
+
+        <!-- Hyperledger Card -->
+        <div class="blockchain-card hyperledger" onclick="openPaymentModal('hyperledger')">
+          <div class="blockchain-icon">🔗</div>
+          <h3>Hyperledger Fabric</h3>
+          <p>Enterprise-grade permissioned blockchain framework for institutional partnerships.</p>
+          <ul class="blockchain-features">
+            <li>Enterprise security</li>
+            <li>Permissioned access</li>
+            <li>High throughput</li>
+            <li>Institutional grade</li>
+          </ul>
+          <a  href="donate.html"><button class="donate-btn">Donate via Hyperledger</button></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Modal -->
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      
+      <div id="modalStep1">
+        <div class="modal-header">
+          <h3 id="modalTitle">Connect Wallet</h3>
+          <p id="modalSubtitle">Choose your blockchain network</p>
+        </div>
+
+        <div class="wallet-status" id="walletStatus">
+          <div style="color: white; font-weight: 600;">Wallet Status</div>
+          <div id="connectionStatus" style="color: #94a3b8; margin-top: 0.5rem;">Not Connected</div>
+          <div class="wallet-address" id="walletAddress"></div>
+        </div>
+
+        <button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;" onclick="connectWallet()">
+          Connect Wallet
+        </button>
+
+        <div style="opacity: 0.7; text-align: center; color: #94a3b8; font-size: 0.9rem;">
+          Supported wallets: MetaMask, WalletConnect, Coinbase Wallet
+        </div>
+      </div>
+
+      <div id="modalStep2" style="display: none;">
+        <div class="modal-header">
+          <h3>Enter Donation Amount</h3>
+          <p id="networkName">Network: Ethereum</p>
+        </div>
+
+        <input type="number" class="amount-input" id="donationAmount" placeholder="0.00" min="0" step="0.01">
+        
+        <div class="amount-presets">
+          <button class="preset-btn" onclick="setAmount(0.01)">0.01</button>
+          <button class="preset-btn" onclick="setAmount(0.05)">0.05</button>
+          <button class="preset-btn" onclick="setAmount(0.1)">0.1</button>
+          <button class="preset-btn" onclick="setAmount(0.5)">0.5</button>
+        </div>
+
+        <div class="transaction-details">
+          <div class="detail-row">
+            <span>Network</span>
+            <span id="detailNetwork">Ethereum</span>
+          </div>
+          <div class="detail-row">
+            <span>Gas Fee (est.)</span>
+            <span id="gasFee">~$2.50</span>
+          </div>
+          <div class="detail-row">
+            <span>Total Amount</span>
+            <span id="totalAmount">0.00 ETH</span>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" style="width: 100%;" onclick="processDonation()">
+          Confirm Donation
+        </button>
+      </div>
+
+      <div id="modalStep3" style="display: none;">
+        <div class="transaction-status">
+          <div class="spinner"></div>
+          <h3 style="margin-bottom: 0.5rem;">Processing Transaction</h3>
+          <p style="color: #94a3b8;">Please wait while we confirm your transaction on the blockchain...</p>
+        </div>
+      </div>
+
+      <div id="modalStep4" style="display: none;">
+        <div class="transaction-status">
+          <div class="success-icon">✅</div>
+          <h3 style="margin-bottom: 1rem;">Transaction Successful!</h3>
+          <p style="color: #94a3b8; margin-bottom: 1rem;">Thank you for supporting education! Your donation will help students access quality learning.</p>
+          <div class="tx-hash">
+            <strong>Transaction Hash:</strong><br>
+            <span id="txHash">0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1...</span>
+          </div>
+          <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="closeModal()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Features Section -->
   <section class="features" id="features">
@@ -740,33 +1195,6 @@
         <div class="feature-icon">🌍</div>
         <h3>Accessible to All</h3>
         <p>Low bandwidth support, offline learning modes, and mobile-first design for students in underserved communities.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Highlight Section -->
-  <section class="highlight-section">
-    <h2 class="section-title" style="color: white; margin-bottom: 3rem;">Our Revolutionary Features</h2>
-    
-    <div class="highlight-grid">
-      <div class="highlight-card">
-        <h3>🔐 AI Anti-Cheat System</h3>
-        <p>Advanced AI-powered proctoring ensures academic integrity while maintaining a fair and secure testing environment for all students.</p>
-      </div>
-
-      <div class="highlight-card">
-        <h3>⛓️ Blockchain Funding</h3>
-        <p>Transparent, secure blockchain-based funding system. Every donation directly supports NGOs and educational initiatives for underprivileged students.</p>
-      </div>
-
-      <div class="highlight-card">
-        <h3>🚀 Industry-Ready Skills</h3>
-        <p>Learn in-demand skills from industry experts. Job placement assistance and internship opportunities with top tech companies.</p>
-      </div>
-
-      <div class="highlight-card">
-        <h3>🏆 Certification Program</h3>
-        <p>Earn recognized certifications in AI, web development, and digital skills that boost your career prospects.</p>
       </div>
     </div>
   </section>
@@ -834,9 +1262,9 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#features">Features</a></li>
+          <li><a href="#blockchain">Donate</a></li>
           <li><a href="#classes">Classes</a></li>
           <li><a href="#about">About Us</a></li>
-          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
 
@@ -855,75 +1283,142 @@
         <ul>
           <li><a href="#">Help Center</a></li>
           <li><a href="#">Community</a></li>
-          <li><a href="#">Funding Info</a></li>
+          <li><a href="#">Blockchain Info</a></li>
           <li><a href="#">Partnerships</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div style="margin-bottom: 1.5rem; text-align: center;">
-        <img src="Elements/CompileX_logo.png" alt="CompileX" style="height: 40px; margin-bottom: 0.75rem;">
-        <p style="margin: 0.5rem 0; font-size: 0.9rem;">Powered by <span style="color: var(--accent); font-weight: 700;">CompileX</span></p>
-      </div>
       <p>&copy; 2025 EduSankalp. Free education for all. Powered by cutting-edge AI and blockchain technology.</p>
     </div>
   </footer>
 
   <script>
+    let currentBlockchain = '';
+    let walletConnected = false;
+
+    function scrollToBlockchain() {
+      document.getElementById('blockchain').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openPaymentModal(blockchain) {
+      currentBlockchain = blockchain;
+      const modal = document.getElementById('paymentModal');
+      modal.classList.add('active');
+      
+      resetModal();
+      
+      // Update modal title based on blockchain
+      const titles = {
+        ethereum: 'Donate with Ethereum',
+        polygon: 'Donate with Polygon',
+        hyperledger: 'Donate via Hyperledger'
+      };
+      
+      document.getElementById('modalTitle').textContent = titles[blockchain] || 'Connect Wallet';
+    }
+
+    function closeModal() {
+      document.getElementById('paymentModal').classList.remove('active');
+      setTimeout(resetModal, 300);
+    }
+
+    function resetModal() {
+      document.getElementById('modalStep1').style.display = 'block';
+      document.getElementById('modalStep2').style.display = 'none';
+      document.getElementById('modalStep3').style.display = 'none';
+      document.getElementById('modalStep4').style.display = 'none';
+      document.getElementById('donationAmount').value = '';
+      walletConnected = false;
+    }
+
+    function connectWallet() {
+      // Simulate wallet connection
+      const walletStatus = document.getElementById('walletStatus');
+      const connectionStatus = document.getElementById('connectionStatus');
+      const walletAddress = document.getElementById('walletAddress');
+      
+      connectionStatus.textContent = 'Connecting...';
+      
+      setTimeout(() => {
+        walletConnected = true;
+        walletStatus.classList.add('connected');
+        connectionStatus.textContent = '✓ Connected';
+        
+        // Generate mock wallet address
+        const mockAddress = '0x' + Math.random().toString(16).substr(2, 40);
+        walletAddress.textContent = mockAddress.substring(0, 10) + '...' + mockAddress.substring(mockAddress.length - 8);
+        
+        // Move to next step
+        setTimeout(() => {
+          document.getElementById('modalStep1').style.display = 'none';
+          document.getElementById('modalStep2').style.display = 'block';
+          updateNetworkInfo();
+        }, 1000);
+      }, 1500);
+    }
+
+    function updateNetworkInfo() {
+      const networks = {
+        ethereum: { name: 'Ethereum Mainnet', currency: 'ETH', gasFee: '~$2.50' },
+        polygon: { name: 'Polygon Network', currency: 'MATIC', gasFee: '~$0.05' },
+        hyperledger: { name: 'Hyperledger Fabric', currency: 'USD', gasFee: '~$0.00' }
+      };
+      
+      const network = networks[currentBlockchain];
+      document.getElementById('networkName').textContent = `Network: ${network.name}`;
+      document.getElementById('detailNetwork').textContent = network.name;
+      document.getElementById('gasFee').textContent = network.gasFee;
+    }
+
+    function setAmount(amount) {
+      document.getElementById('donationAmount').value = amount;
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const amount = parseFloat(document.getElementById('donationAmount').value) || 0;
+      const currencies = {
+        ethereum: 'ETH',
+        polygon: 'MATIC',
+        hyperledger: 'USD'
+      };
+      
+      const currency = currencies[currentBlockchain];
+      document.getElementById('totalAmount').textContent = `${amount.toFixed(2)} ${currency}`;
+    }
+
+    // Update total on input change
+    document.addEventListener('DOMContentLoaded', function() {
+      const amountInput = document.getElementById('donationAmount');
+      if (amountInput) {
+        amountInput.addEventListener('input', updateTotal);
+      }
+    });
+
+    function processDonation() {
+      const amount = parseFloat(document.getElementById('donationAmount').value);
+      
+      if (!amount || amount <= 0) {
+        alert('Please enter a valid donation amount');
+        return;
+      }
+      
+      // Show processing step
+      document.getElementById('modalStep2').style.display = 'none';
+      document.getElementById('modalStep3').style.display = 'block';
+      
+      // Simulate transaction processing
+      setTimeout(() => {
+        const txHash = '0x' + Math.random().toString(16).substr(2, 64);
+        document.getElementById('txHash').textContent = txHash.substring(0, 20) + '...' + txHash.substring(txHash.length - 20);
+        
+        document.getElementById('modalStep3').style.display = 'none';
+        document.getElementById('modalStep4').style.display = 'block';
+      }, 3000);
+    }
+
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      });
-    });
-
-    // Animation on scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.animation = 'fadeInUp 0.6s ease-out';
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.feature-card, .stat-card, .class-card').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Counter animation for stats
-    const countElements = document.querySelectorAll('.stat-number');
-    const startCounting = () => {
-      countElements.forEach(el => {
-        const finalValue = el.textContent;
-        if (finalValue.includes('K+') || finalValue.includes('+')) {
-          // Skip animated counting for K+ format
-          return;
-        }
-      });
-    };
-
-    // Start counting when stats section is visible
-    const statsSection = document.querySelector('.stats');
-    const statsObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        startCounting();
-      }
-    });
-    statsObserver.observe(statsSection);
-  </script>
-</body>
-</html>
