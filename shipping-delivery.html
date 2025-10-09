@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipping & Delivery - EduSankalp</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #3b82f6;
+      --accent: #0ea5e9;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    .last-updated {
+      color: #64748b;
+      font-size: 1rem;
+    }
+
+    .content-section {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.5rem;
+    }
+
+    .content-text {
+      color: #374151;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .delivery-info {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      padding: 2rem;
+      border-radius: 12px;
+      margin: 2rem 0;
+      border-left: 4px solid var(--primary);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .info-item {
+      text-align: center;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .info-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 2rem;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      color: #cbd5e1;
+    }
+
+    .compilex-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: white;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+
+      .content-section {
+        padding: 1.5rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-container {
+        padding: 1rem;
+      }
+
+      .nav {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">🎓 EduSankalp</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="contact-us.html">Contact</a>
+        <a href="privacy-policy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Shipping & Delivery Policy</h1>
+      <p class="last-updated">Last updated on Oct 9, 2025</p>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Digital Service Delivery</h2>
+      <p class="content-text">
+        Since EduSankalp provides digital educational services, there is no physical shipping involved. All our educational content, courses, and learning materials are delivered digitally through our online platform.
+      </p>
+
+      <div class="delivery-info">
+        <h3 style="margin-bottom: 1rem; color: var(--dark);">Instant Access</h3>
+        <p style="margin: 0; color: #374151;">
+          Upon successful registration and/or donation confirmation, you will receive immediate access to our educational platform and all available learning materials.
+        </p>
+      </div>
+
+      <h2 class="section-title">Service Delivery Process</h2>
+      
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-icon">🚀</div>
+          <h3>Instant Access</h3>
+          <p>Immediate platform access after registration</p>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📧</div>
+          <h3>Email Confirmation</h3>
+          <p>Delivery confirmation sent to your registered email</p>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">🌐</div>
+          <h3>Web Platform</h3>
+          <p>Access through any web browser on any device</p>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📱</div>
+          <h3>Mobile Friendly</h3>
+          <p>Optimized for mobile and tablet devices</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">Delivery Confirmation</h2>
+      <p class="content-text">
+        Delivery of all our educational services will be confirmed on your registered email ID. You will receive:
+      </p>
+      
+      <ul style="color: #374151; line-height: 1.8; margin: 1.5rem 0; padding-left: 1.5rem;">
+        <li>Welcome email with platform access instructions</li>
+        <li>Login credentials (if required)</li>
+        <li>Course enrollment confirmation</li>
+        <li>Donation receipt (if applicable)</li>
+      </ul>
+
+      <h2 class="section-title">Service Availability</h2>
+      <p class="content-text">
+        Our educational platform is available 24/7, allowing you to learn at your own pace and convenience. However, we may schedule maintenance windows which will be communicated in advance.
+      </p>
+
+      <h2 class="section-title">Technical Requirements</h2>
+      <p class="content-text">
+        To access our services, you need:
+      </p>
+      
+      <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+        <ul style="color: #374151; line-height: 1.8;">
+          <li>Stable internet connection</li>
+          <li>Modern web browser (Chrome, Firefox, Safari, Edge)</li>
+          <li>For best experience: Updated browser with JavaScript enabled</li>
+          <li>Recommended: 2GB RAM, 5MBPS internet speed</li>
+        </ul>
+      </div>
+
+      <h2 class="section-title">Support & Assistance</h2>
+      <p class="content-text">
+        For any issues in accessing or utilizing our services, you may contact our helpdesk:
+      </p>
+      
+      <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+        <p><strong>Phone:</strong> +91 89102 21759</p>
+        <p><strong>Email:</strong> contactedusankalp@gmail.com</p>
+        <p><strong>Response Time:</strong> Within 24 hours during business days</p>
+      </div>
+
+      <h2 class="section-title">International Access</h2>
+      <p class="content-text">
+        Our digital services are available worldwide. There are no geographical restrictions for accessing our educational content. All international users can register and access our platform following the same delivery process.
+      </p>
+
+      <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About EduSankalp</h4>
+        <p>Revolutionizing education through AI and technology, making quality learning accessible to every child regardless of background.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="cancellation-refund.html">Cancellation & Refund</a></li>
+          <li><a href="shipping-delivery.html">Shipping & Delivery</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact-us.html">Contact Us</a></li>
+          <li><a href="mailto:contactedusankalp@gmail.com">Email Support</a></li>
+          <li><a href="tel:+918910221759">Call: +91 89102 21759</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 EduSankalp. Free education for all. Powered by cutting-edge AI and technology.</p>
+      <div class="compilex-logo">Powered by CompileX</div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - EduSankalp</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #3b82f6;
+      --accent: #0ea5e9;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    .last-updated {
+      color: #64748b;
+      font-size: 1rem;
+    }
+
+    .content-section {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.5rem;
+    }
+
+    .content-text {
+      color: #374151;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .content-list {
+      color: #374151;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .content-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 2rem;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      color: #cbd5e1;
+    }
+
+    .compilex-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: white;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+
+      .content-section {
+        padding: 1.5rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .header-container {
+        padding: 1rem;
+      }
+
+      .nav {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">🎓 EduSankalp</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="contact-us.html">Contact</a>
+        <a href="terms-conditions.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Privacy Policy</h1>
+      <p class="last-updated">Last updated on Oct 9, 2025</p>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Our Commitment to Your Privacy</h2>
+      <p class="content-text">
+        This privacy policy sets out how <strong>EduSankalp</strong> uses and protects any information that you give us when you visit our website and/or agree to use our educational services.
+      </p>
+
+      <p class="content-text">
+        EduSankalp is committed to ensuring that your privacy is protected. Should we ask you to provide certain information by which you can be identified when using this website, you can be assured that it will only be used in accordance with this privacy statement.
+      </p>
+
+      <div class="highlight-box">
+        <strong>Note:</strong> EduSankalp may change this policy from time to time by updating this page. You should check this page periodically to ensure that you are comfortable with any changes.
+      </div>
+
+      <h2 class="section-title">Information We Collect</h2>
+      <p class="content-text">We may collect the following information:</p>
+      <ul class="content-list">
+        <li>Name and contact information</li>
+        <li>Demographic information such as location and preferences</li>
+        <li>Information related to your educational interests and progress</li>
+        <li>Other information relevant to student surveys and/or offers</li>
+      </ul>
+
+      <h2 class="section-title">How We Use Your Information</h2>
+      <p class="content-text">We require this information to understand your needs and provide you with a better educational experience, and in particular for the following reasons:</p>
+      <ul class="content-list">
+        <li>Internal record keeping and progress tracking</li>
+        <li>Improving our educational products and services</li>
+        <li>Personalizing your learning experience</li>
+        <li>Sending educational updates and promotional emails about new courses or features</li>
+        <li>Customizing the website according to your interests and learning patterns</li>
+      </ul>
+
+      <h2 class="section-title">Security</h2>
+      <p class="content-text">
+        We are committed to ensuring that your information is secure. In order to prevent unauthorized access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online.
+      </p>
+
+      <h2 class="section-title">How We Use Cookies</h2>
+      <p class="content-text">
+        A cookie is a small file which asks permission to be placed on your computer's hard drive. Cookies allow web applications to respond to you as an individual by gathering and remembering information about your preferences.
+      </p>
+
+      <p class="content-text">
+        We use traffic log cookies to identify which pages are being used. This helps us analyze data about webpage traffic and improve our website to tailor it to student needs. We only use this information for statistical analysis purposes.
+      </p>
+
+      <h2 class="section-title">Controlling Your Personal Information</h2>
+      <p class="content-text">You may choose to restrict the collection or use of your personal information in the following ways:</p>
+      <ul class="content-list">
+        <li>Whenever you are asked to fill in a form on the website, look for the box that you can click to indicate that you do not want the information to be used for direct marketing purposes</li>
+        <li>If you have previously agreed to us using your personal information for direct marketing purposes, you may change your mind at any time by writing to or emailing us at contactedusankalp@gmail.com</li>
+      </ul>
+
+      <p class="content-text">
+        We will not sell, distribute or lease your personal information to third parties unless we have your permission or are required by law to do so.
+      </p>
+
+      <h2 class="section-title">Payment Information</h2>
+      <p class="content-text">
+        For donation processing, we use Razorpay as our payment processor. All payment information is handled directly by Razorpay and is subject to their privacy policy. We do not store any payment card details on our servers.
+      </p>
+
+      <h2 class="section-title">Contact Us</h2>
+      <p class="content-text">
+        If you believe that any information we are holding on you is incorrect or incomplete, please write to us at Barrackpore - Kalyani Expy, Block A5, Block A, Kalyani, West Bengal 741235 or contact us at +91 89102 21759 or contactedusankalp@gmail.com as soon as possible. We will promptly correct any information found to be incorrect.
+      </p>
+
+      <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About EduSankalp</h4>
+        <p>Revolutionizing education through AI and technology, making quality learning accessible to every child regardless of background.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="cancellation-refund.html">Cancellation & Refund</a></li>
+          <li><a href="shipping-delivery.html">Shipping & Delivery</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact-us.html">Contact Us</a></li>
+          <li><a href="mailto:contactedusankalp@gmail.com">Email Support</a></li>
+          <li><a href="tel:+918910221759">Call: +91 89102 21759</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 EduSankalp. Free education for all. Powered by cutting-edge AI and technology.</p>
+      <div class="compilex-logo">Powered by CompileX</div>
+    </div>
+  </footer>
+</body>
+</html>

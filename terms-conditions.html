@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions - EduSankalp</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #3b82f6;
+      --accent: #0ea5e9;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .page-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    .last-updated {
+      color: #64748b;
+      font-size: 1rem;
+    }
+
+    .content-section {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.5rem;
+    }
+
+    .content-text {
+      color: #374151;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .content-text strong {
+      color: var(--dark);
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--gradient);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 2rem;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      color: #cbd5e1;
+    }
+
+    .compilex-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: white;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem 1rem;
+      }
+
+      .content-section {
+        padding: 1.5rem;
+      }
+
+      .page-title {
+        font-size: 2rem;
+      }
+
+      .header-container {
+        padding: 1rem;
+      }
+
+      .nav {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">🎓 EduSankalp</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="contact-us.html">Contact</a>
+        <a href="privacy-policy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="page-header">
+      <h1 class="page-title">Terms & Conditions</h1>
+      <p class="last-updated">Last updated on Oct 9, 2025</p>
+    </div>
+
+    <div class="content-section">
+      <h2 class="section-title">Introduction</h2>
+      <p class="content-text">
+        For the purpose of these Terms and Conditions, The term "we", "us", "our" used anywhere on this page shall mean <strong>EduSankalp</strong>, whose registered/operational office is Barrackpore - Kalyani Expy, Block A5, Block A, Kalyani, West Bengal 741235. "you", "your", "user", "visitor" shall mean any natural or legal person who is visiting our website and/or agreed to use our services.
+      </p>
+      
+      <p class="content-text">
+        Your use of the website and/or engagement with our educational services are governed by following Terms and Conditions:
+      </p>
+
+      <div class="highlight-box">
+        <strong>Important:</strong> By accessing and using EduSankalp, you accept and agree to be bound by the terms and provision of this agreement.
+      </div>
+
+      <h2 class="section-title">Website Usage</h2>
+      <p class="content-text">
+        The content of the pages of this website is subject to change without notice. Neither we nor any third parties provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose.
+      </p>
+
+      <p class="content-text">
+        Your use of any information or materials on our website and/or service pages is entirely at your own risk, for which we shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through our website meet your specific requirements.
+      </p>
+
+      <h2 class="section-title">Intellectual Property</h2>
+      <p class="content-text">
+        Our website contains material which is owned by or licensed to us. This material includes, but is not limited to, the design, layout, look, appearance, graphics, and educational content. Reproduction is prohibited other than in accordance with the copyright notice, which forms part of these terms and conditions.
+      </p>
+
+      <h2 class="section-title">External Links</h2>
+      <p class="content-text">
+        From time to time our website may also include links to other websites. These links are provided for your convenience to provide further information. You may not create a link to our website from another website or document without EduSankalp's prior written consent.
+      </p>
+
+      <h2 class="section-title">Payment Terms</h2>
+      <p class="content-text">
+        We use Razorpay as our payment processor for donations. All payments are processed through secure, encrypted channels. We shall be under no liability whatsoever in respect of any loss or damage arising directly or indirectly out of the decline of authorization for any Transaction.
+      </p>
+
+      <h2 class="section-title">Governing Law</h2>
+      <p class="content-text">
+        Any dispute arising out of use of our website and/or any engagement with us is subject to the laws of India.
+      </p>
+
+      <h2 class="section-title">Changes to Terms</h2>
+      <p class="content-text">
+        We reserve the right to modify these terms at any time. We will notify users of any changes by updating the "Last updated" date of these Terms and Conditions.
+      </p>
+
+      <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About EduSankalp</h4>
+        <p>Revolutionizing education through AI and technology, making quality learning accessible to every child regardless of background.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="cancellation-refund.html">Cancellation & Refund</a></li>
+          <li><a href="shipping-delivery.html">Shipping & Delivery</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact-us.html">Contact Us</a></li>
+          <li><a href="mailto:contactedusankalp@gmail.com">Email Support</a></li>
+          <li><a href="tel:+918910221759">Call: +91 89102 21759</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 EduSankalp. Free education for all. Powered by cutting-edge AI and technology.</p>
+      <div class="compilex-logo">Powered by CompileX</div>
+    </div>
+  </footer>
+</body>
+</html>
