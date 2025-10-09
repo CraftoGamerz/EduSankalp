@@ -92,14 +92,21 @@
       transform: scale(1.05);
     }
 
-    nav {
+    /* Desktop Navigation */
+    .desktop-nav {
       display: flex;
       gap: 0.5rem;
       align-items: center;
       flex-wrap: wrap;
     }
 
-    nav a {
+    @media (max-width: 768px) {
+      .desktop-nav {
+        display: none;
+      }
+    }
+
+    .desktop-nav a {
       text-decoration: none;
       color: var(--dark);
       padding: 0.75rem 1rem;
@@ -109,7 +116,7 @@
       position: relative;
     }
 
-    nav a::after {
+    .desktop-nav a::after {
       content: '';
       position: absolute;
       bottom: 0;
@@ -120,30 +127,317 @@
       transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    nav a:hover::after {
+    .desktop-nav a:hover::after {
       width: calc(100% - 2rem);
     }
 
-    nav a:hover {
+    .desktop-nav a:hover {
       color: var(--primary);
       transform: translateY(-2px);
     }
 
-    .cta-btn {
-      background: var(--gradient);
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 10px;
-      font-weight: 600;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Desktop Sidebar Toggle */
+    .desktop-sidebar-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      background: transparent;
       border: none;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      padding: 0;
+      z-index: 1001;
     }
 
-    .cta-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    @media (min-width: 769px) {
+      .desktop-sidebar-toggle {
+        display: flex;
+      }
+    }
+
+    .desktop-sidebar-toggle span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: var(--dark);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .desktop-sidebar-toggle span:nth-child(1) {
+      transform: translateY(-8px);
+    }
+
+    .desktop-sidebar-toggle span:nth-child(3) {
+      transform: translateY(8px);
+    }
+
+    .desktop-sidebar-toggle.active span:nth-child(1) {
+      transform: translateY(1px) rotate(45deg);
+    }
+
+    .desktop-sidebar-toggle.active span:nth-child(2) {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    .desktop-sidebar-toggle.active span:nth-child(3) {
+      transform: translateY(-1px) rotate(-45deg);
+    }
+
+    /* Desktop Sidebar */
+    .desktop-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 350px;
+      height: 100vh;
+      background: white;
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+      padding: 5rem 2rem 2rem;
+      transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .desktop-sidebar.active {
+      right: 0;
+    }
+
+    .desktop-sidebar-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .desktop-sidebar-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .desktop-sidebar-menu {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .desktop-sidebar-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .desktop-sidebar-link {
+      display: block;
+      padding: 1rem 0;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .desktop-sidebar-link:hover {
+      color: var(--primary);
+    }
+
+    .desktop-sidebar-submenu {
+      list-style: none;
+      padding-left: 1rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .desktop-sidebar-submenu.active {
+      max-height: 500px;
+    }
+
+    .desktop-sidebar-subitem {
+      border-bottom: none;
+    }
+
+    .desktop-sidebar-sublink {
+      display: block;
+      padding: 0.75rem 0;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .desktop-sidebar-sublink:hover {
+      color: var(--primary);
+    }
+
+    /* Mobile Navigation */
+    .mobile-nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1001;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-nav-toggle {
+        display: flex;
+      }
+    }
+
+    .mobile-nav-toggle span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: var(--dark);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+    }
+
+    .mobile-nav-toggle span:nth-child(1) {
+      transform: translateY(-8px);
+    }
+
+    .mobile-nav-toggle span:nth-child(3) {
+      transform: translateY(8px);
+    }
+
+    .mobile-nav-toggle.active span:nth-child(1) {
+      transform: translateY(1px) rotate(45deg);
+    }
+
+    .mobile-nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+      transform: scale(0);
+    }
+
+    .mobile-nav-toggle.active span:nth-child(3) {
+      transform: translateY(-1px) rotate(-45deg);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background: white;
+      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+      padding: 5rem 2rem 2rem;
+      transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 999;
+      overflow-y: auto;
+    }
+
+    .mobile-nav.active {
+      right: 0;
+    }
+
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-menu {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .mobile-nav-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-nav-link {
+      display: block;
+      padding: 1rem 0;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--primary);
+    }
+
+    .mobile-nav-submenu {
+      list-style: none;
+      padding-left: 1rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+
+    .mobile-nav-submenu.active {
+      max-height: 500px;
+    }
+
+    .mobile-nav-subitem {
+      border-bottom: none;
+    }
+
+    .mobile-nav-sublink {
+      display: block;
+      padding: 0.75rem 0;
+      color: #64748b;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .mobile-nav-sublink:hover {
+      color: var(--primary);
+    }
+
+    .mobile-nav-cta {
+      width: 100%;
+      padding: 1rem;
+      background: var(--gradient);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+    }
+
+    .mobile-nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
     }
 
     /* Hero Section */
@@ -1113,22 +1407,10 @@
         50% { transform: translateY(-5px) scale(1.02); }
         100% { transform: translateY(0) scale(1); }
       }
-    }
 
-    /* Responsive */
-    @media (max-width: 768px) {
       .header-container {
         padding: 1rem;
         gap: 1rem;
-      }
-
-      nav {
-        gap: 0.25rem;
-      }
-
-      nav a {
-        padding: 0.5rem 0.75rem;
-        font-size: 0.9rem;
       }
 
       .hero {
@@ -1150,6 +1432,14 @@
       .team-card {
         height: 350px;
       }
+
+      .features,
+      .classes-section,
+      .team-section,
+      .compilex-section,
+      .cta-section {
+        padding: 4rem 1rem;
+      }
     }
   </style>
 </head>
@@ -1158,15 +1448,95 @@
   <header>
     <div class="header-container">
       <a href="#" class="logo"> <img src="Elements/EduSankalp_logo.svg" alt="EduSankalp"></a>
-      <nav>
+      
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
         <a href="#features">Features</a>
         <a href="#blockchain">Donate</a>
         <a href="#classes">Classes</a>
         <a href="#team">Team</a>
         <a href="#about">About</a>
       </nav>
-      <a href="https://craftogamerz.github.io/EduSankalp/donate.html"><button class="cta-btn" onclick="scrollToBlockchain()">Support Us</button></a>
+
+      <!-- Desktop Sidebar Toggle -->
+      <button class="desktop-sidebar-toggle" aria-label="Toggle sidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Mobile Navigation Toggle -->
+      <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+
+    <!-- Desktop Sidebar -->
+    <div class="desktop-sidebar-overlay"></div>
+    <nav class="desktop-sidebar">
+      <ul class="desktop-sidebar-menu">
+        <li class="desktop-sidebar-item">
+          <a href="terms-conditions.html" class="desktop-sidebar-link">Terms & Conditions</a>
+        </li>
+        <li class="desktop-sidebar-item">
+          <a href="privacy-policy.html" class="desktop-sidebar-link">Privacy Policy</a>
+        </li>
+        <li class="desktop-sidebar-item">
+          <a href="contact-us.html" class="desktop-sidebar-link">Contact Us</a>
+        </li>
+        <li class="desktop-sidebar-item">
+          <a href="cancellation-refund.html" class="desktop-sidebar-link">Cancellation & Refund</a>
+        </li>
+        <li class="desktop-sidebar-item">
+          <a href="shipping-delivery.html" class="desktop-sidebar-link">Shipping & Delivery</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav-overlay"></div>
+    <nav class="mobile-nav">
+      <ul class="mobile-nav-menu">
+        <li class="mobile-nav-item">
+          <a href="#features" class="mobile-nav-link">Features</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#blockchain" class="mobile-nav-link">Donate</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#classes" class="mobile-nav-link">Classes</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#team" class="mobile-nav-link">Team</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#about" class="mobile-nav-link">About</a>
+        </li>
+        <li class="mobile-nav-item">
+          <a href="#" class="mobile-nav-link" onclick="toggleSubmenu('legalSubmenu')">Legal <span class="down-arrow">&#129171;</span></a>
+          <ul class="mobile-nav-submenu" id="legalSubmenu">
+            <li class="mobile-nav-subitem">
+              <a href="terms-conditions.html" class="mobile-nav-sublink">Terms & Conditions</a>
+            </li>
+            <li class="mobile-nav-subitem">
+              <a href="privacy-policy.html" class="mobile-nav-sublink">Privacy Policy</a>
+            </li>
+            <li class="mobile-nav-subitem">
+              <a href="cancellation-refund.html" class="mobile-nav-sublink">Cancellation & Refund</a>
+            </li>
+            <li class="mobile-nav-subitem">
+              <a href="shipping-delivery.html" class="mobile-nav-sublink">Shipping & Delivery</a>
+            </li>
+            <li class="mobile-nav-subitem">
+              <a href="contact-us.html" class="mobile-nav-sublink">Contact Us</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <a href="donate.html" class="mobile-nav-cta">Support Education</a>
+    </nav>
   </header>
 
   <!-- Hero Section -->
@@ -1537,22 +1907,23 @@
       </div>
 
       <div class="footer-section">
-        <h4>Programs</h4>
+        <h4>Legal</h4>
         <ul>
-          <li><a href="#">Standard Curriculum</a></li>
-          <li><a href="#">AI & Coding</a></li>
-          <li><a href="#">Web Development</a></li>
-          <li><a href="#">Digital Skills</a></li>
+          <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="cancellation-refund.html">Cancellation & Refund</a></li>
+          <li><a href="shipping-delivery.html">Shipping & Delivery</a></li>
+          <li><a href="contact-us.html">Contact Us</a></li>
         </ul>
       </div>
 
       <div class="footer-section">
         <h4>Support</h4>
         <ul>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Community</a></li>
-          <li><a href="#">Blockchain Info</a></li>
-          <li><a href="#">Partnerships</a></li>
+          <li><a href="contact-us.html">Help Center</a></li>
+          <li><a href="contact-us.html">Community</a></li>
+          <li><a href="donate.html">Donate</a></li>
+          <li><a href="contact-us.html">Partnerships</a></li>
         </ul>
       </div>
     </div>
@@ -1565,6 +1936,71 @@
   <script>
     let currentBlockchain = '';
     let walletConnected = false;
+
+    // Desktop Sidebar Toggle
+    const desktopSidebarToggle = document.querySelector('.desktop-sidebar-toggle');
+    const desktopSidebar = document.querySelector('.desktop-sidebar');
+    const desktopSidebarOverlay = document.querySelector('.desktop-sidebar-overlay');
+
+    function toggleDesktopSidebar() {
+      desktopSidebarToggle.classList.toggle('active');
+      desktopSidebar.classList.toggle('active');
+      desktopSidebarOverlay.classList.toggle('active');
+      document.body.style.overflow = desktopSidebar.classList.contains('active') ? 'hidden' : '';
+    }
+
+    desktopSidebarToggle.addEventListener('click', toggleDesktopSidebar);
+    desktopSidebarOverlay.addEventListener('click', toggleDesktopSidebar);
+
+    // Close desktop sidebar when clicking on a link
+    document.querySelectorAll('.desktop-sidebar-link').forEach(link => {
+      link.addEventListener('click', () => {
+        desktopSidebarToggle.classList.remove('active');
+        desktopSidebar.classList.remove('active');
+        desktopSidebarOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Mobile Navigation Toggle
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+
+    function toggleMobileNav() {
+      mobileNavToggle.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      mobileNavOverlay.classList.toggle('active');
+      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    }
+
+    mobileNavToggle.addEventListener('click', toggleMobileNav);
+    mobileNavOverlay.addEventListener('click', toggleMobileNav);
+
+// Close mobile nav when clicking on a link (except submenu toggles)
+document.querySelectorAll('.mobile-nav-link, .mobile-nav-sublink').forEach(link => {
+  link.addEventListener('click', (e) => {
+    // Don't close if it's a submenu toggle
+    if (link.getAttribute('onclick') && link.getAttribute('onclick').includes('toggleSubmenu')) {
+      return;
+    }
+    mobileNavToggle.classList.remove('active');
+    mobileNav.classList.remove('active');
+    mobileNavOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+// Mobile submenu toggle
+function toggleSubmenu(id, event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  const submenu = document.getElementById(id);
+  submenu.classList.toggle('active');
+}
 
     function scrollToBlockchain() {
       document.getElementById('blockchain').scrollIntoView({ behavior: 'smooth' });
@@ -1748,6 +2184,7 @@
       card.addEventListener('mouseleave', function() {
         this.style.transform = 'translateY(0) scale(1)';
       });
+
     });
   </script>
 </body>
