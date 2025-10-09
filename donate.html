@@ -144,6 +144,46 @@
       font-size: 1.2rem;
     }
 
+    /* Wallet Connect Button */
+    .wallet-connect {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeInUp 1s ease-out 0.1s both;
+    }
+
+    .connect-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, #f6851b 0%, #e2761b 100%);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 30px rgba(246, 133, 27, 0.3);
+    }
+
+    .connect-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(246, 133, 27, 0.5);
+    }
+
+    .connect-btn.connected {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
+    }
+
+    .wallet-address {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      margin-top: 0.5rem;
+    }
+
     /* Main Container */
     .container {
       position: relative;
@@ -241,12 +281,19 @@
       margin-bottom: 0.5rem;
     }
 
+    .amount-crypto {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      margin-top: 0.25rem;
+    }
+
     .amount-label {
       font-size: 0.9rem;
       color: #94a3b8;
     }
 
-    .amount-card.selected .amount-label {
+    .amount-card.selected .amount-label,
+    .amount-card.selected .amount-crypto {
       color: rgba(255, 255, 255, 0.9);
     }
 
@@ -432,6 +479,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      position: relative;
     }
 
     .blockchain-card.active .payment-btn:hover {
@@ -442,6 +490,34 @@
     .blockchain-card:not(.active) .payment-btn {
       background: rgba(255, 255, 255, 0.1);
       cursor: not-allowed;
+    }
+
+    .payment-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .payment-btn .spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto;
+    }
+
+    .payment-btn.loading .spinner {
+      display: block;
+    }
+
+    .payment-btn.loading .btn-text {
+      display: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
     /* Security Section */
@@ -628,26 +704,51 @@
       margin-bottom: 1.5rem;
     }
 
-    .upi-info {
+    .transaction-info {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       padding: 1.5rem;
       margin-top: 1.5rem;
+      text-align: left;
     }
 
-    .upi-label {
+    .transaction-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .transaction-row:last-child {
+      border-bottom: none;
+    }
+
+    .transaction-label {
       color: #94a3b8;
       font-size: 0.9rem;
-      margin-bottom: 0.5rem;
     }
 
-    .upi-id {
-      font-family: 'Courier New', monospace;
-      font-size: 1.1rem;
+    .transaction-value {
       color: white;
-      font-weight: 700;
-      word-break: break-all;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .close-btn {
+      margin-top: 1.5rem;
+      padding: 0.75rem 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     /* Responsive */
@@ -714,6 +815,14 @@
     </div>
   </div>
 
+  <!-- Wallet Connect Section -->
+  <div class="wallet-connect">
+    <button class="connect-btn" id="connectWallet" onclick="connectWallet()">
+      🦊 Connect MetaMask Wallet
+    </button>
+    <div class="wallet-address" id="walletAddress"></div>
+  </div>
+
   <div class="container">
     <a href="#" class="back-btn" onclick="history.back(); return false;">
       ← Back to Main Site
@@ -727,16 +836,19 @@
       <div class="amount-grid">
         <div class="amount-card" onclick="selectAmount(99)">
           <div class="amount-value">₹99</div>
+          <div class="amount-crypto">~$1.20</div>
           <div class="amount-label">Starter</div>
         </div>
         
         <div class="amount-card popular" onclick="selectAmount(199)">
           <div class="amount-value">₹199</div>
+          <div class="amount-crypto">~$2.40</div>
           <div class="amount-label">Most Chosen</div>
         </div>
         
         <div class="amount-card" onclick="selectAmount(399)">
           <div class="amount-value">₹399</div>
+          <div class="amount-crypto">~$4.80</div>
           <div class="amount-label">Champion</div>
         </div>
       </div>
@@ -771,8 +883,9 @@
             <li>Instant confirmations</li>
             <li>Full transparency</li>
           </ul>
-          <button class="payment-btn" onclick="processDonation('Ethereum')">
-            Donate via Ethereum
+          <button class="payment-btn" onclick="processDonation('ethereum')">
+            <span class="btn-text">Donate via Ethereum</span>
+            <div class="spinner"></div>
           </button>
         </div>
 
@@ -786,23 +899,25 @@
             <li>Eco-friendly solution</li>
             <li>Lightning speed</li>
           </ul>
-          <button class="payment-btn" onclick="processDonation('Polygon')">
-            Donate via Polygon
+          <button class="payment-btn" onclick="processDonation('polygon')">
+            <span class="btn-text">Donate via Polygon</span>
+            <div class="spinner"></div>
           </button>
         </div>
 
-        <!-- Hyperledger -->
+        <!-- Hyperledger (UPI Fallback) -->
         <div class="blockchain-card hyperledger" id="hyperledger-card">
           <div class="blockchain-icon">🔗</div>
-          <h3>Hyperledger</h3>
-          <p>Enterprise-grade security for institutional partnerships</p>
+          <h3>UPI Payment</h3>
+          <p>Quick and easy donation via UPI for those without crypto</p>
           <ul class="blockchain-features">
-            <li>Enterprise-level security</li>
-            <li>Permissioned access</li>
-            <li>High throughput</li>
+            <li>Instant transfer</li>
+            <li>No crypto needed</li>
+            <li>Widely accepted</li>
           </ul>
-          <button class="payment-btn" onclick="processDonation('Hyperledger')">
-            Donate via Hyperledger
+          <button class="payment-btn" onclick="processDonation('upi')">
+            <span class="btn-text">Donate via UPI</span>
+            <div class="spinner"></div>
           </button>
         </div>
       </div>
@@ -863,39 +978,110 @@
   <!-- Message Overlay -->
   <div class="message-overlay" id="messageOverlay">
     <div class="message-content">
-      <div class="message-icon">🚀</div>
-      <h3>Redirecting to Payment</h3>
-      <p>You'll be redirected to complete your secure donation via UPI. Thank you for supporting education!</p>
-      <p style="font-size: 0.9rem; color: #94a3b8;">
-        <strong>Amount:</strong> <span id="displayAmount">₹0</span><br>
-        <strong>Blockchain:</strong> <span id="displayBlockchain">-</span>
-      </p>
-      <div class="upi-info">
-        <div class="upi-label">UPI ID</div>
-        <div class="upi-id">sankirtansyadavofficial@oksbi</div>
-      </div>
+      <div class="message-icon" id="messageIcon">⏳</div>
+      <h3 id="messageTitle">Processing Transaction</h3>
+      <p id="messageText">Please confirm the transaction in your MetaMask wallet...</p>
+      <div class="transaction-info" id="transactionInfo"></div>
+      <button class="close-btn" id="closeBtn" onclick="closeOverlay()" style="display: none;">Close</button>
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
   <script>
+    const RECIPIENT_ADDRESS = '0x6dCd8C592Db0AFf1EEc6E9099351ba979f3f2df5';
     const UPI_ID = 'sankirtansyadavofficial@oksbi';
+    const INR_TO_USD = 0.012; // Approximate conversion rate
+    
     let selectedAmount = null;
+    let userAccount = null;
+    let web3Provider = null;
 
+    // Network configurations
+    const NETWORKS = {
+      ethereum: {
+        chainId: '0x1',
+        name: 'Ethereum Mainnet',
+        symbol: 'ETH'
+      },
+      polygon: {
+        chainId: '0x89',
+        name: 'Polygon Mainnet',
+        rpcUrl: 'https://polygon-rpc.com',
+        symbol: 'MATIC'
+      }
+    };
+
+    // Check if MetaMask is installed
+    function isMetaMaskInstalled() {
+      return typeof window.ethereum !== 'undefined';
+    }
+
+    // Connect wallet
+    async function connectWallet() {
+      if (!isMetaMaskInstalled()) {
+        alert('MetaMask is not installed! Please install MetaMask browser extension to use crypto payments.');
+        window.open('https://metamask.io/download/', '_blank');
+        return;
+      }
+
+      try {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        userAccount = accounts[0];
+        web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+
+        updateWalletUI();
+        enablePaymentCards();
+      } catch (error) {
+        console.error('Error connecting wallet:', error);
+        alert('Failed to connect wallet. Please try again.');
+      }
+    }
+
+    // Update wallet UI
+    function updateWalletUI() {
+      const connectBtn = document.getElementById('connectWallet');
+      const walletAddress = document.getElementById('walletAddress');
+
+      if (userAccount) {
+        connectBtn.classList.add('connected');
+        connectBtn.innerHTML = '✓ Wallet Connected';
+        walletAddress.textContent = `${userAccount.substring(0, 6)}...${userAccount.substring(38)}`;
+      } else {
+        connectBtn.classList.remove('connected');
+        connectBtn.innerHTML = '🦊 Connect MetaMask Wallet';
+        walletAddress.textContent = '';
+      }
+    }
+
+    // Listen for account changes
+    if (typeof window.ethereum !== 'undefined') {
+      window.ethereum.on('accountsChanged', (accounts) => {
+        userAccount = accounts[0] || null;
+        updateWalletUI();
+        if (!userAccount) {
+          disablePaymentCards();
+        }
+      });
+
+      window.ethereum.on('chainChanged', () => {
+        window.location.reload();
+      });
+    }
+
+    // Amount selection
     function selectAmount(amount) {
       selectedAmount = amount;
-      
-      // Clear custom input
       document.getElementById('customAmount').value = '';
       
-      // Update UI
       document.querySelectorAll('.amount-card').forEach(card => {
         card.classList.remove('selected');
       });
       
       event.target.closest('.amount-card').classList.add('selected');
       
-      // Enable payment cards
-      enablePaymentCards();
+      if (userAccount) {
+        enablePaymentCards();
+      }
     }
 
     function handleCustomAmount() {
@@ -904,17 +1090,18 @@
       
       if (value && value > 0) {
         selectedAmount = value;
-        
-        // Remove selection from preset amounts
         document.querySelectorAll('.amount-card').forEach(card => {
           card.classList.remove('selected');
         });
         
-        // Enable payment cards
-        enablePaymentCards();
+        if (userAccount) {
+          enablePaymentCards();
+        }
       } else {
         selectedAmount = null;
-        disablePaymentCards();
+        if (userAccount) {
+          enablePaymentCards();
+        }
       }
     }
 
@@ -930,26 +1117,139 @@
       });
     }
 
-    function processDonation(blockchain) {
+    // Switch network
+    async function switchNetwork(network) {
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: network.chainId }],
+        });
+        return true;
+      } catch (switchError) {
+        // This error code indicates that the chain has not been added to MetaMask
+        if (switchError.code === 4902) {
+          try {
+            await window.ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [{
+                chainId: network.chainId,
+                chainName: network.name,
+                rpcUrls: [network.rpcUrl],
+                nativeCurrency: {
+                  name: network.symbol,
+                  symbol: network.symbol,
+                  decimals: 18
+                }
+              }],
+            });
+            return true;
+          } catch (addError) {
+            console.error('Error adding network:', addError);
+            return false;
+          }
+        }
+        console.error('Error switching network:', switchError);
+        return false;
+      }
+    }
+
+    // Process donation
+    async function processDonation(blockchain) {
       if (!selectedAmount || selectedAmount <= 0) {
-        alert('Please select an amount first');
+        alert('Please select or enter an amount first');
         return;
       }
 
-      // Show overlay
-      const overlay = document.getElementById('messageOverlay');
-      document.getElementById('displayAmount').textContent = `₹${selectedAmount}`;
-      document.getElementById('displayBlockchain').textContent = blockchain;
-      overlay.classList.add('show');
+      // Handle UPI fallback
+      if (blockchain === 'upi') {
+        processUPIPayment();
+        return;
+      }
 
-      // Create UPI payment URL
-      const upiUrl = `upi://pay?pa=${UPI_ID}&pn=EduSankalp&am=${selectedAmount}&cu=INR&tn=Education%20Donation%20via%20${blockchain}`;
+      // Check wallet connection
+      if (!userAccount) {
+        alert('Please connect your MetaMask wallet first');
+        document.getElementById('connectWallet').click();
+        return;
+      }
 
-      // Redirect after delay
+      const button = event.target.closest('.payment-btn');
+      button.classList.add('loading');
+      button.disabled = true;
+
+      try {
+        // Switch to appropriate network
+        const network = NETWORKS[blockchain];
+        const switched = await switchNetwork(network);
+        
+        if (!switched) {
+          throw new Error('Failed to switch network');
+        }
+
+        // Show processing overlay
+        showOverlay('⏳', 'Processing Transaction', 'Please confirm the transaction in your MetaMask wallet...');
+
+        // Convert INR to crypto (approximate)
+        const amountInUSD = selectedAmount * INR_TO_USD;
+        const amountInEth = amountInUSD / 2000; // Rough ETH price
+        const amountInWei = ethers.utils.parseEther(amountInEth.toFixed(6));
+
+        // Create transaction
+        const signer = web3Provider.getSigner();
+        const tx = await signer.sendTransaction({
+          to: RECIPIENT_ADDRESS,
+          value: amountInWei,
+        });
+
+        // Show pending
+        showOverlay('⏳', 'Transaction Submitted', 'Waiting for blockchain confirmation...', {
+          'Transaction Hash': tx.hash,
+          'Amount': `₹${selectedAmount}`,
+          'Network': network.name
+        });
+
+        // Wait for confirmation
+        const receipt = await tx.wait();
+
+        // Show success
+        showOverlay('✅', 'Donation Successful!', 'Thank you for supporting education! Your contribution will make a real difference.', {
+          'Transaction Hash': receipt.transactionHash,
+          'Amount': `₹${selectedAmount}`,
+          'Network': network.name,
+          'Block Number': receipt.blockNumber
+        }, true);
+
+      } catch (error) {
+        console.error('Transaction error:', error);
+        
+        let errorMessage = 'Transaction failed. ';
+        if (error.code === 4001) {
+          errorMessage += 'You rejected the transaction.';
+        } else if (error.code === -32603) {
+          errorMessage += 'Insufficient funds in your wallet.';
+        } else {
+          errorMessage += error.message || 'Please try again.';
+        }
+        
+        showOverlay('❌', 'Transaction Failed', errorMessage, null, true);
+      } finally {
+        button.classList.remove('loading');
+        button.disabled = false;
+      }
+    }
+
+    // Process UPI payment
+    function processUPIPayment() {
+      const upiUrl = `upi://pay?pa=${UPI_ID}&pn=EduSankalp&am=${selectedAmount}&cu=INR&tn=Education%20Donation`;
+      
+      showOverlay('🚀', 'Redirecting to UPI Payment', 'You will be redirected to your UPI app to complete the payment.', {
+        'UPI ID': UPI_ID,
+        'Amount': `₹${selectedAmount}`
+      }, true);
+
       setTimeout(() => {
         window.location.href = upiUrl;
-
-        // Fallback for desktop
+        
         setTimeout(() => {
           if (confirm(`If payment didn't open automatically, please pay manually:\n\nUPI ID: ${UPI_ID}\nAmount: ₹${selectedAmount}\n\nClick OK to copy UPI ID`)) {
             navigator.clipboard.writeText(UPI_ID).then(() => {
@@ -958,17 +1258,67 @@
               prompt('Copy this UPI ID:', UPI_ID);
             });
           }
-          overlay.classList.remove('show');
-        }, 2500);
+        }, 2000);
       }, 2000);
+    }
+
+    // Show overlay
+    function showOverlay(icon, title, text, info = null, showClose = false) {
+      const overlay = document.getElementById('messageOverlay');
+      const messageIcon = document.getElementById('messageIcon');
+      const messageTitle = document.getElementById('messageTitle');
+      const messageText = document.getElementById('messageText');
+      const transactionInfo = document.getElementById('transactionInfo');
+      const closeBtn = document.getElementById('closeBtn');
+
+      messageIcon.textContent = icon;
+      messageTitle.textContent = title;
+      messageText.textContent = text;
+
+      if (info) {
+        let infoHTML = '';
+        for (const [key, value] of Object.entries(info)) {
+          infoHTML += `
+            <div class="transaction-row">
+              <span class="transaction-label">${key}</span>
+              <span class="transaction-value">${value}</span>
+            </div>
+          `;
+        }
+        transactionInfo.innerHTML = infoHTML;
+        transactionInfo.style.display = 'block';
+      } else {
+        transactionInfo.style.display = 'none';
+      }
+
+      closeBtn.style.display = showClose ? 'inline-block' : 'none';
+      overlay.classList.add('show');
+    }
+
+    // Close overlay
+    function closeOverlay() {
+      document.getElementById('messageOverlay').classList.remove('show');
     }
 
     // Close overlay on background click
     document.getElementById('messageOverlay').addEventListener('click', function(e) {
       if (e.target === this) {
-        this.classList.remove('show');
+        closeOverlay();
       }
     });
+
+    // Check if already connected on page load
+    if (isMetaMaskInstalled()) {
+      window.ethereum.request({ method: 'eth_accounts' })
+        .then(accounts => {
+          if (accounts.length > 0) {
+            userAccount = accounts[0];
+            web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+            updateWalletUI();
+          }
+        })
+        .catch(console.error);
+    }
   </script>
 </body>
 </html>
