@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support Education Through Blockchain - EduSankalp</title>
+  <title>Support Education - EduSankalp</title>
   <style>
     * {
       margin: 0;
@@ -21,10 +21,10 @@
       --card: #ffffff;
       --border: #e2e8f0;
       --success: #10b981;
-      --ethereum: #627EEA;
-      --polygon: #8247E5;
-      --hyperledger: #2F3134;
+      --warning: #f59e0b;
       --gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
+      --gradient-green: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+      --gradient-orange: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
     }
 
     html {
@@ -138,50 +138,16 @@
       border-radius: 50px;
       font-size: 0.9rem;
       color: #86efac;
+      transition: all 0.3s ease;
+    }
+
+    .badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
     }
 
     .badge-icon {
       font-size: 1.2rem;
-    }
-
-    /* Wallet Connect Button */
-    .wallet-connect {
-      text-align: center;
-      margin-bottom: 2rem;
-      animation: fadeInUp 1s ease-out 0.1s both;
-    }
-
-    .connect-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 2rem;
-      background: linear-gradient(135deg, #f6851b 0%, #e2761b 100%);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      border-radius: 16px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 30px rgba(246, 133, 27, 0.3);
-    }
-
-    .connect-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(246, 133, 27, 0.5);
-    }
-
-    .connect-btn.connected {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
-    }
-
-    .wallet-address {
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      color: #cbd5e1;
-      margin-top: 0.5rem;
     }
 
     /* Main Container */
@@ -243,13 +209,14 @@
       padding: 2rem 1.5rem;
       border-radius: 16px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
     }
 
     .amount-card:hover {
       background: rgba(255, 255, 255, 0.08);
       transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
 
     .amount-card.selected {
@@ -272,6 +239,12 @@
       padding: 0.25rem 0.75rem;
       border-radius: 20px;
       white-space: nowrap;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.05); }
     }
 
     .amount-value {
@@ -281,19 +254,12 @@
       margin-bottom: 0.5rem;
     }
 
-    .amount-crypto {
-      font-size: 0.85rem;
-      color: #94a3b8;
-      margin-top: 0.25rem;
-    }
-
     .amount-label {
       font-size: 0.9rem;
       color: #94a3b8;
     }
 
-    .amount-card.selected .amount-label,
-    .amount-card.selected .amount-crypto {
+    .amount-card.selected .amount-label {
       color: rgba(255, 255, 255, 0.9);
     }
 
@@ -364,32 +330,25 @@
       font-size: 1rem;
     }
 
-    .blockchain-grid {
+    .payment-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
 
-    .blockchain-card {
+    .payment-card {
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
       border: 2px solid rgba(255, 255, 255, 0.1);
       padding: 2.5rem;
       border-radius: 20px;
       cursor: pointer;
-      transition: all 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       overflow: hidden;
-      opacity: 0.6;
-      pointer-events: none;
     }
 
-    .blockchain-card.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .blockchain-card::before {
+    .payment-card::before {
       content: '';
       position: absolute;
       top: 0;
@@ -400,65 +359,66 @@
       transition: left 0.5s ease;
     }
 
-    .blockchain-card.active:hover::before {
+    .payment-card:hover::before {
       left: 100%;
     }
 
-    .blockchain-card.active:hover {
+    .payment-card:hover {
       transform: translateY(-10px) scale(1.02);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
-    .blockchain-card.ethereum.active:hover {
-      border-color: var(--ethereum);
-      box-shadow: 0 20px 50px rgba(98, 126, 234, 0.4);
+    .payment-card.phonepe:hover {
+      border-color: #5F259F;
+      box-shadow: 0 20px 50px rgba(95, 37, 159, 0.4);
     }
 
-    .blockchain-card.polygon.active:hover {
-      border-color: var(--polygon);
-      box-shadow: 0 20px 50px rgba(130, 71, 229, 0.4);
+    .payment-card.gpay:hover {
+      border-color: #4285F4;
+      box-shadow: 0 20px 50px rgba(66, 133, 244, 0.4);
     }
 
-    .blockchain-card.hyperledger.active:hover {
-      border-color: #fff;
-      box-shadow: 0 20px 50px rgba(255, 255, 255, 0.3);
+    .payment-card.paytm:hover {
+      border-color: #002970;
+      box-shadow: 0 20px 50px rgba(0, 41, 112, 0.4);
     }
 
-    .blockchain-icon {
+    .payment-icon {
       font-size: 4rem;
       margin-bottom: 1.5rem;
       text-align: center;
       display: block;
     }
 
-    .blockchain-card h3 {
+    .payment-card h3 {
       font-size: 1.75rem;
       color: white;
       margin-bottom: 1rem;
       text-align: center;
     }
 
-    .blockchain-card p {
+    .payment-card p {
       color: #cbd5e1;
       line-height: 1.8;
       text-align: center;
       margin-bottom: 1.5rem;
     }
 
-    .blockchain-features {
+    .payment-features {
       list-style: none;
       padding: 0;
       margin-bottom: 1.5rem;
     }
 
-    .blockchain-features li {
+    .payment-features li {
       color: #94a3b8;
       padding: 0.5rem 0;
       padding-left: 1.5rem;
       position: relative;
     }
 
-    .blockchain-features li::before {
+    .payment-features li::before {
       content: '✓';
       position: absolute;
       left: 0;
@@ -482,19 +442,9 @@
       position: relative;
     }
 
-    .blockchain-card.active .payment-btn:hover {
+    .payment-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5);
-    }
-
-    .blockchain-card:not(.active) .payment-btn {
-      background: rgba(255, 255, 255, 0.1);
-      cursor: not-allowed;
-    }
-
-    .payment-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
     }
 
     .payment-btn .spinner {
@@ -520,15 +470,109 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Security Section */
-    .security-section {
-      background: rgba(16, 185, 129, 0.08);
+    /* Guarantee Section */
+    .guarantee-section {
+      background: var(--gradient-green);
       backdrop-filter: blur(10px);
-      border: 2px solid rgba(16, 185, 129, 0.2);
+      border: 2px solid rgba(16, 185, 129, 0.3);
       border-radius: 20px;
       padding: 2.5rem;
       margin-bottom: 3rem;
       animation: fadeInUp 1.4s ease-out 0.6s both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guarantee-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .guarantee-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .guarantee-icon {
+      font-size: 3rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    .guarantee-header h3 {
+      font-size: 1.75rem;
+      color: white;
+    }
+
+    .guarantee-content {
+      text-align: center;
+      color: white;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .guarantee-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .guarantee-item {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .guarantee-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .guarantee-item-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .guarantee-item h4 {
+      color: white;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .guarantee-item p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Security Section */
+    .security-section {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      animation: fadeInUp 1.6s ease-out 0.8s both;
     }
 
     .security-header {
@@ -557,6 +601,15 @@
 
     .security-item {
       text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .security-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .security-item-icon {
@@ -586,7 +639,7 @@
       padding: 2.5rem;
       text-align: center;
       margin-bottom: 3rem;
-      animation: fadeInUp 1.6s ease-out 0.8s both;
+      animation: fadeInUp 1.8s ease-out 1s both;
     }
 
     .impact-section h3 {
@@ -751,6 +804,83 @@
       background: rgba(255, 255, 255, 0.2);
     }
 
+    /* Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 3rem 2rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      color: #cbd5e1;
+    }
+
+    .compilex-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: white;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    .compilex-logo::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gradient);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease;
+    }
+
+    .compilex-logo:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .header {
@@ -769,7 +899,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .blockchain-grid {
+      .payment-grid {
         grid-template-columns: 1fr;
       }
 
@@ -782,6 +912,7 @@
         padding: 0.4rem 0.8rem;
       }
 
+      .guarantee-section,
       .security-section,
       .impact-section {
         padding: 2rem 1.5rem;
@@ -791,13 +922,19 @@
         padding: 2rem;
         margin: 1rem;
       }
+
+      .guarantee-features,
+      .security-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="logo">🎓 EduSankalp</div>
-    <h1>Support Education Through Blockchain</h1>
+    <h1>Support Education Through Secure Payments</h1>
     <p>Make secure, transparent donations that directly empower underprivileged students. Every contribution helps build a brighter future.</p>
     <div class="trust-badges">
       <div class="badge">
@@ -812,19 +949,15 @@
         <span class="badge-icon">🎯</span>
         <span>Direct Impact</span>
       </div>
+      <div class="badge">
+        <span class="badge-icon">💯</span>
+        <span>Money-Back Guarantee</span>
+      </div>
     </div>
   </div>
 
-  <!-- Wallet Connect Section -->
-  <div class="wallet-connect">
-    <button class="connect-btn" id="connectWallet" onclick="connectWallet()">
-      🦊 Connect MetaMask Wallet
-    </button>
-    <div class="wallet-address" id="walletAddress"></div>
-  </div>
-
   <div class="container">
-    <a href="#" class="back-btn" onclick="history.back(); return false;">
+    <a href="index.html" class="back-btn">
       ← Back to Main Site
     </a>
 
@@ -836,19 +969,16 @@
       <div class="amount-grid">
         <div class="amount-card" onclick="selectAmount(99)">
           <div class="amount-value">₹99</div>
-          <div class="amount-crypto">~$1.20</div>
           <div class="amount-label">Starter</div>
         </div>
         
         <div class="amount-card popular" onclick="selectAmount(199)">
           <div class="amount-value">₹199</div>
-          <div class="amount-crypto">~$2.40</div>
           <div class="amount-label">Most Chosen</div>
         </div>
         
         <div class="amount-card" onclick="selectAmount(399)">
           <div class="amount-value">₹399</div>
-          <div class="amount-crypto">~$4.80</div>
           <div class="amount-label">Champion</div>
         </div>
       </div>
@@ -869,56 +999,85 @@
 
     <!-- Payment Methods -->
     <div class="payment-section">
-      <h2>Select Your Blockchain</h2>
-      <p class="payment-subtitle">Choose your preferred blockchain network to complete the donation</p>
+      <h2>Select Your Payment Method</h2>
+      <p class="payment-subtitle">Choose your preferred payment method to complete the donation</p>
       
-      <div class="blockchain-grid">
-        <!-- Ethereum -->
-        <div class="blockchain-card ethereum" id="eth-card">
-          <div class="blockchain-icon">⟠</div>
-          <h3>Ethereum</h3>
-          <p>Fast, secure transactions on the world's leading smart contract platform</p>
-          <ul class="blockchain-features">
-            <li>Global network security</li>
-            <li>Instant confirmations</li>
-            <li>Full transparency</li>
+      <div class="payment-grid">
+        <!-- PhonePe -->
+        <div class="payment-card phonepe">
+          <div class="payment-icon">📱</div>
+          <h3>PhonePe</h3>
+          <p>Fast, secure payments through India's most trusted UPI app</p>
+          <ul class="payment-features">
+            <li>Instant processing</li>
+            <li>Zero transaction fees</li>
+            <li>Complete security</li>
           </ul>
-          <button class="payment-btn" onclick="processDonation('ethereum')">
-            <span class="btn-text">Donate via Ethereum</span>
+          <button class="payment-btn" onclick="processPayment('phonepe')">
+            <span class="btn-text">Pay with PhonePe</span>
             <div class="spinner"></div>
           </button>
         </div>
 
-        <!-- Polygon -->
-        <div class="blockchain-card polygon" id="polygon-card">
-          <div class="blockchain-icon">⬡</div>
-          <h3>Polygon</h3>
-          <p>Ultra-low fees and lightning-fast transactions on Layer 2</p>
-          <ul class="blockchain-features">
-            <li>Minimal transaction costs</li>
-            <li>Eco-friendly solution</li>
-            <li>Lightning speed</li>
-          </ul>
-          <button class="payment-btn" onclick="processDonation('polygon')">
-            <span class="btn-text">Donate via Polygon</span>
-            <div class="spinner"></div>
-          </button>
-        </div>
-
-        <!-- Hyperledger (UPI Fallback) -->
-        <div class="blockchain-card hyperledger" id="hyperledger-card">
-          <div class="blockchain-icon">🔗</div>
-          <h3>UPI Payment</h3>
-          <p>Quick and easy donation via UPI for those without crypto</p>
-          <ul class="blockchain-features">
-            <li>Instant transfer</li>
-            <li>No crypto needed</li>
+        <!-- Google Pay -->
+        <div class="payment-card gpay">
+          <div class="payment-icon">💳</div>
+          <h3>Google Pay</h3>
+          <p>Simple and secure payments through Google's UPI platform</p>
+          <ul class="payment-features">
+            <li>Google-grade security</li>
+            <li>Quick transactions</li>
             <li>Widely accepted</li>
           </ul>
-          <button class="payment-btn" onclick="processDonation('upi')">
-            <span class="btn-text">Donate via UPI</span>
+          <button class="payment-btn" onclick="processPayment('gpay')">
+            <span class="btn-text">Pay with Google Pay</span>
             <div class="spinner"></div>
           </button>
+        </div>
+
+        <!-- Paytm -->
+        <div class="payment-card paytm">
+          <div class="payment-icon">💰</div>
+          <h3>Paytm</h3>
+          <p>Convenient payments through India's leading digital wallet</p>
+          <ul class="payment-features">
+            <li>Wallet & UPI support</li>
+            <li>Cashback offers</li>
+            <li>Easy to use</li>
+          </ul>
+          <button class="payment-btn" onclick="processPayment('paytm')">
+            <span class="btn-text">Pay with Paytm</span>
+            <div class="spinner"></div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guarantee Section -->
+    <div class="guarantee-section">
+      <div class="guarantee-header">
+        <span class="guarantee-icon">💯</span>
+        <h3>100% Money-Back Guarantee</h3>
+      </div>
+      <p class="guarantee-content">
+        We stand behind our mission. If you're not satisfied with how your donation is being used, 
+        we'll refund your contribution within 30 days. No questions asked.
+      </p>
+      <div class="guarantee-features">
+        <div class="guarantee-item">
+          <span class="guarantee-item-icon">🔄</span>
+          <h4>Easy Refund Process</h4>
+          <p>Simple request form with quick processing</p>
+        </div>
+        <div class="guarantee-item">
+          <span class="guarantee-item-icon">⏱️</span>
+          <h4>30-Day Window</h4>
+          <p>Plenty of time to request a refund</p>
+        </div>
+        <div class="guarantee-item">
+          <span class="guarantee-item-icon">💬</span>
+          <h4>No Questions Asked</h4>
+          <p>We trust your judgment completely</p>
         </div>
       </div>
     </div>
@@ -975,98 +1134,65 @@
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About EduSankalp</h4>
+        <p>Revolutionizing education through AI and technology, making quality learning accessible to every child regardless of background.</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#classes">Classes</a></li>
+          <li><a href="index.html#team">Team</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="#">Standard Curriculum</a></li>
+          <li><a href="#">AI & Coding</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Digital Skills</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Partnerships</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 EduSankalp. Free education for all. Powered by cutting-edge AI and technology.</p>
+      <div class="compilex-logo">Powered by CompileX</div>
+    </div>
+  </footer>
+
   <!-- Message Overlay -->
   <div class="message-overlay" id="messageOverlay">
     <div class="message-content">
       <div class="message-icon" id="messageIcon">⏳</div>
-      <h3 id="messageTitle">Processing Transaction</h3>
-      <p id="messageText">Please confirm the transaction in your MetaMask wallet...</p>
+      <h3 id="messageTitle">Processing Payment</h3>
+      <p id="messageText">Redirecting you to the payment app...</p>
       <div class="transaction-info" id="transactionInfo"></div>
       <button class="close-btn" id="closeBtn" onclick="closeOverlay()" style="display: none;">Close</button>
     </div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
   <script>
-    const RECIPIENT_ADDRESS = '0x6dCd8C592Db0AFf1EEc6E9099351ba979f3f2df5';
     const UPI_ID = 'sankirtansyadavofficial@oksbi';
-    const INR_TO_USD = 0.012; // Approximate conversion rate
-    
     let selectedAmount = null;
-    let userAccount = null;
-    let web3Provider = null;
-
-    // Network configurations
-    const NETWORKS = {
-      ethereum: {
-        chainId: '0x1',
-        name: 'Ethereum Mainnet',
-        symbol: 'ETH'
-      },
-      polygon: {
-        chainId: '0x89',
-        name: 'Polygon Mainnet',
-        rpcUrl: 'https://polygon-rpc.com',
-        symbol: 'MATIC'
-      }
-    };
-
-    // Check if MetaMask is installed
-    function isMetaMaskInstalled() {
-      return typeof window.ethereum !== 'undefined';
-    }
-
-    // Connect wallet
-    async function connectWallet() {
-      if (!isMetaMaskInstalled()) {
-        alert('MetaMask is not installed! Please install MetaMask browser extension to use crypto payments.');
-        window.open('https://metamask.io/download/', '_blank');
-        return;
-      }
-
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        userAccount = accounts[0];
-        web3Provider = new ethers.providers.Web3Provider(window.ethereum);
-
-        updateWalletUI();
-        enablePaymentCards();
-      } catch (error) {
-        console.error('Error connecting wallet:', error);
-        alert('Failed to connect wallet. Please try again.');
-      }
-    }
-
-    // Update wallet UI
-    function updateWalletUI() {
-      const connectBtn = document.getElementById('connectWallet');
-      const walletAddress = document.getElementById('walletAddress');
-
-      if (userAccount) {
-        connectBtn.classList.add('connected');
-        connectBtn.innerHTML = '✓ Wallet Connected';
-        walletAddress.textContent = `${userAccount.substring(0, 6)}...${userAccount.substring(38)}`;
-      } else {
-        connectBtn.classList.remove('connected');
-        connectBtn.innerHTML = '🦊 Connect MetaMask Wallet';
-        walletAddress.textContent = '';
-      }
-    }
-
-    // Listen for account changes
-    if (typeof window.ethereum !== 'undefined') {
-      window.ethereum.on('accountsChanged', (accounts) => {
-        userAccount = accounts[0] || null;
-        updateWalletUI();
-        if (!userAccount) {
-          disablePaymentCards();
-        }
-      });
-
-      window.ethereum.on('chainChanged', () => {
-        window.location.reload();
-      });
-    }
 
     // Amount selection
     function selectAmount(amount) {
@@ -1078,10 +1204,6 @@
       });
       
       event.target.closest('.amount-card').classList.add('selected');
-      
-      if (userAccount) {
-        enablePaymentCards();
-      }
     }
 
     function handleCustomAmount() {
@@ -1093,83 +1215,15 @@
         document.querySelectorAll('.amount-card').forEach(card => {
           card.classList.remove('selected');
         });
-        
-        if (userAccount) {
-          enablePaymentCards();
-        }
       } else {
         selectedAmount = null;
-        if (userAccount) {
-          enablePaymentCards();
-        }
       }
     }
 
-    function enablePaymentCards() {
-      document.querySelectorAll('.blockchain-card').forEach(card => {
-        card.classList.add('active');
-      });
-    }
-
-    function disablePaymentCards() {
-      document.querySelectorAll('.blockchain-card').forEach(card => {
-        card.classList.remove('active');
-      });
-    }
-
-    // Switch network
-    async function switchNetwork(network) {
-      try {
-        await window.ethereum.request({
-          method: 'wallet_switchEthereumChain',
-          params: [{ chainId: network.chainId }],
-        });
-        return true;
-      } catch (switchError) {
-        // This error code indicates that the chain has not been added to MetaMask
-        if (switchError.code === 4902) {
-          try {
-            await window.ethereum.request({
-              method: 'wallet_addEthereumChain',
-              params: [{
-                chainId: network.chainId,
-                chainName: network.name,
-                rpcUrls: [network.rpcUrl],
-                nativeCurrency: {
-                  name: network.symbol,
-                  symbol: network.symbol,
-                  decimals: 18
-                }
-              }],
-            });
-            return true;
-          } catch (addError) {
-            console.error('Error adding network:', addError);
-            return false;
-          }
-        }
-        console.error('Error switching network:', switchError);
-        return false;
-      }
-    }
-
-    // Process donation
-    async function processDonation(blockchain) {
+    // Process payment
+    function processPayment(method) {
       if (!selectedAmount || selectedAmount <= 0) {
         alert('Please select or enter an amount first');
-        return;
-      }
-
-      // Handle UPI fallback
-      if (blockchain === 'upi') {
-        processUPIPayment();
-        return;
-      }
-
-      // Check wallet connection
-      if (!userAccount) {
-        alert('Please connect your MetaMask wallet first');
-        document.getElementById('connectWallet').click();
         return;
       }
 
@@ -1178,88 +1232,57 @@
       button.disabled = true;
 
       try {
-        // Switch to appropriate network
-        const network = NETWORKS[blockchain];
-        const switched = await switchNetwork(network);
+        // Show processing overlay
+        showOverlay('⏳', 'Processing Payment', 'Redirecting you to the payment app...');
+
+        // Create UPI URL
+        let upiUrl;
+        const payeeName = 'EduSankalp';
+        const transactionNote = 'Education Donation';
         
-        if (!switched) {
-          throw new Error('Failed to switch network');
+        if (method === 'phonepe') {
+          upiUrl = `phonepe://pay?pa=${UPI_ID}&pn=${encodeURIComponent(payeeName)}&am=${selectedAmount}&cu=INR&tn=${encodeURIComponent(transactionNote)}`;
+        } else if (method === 'gpay') {
+          upiUrl = `tez://upi/pay?pa=${UPI_ID}&pn=${encodeURIComponent(payeeName)}&am=${selectedAmount}&cu=INR&tn=${encodeURIComponent(transactionNote)}`;
+        } else if (method === 'paytm') {
+          upiUrl = `paytmmp://pay?pa=${UPI_ID}&pn=${encodeURIComponent(payeeName)}&am=${selectedAmount}&cu=INR&tn=${encodeURIComponent(transactionNote)}`;
         }
 
-        // Show processing overlay
-        showOverlay('⏳', 'Processing Transaction', 'Please confirm the transaction in your MetaMask wallet...');
-
-        // Convert INR to crypto (approximate)
-        const amountInUSD = selectedAmount * INR_TO_USD;
-        const amountInEth = amountInUSD / 2000; // Rough ETH price
-        const amountInWei = ethers.utils.parseEther(amountInEth.toFixed(6));
-
-        // Create transaction
-        const signer = web3Provider.getSigner();
-        const tx = await signer.sendTransaction({
-          to: RECIPIENT_ADDRESS,
-          value: amountInWei,
+        // Show transaction info
+        showOverlay('⏳', 'Redirecting to Payment', `Opening ${method} to complete your payment of ₹${selectedAmount}`, {
+          'Payment Method': method.charAt(0).toUpperCase() + method.slice(1),
+          'Amount': `₹${selectedAmount}`,
+          'UPI ID': UPI_ID
         });
 
-        // Show pending
-        showOverlay('⏳', 'Transaction Submitted', 'Waiting for blockchain confirmation...', {
-          'Transaction Hash': tx.hash,
-          'Amount': `₹${selectedAmount}`,
-          'Network': network.name
-        });
-
-        // Wait for confirmation
-        const receipt = await tx.wait();
-
-        // Show success
-        showOverlay('✅', 'Donation Successful!', 'Thank you for supporting education! Your contribution will make a real difference.', {
-          'Transaction Hash': receipt.transactionHash,
-          'Amount': `₹${selectedAmount}`,
-          'Network': network.name,
-          'Block Number': receipt.blockNumber
-        }, true);
+        // Try to redirect to the payment app
+        setTimeout(() => {
+          window.location.href = upiUrl;
+          
+          // Fallback if redirect doesn't work
+          setTimeout(() => {
+            showOverlay('ℹ️', 'Manual Payment Required', `If the payment app didn't open automatically, please use the details below to complete your payment manually.`, {
+              'UPI ID': UPI_ID,
+              'Amount': `₹${selectedAmount}`,
+              'Payee Name': 'EduSankalp'
+            }, true);
+            
+            // Copy UPI ID to clipboard
+            navigator.clipboard.writeText(UPI_ID).then(() => {
+              console.log('UPI ID copied to clipboard');
+            }).catch(() => {
+              console.log('Failed to copy UPI ID');
+            });
+          }, 3000);
+        }, 1500);
 
       } catch (error) {
-        console.error('Transaction error:', error);
-        
-        let errorMessage = 'Transaction failed. ';
-        if (error.code === 4001) {
-          errorMessage += 'You rejected the transaction.';
-        } else if (error.code === -32603) {
-          errorMessage += 'Insufficient funds in your wallet.';
-        } else {
-          errorMessage += error.message || 'Please try again.';
-        }
-        
-        showOverlay('❌', 'Transaction Failed', errorMessage, null, true);
+        console.error('Payment error:', error);
+        showOverlay('❌', 'Payment Failed', 'An error occurred while processing your payment. Please try again.', null, true);
       } finally {
         button.classList.remove('loading');
         button.disabled = false;
       }
-    }
-
-    // Process UPI payment
-    function processUPIPayment() {
-      const upiUrl = `upi://pay?pa=${UPI_ID}&pn=EduSankalp&am=${selectedAmount}&cu=INR&tn=Education%20Donation`;
-      
-      showOverlay('🚀', 'Redirecting to UPI Payment', 'You will be redirected to your UPI app to complete the payment.', {
-        'UPI ID': UPI_ID,
-        'Amount': `₹${selectedAmount}`
-      }, true);
-
-      setTimeout(() => {
-        window.location.href = upiUrl;
-        
-        setTimeout(() => {
-          if (confirm(`If payment didn't open automatically, please pay manually:\n\nUPI ID: ${UPI_ID}\nAmount: ₹${selectedAmount}\n\nClick OK to copy UPI ID`)) {
-            navigator.clipboard.writeText(UPI_ID).then(() => {
-              alert('UPI ID copied to clipboard!');
-            }).catch(() => {
-              prompt('Copy this UPI ID:', UPI_ID);
-            });
-          }
-        }, 2000);
-      }, 2000);
     }
 
     // Show overlay
@@ -1307,18 +1330,37 @@
       }
     });
 
-    // Check if already connected on page load
-    if (isMetaMaskInstalled()) {
-      window.ethereum.request({ method: 'eth_accounts' })
-        .then(accounts => {
-          if (accounts.length > 0) {
-            userAccount = accounts[0];
-            web3Provider = new ethers.providers.Web3Provider(window.ethereum);
-            updateWalletUI();
+    // Add scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollElements = document.querySelectorAll('.amount-section, .payment-section, .guarantee-section, .security-section, .impact-section');
+      
+      const elementInView = (el, dividend = 1) => {
+        const elementTop = el.getBoundingClientRect().top;
+        return (
+          elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+        );
+      };
+      
+      const displayScrollElement = (element) => {
+        element.classList.add('visible');
+      };
+      
+      const handleScrollAnimation = () => {
+        scrollElements.forEach((el) => {
+          if (elementInView(el, 1.2)) {
+            displayScrollElement(el);
           }
-        })
-        .catch(console.error);
-    }
+        });
+      };
+      
+      // Initial check
+      handleScrollAnimation();
+      
+      // Listen for scroll events
+      window.addEventListener('scroll', () => {
+        handleScrollAnimation();
+      });
+    });
   </script>
 </body>
 </html>
