@@ -86,8 +86,11 @@ edusankalp/
 │
 ├── index.html              # Main website
 ├── donate.html             # Donation page
+├── **Terms & Conditions
 ├── Elements/
 │   └── EduSankalp_logo.svg # Project logo
+│   └── CompileX_logo.png # Team logo
+│   └── **Others...
 ├── README.md               # This file
 └── assets/                 # Additional assets (if any)
 ```
@@ -226,9 +229,9 @@ We welcome contributions from developers, educators, and supporters!
 ## 📞 Contact Us
 
 ### General Inquiries
-- 📧 Email: contact@edusankalp.org
-- 🌐 Website: www.edusankalp.org
-- 📱 Phone: +91-XXXXXXXXXX
+- 📧 Email: contactedusankalp@gmail.com
+- 🌐 Website: [www.edusankalp.org](https://craftogamerz.github.io/EduSankalp/)
+- 📱 Contacts: +91-8910221759 / +91-9564441848
 
 ### Technical Support
 - 🐛 Bug Reports: GitHub Issues
@@ -236,10 +239,10 @@ We welcome contributions from developers, educators, and supporters!
 - 🔧 Technical Questions: Developers Discord
 
 ### Social Media
-- 📘 Facebook: [EduSankalp](https://facebook.com/edusankalp)
-- 🐦 Twitter: [@EduSankalp](https://twitter.com/edusankalp)
-- 📷 Instagram: [@edusankalp](https://instagram.com/edusankalp)
-- 💼 LinkedIn: [EduSankalp](https://linkedin.com/company/edusankalp)
+- 📘 Facebook: Coming Soon...
+- 🐦 Twitter: Coming Soon...
+- 📷 Instagram: Coming Soon...
+- 💼 LinkedIn: Coming Soon...
 
 ## 📄 License
 
@@ -260,7 +263,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Every donation helps us educate another child**
 
-[Donate Now](donate.html) • [Visit Website](index.html) • [Join Our Team](mailto:careers@edusankalp.org)
+[Donate Now](donate.html) • [Visit Website](index.html) • [Join Our Team](none)
 
 ---
 
