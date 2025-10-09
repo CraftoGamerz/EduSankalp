@@ -1,8 +1,6 @@
 ```markdown
 # EduSankalp - Free AI-Powered Education Platform 🌟
 
-![EduSankalp Banner](https://via.placeholder.com/1200x400/2563eb/ffffff?text=EduSankalp+AI+Education+Platform)
-
 ## 🎯 About EduSankalp
 
 EduSankalp is a revolutionary free education platform that leverages artificial intelligence to provide quality education to underprivileged students from Nursery to Class 12. Our mission is to make world-class education accessible to every child, regardless of their background or financial situation.
