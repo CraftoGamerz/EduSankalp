@@ -1168,10 +1168,10 @@
     .team-section::before {
       content: '';
       position: absolute;
-      top: -10%;
+      top: -5%;
       right: -10%;
       width: 400px;
-      height: 400px;
+      height: 800px;
       background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
       border-radius: 50%;
       animation: float 8s ease-in-out infinite;
@@ -1192,7 +1192,7 @@
     }
 
     .team-card {
-      height: 400px;
+      height: 500px;
       perspective: 1000px;
       cursor: pointer;
     }
@@ -1221,14 +1221,16 @@
     }
 
     .team-card-front {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
       display: flex;
+      justify-content: center;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 2rem;
       color: white;
     }
+    
 
     .team-card-back {
       background: white;
@@ -1261,9 +1263,19 @@
     }
 
     .team-bio {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1em;
       color: var(--dark);
-      line-height: 1.6;
+      line-height: 1.2;
       margin-bottom: 1rem;
+    }
+
+    .team-q-bottom{
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1em;
+      font-style: italic;
+      font-weight: 0.5em;
+      color: gray;
     }
 
     .team-social {
@@ -1296,7 +1308,7 @@
       font-size: 1.5rem;
       color: white;
       letter-spacing: 1px;
-      position: relative;
+      align-content: center;
       display: inline-block;
     }
 
@@ -1433,13 +1445,17 @@
         height: 350px;
       }
 
+      .team-section{
+        display: inline-block;
+      }
+
       .features,
       .classes-section,
-      .team-section,
       .compilex-section,
       .cta-section {
         padding: 4rem 1rem;
       }
+
     }
   </style>
 </head>
@@ -1815,19 +1831,18 @@
         <div class="team-card scroll-animate">
           <div class="team-card-inner">
             <div class="team-card-front">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Founder" class="team-photo">
-              <h3 class="team-name">Arjun Patel</h3>
-              <p class="team-role">Founder & CEO</p>
+              <img src="/Elements/Team-members_DP/Sankirtans_DP.jpg" alt="Founder" class="team-photo">
+              <h3 class="team-name">Sankirtans Yadav</h3>
+              <p class="team-role">Founder</p>
               <div class="team-social">
-                <a href="#">📘</a>
-                <a href="#">🐦</a>
-                <a href="#">📱</a>
+
+                
               </div>
             </div>
             <div class="team-card-back">
-              <h3>About Arjun</h3>
-              <p class="team-bio">Former educator with 10+ years experience in ed-tech. Passionate about making quality education accessible to all through technology.</p>
-              <p>"Education should be a right, not a privilege."</p>
+              <h2>About Sankirtans</h2>
+              <p class="team-bio">I'm the founder of EduSankalp - A data Analyst, AI model Researcher, Full stack Developer and the leading idea creator at CompileX. I thrive on building innovative solutions that blend empathy with engineering. This platform is one such vision—education is the foundation of equality, and technology is the bridge. If you share the same vision you're cordially invited to be part of this Revolution.</p>
+              <p class="team-q-bottom">"Let your action speak louder than your words". Life is a game of action so it depends on you how better you perform."</p>
             </div>
           </div>
         </div>
@@ -1835,19 +1850,17 @@
         <div class="team-card scroll-animate">
           <div class="team-card-inner">
             <div class="team-card-front">
-              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="CTO" class="team-photo">
-              <h3 class="team-name">Priya Sharma</h3>
-              <p class="team-role">Chief Technology Officer</p>
+              <img src="/Elements/Team-members_DP/Saranjaya_DP.jpg" alt="Head of Education" class="team-photo">
+              <h2 class="team-name">Saranjaya Yadav</h3>
+              <p class="team-role">Co-Founder</p>
               <div class="team-social">
-                <a href="#">📘</a>
-                <a href="#">🐦</a>
-                <a href="#">📱</a>
               </div>
             </div>
             <div class="team-card-back">
-              <h3>About Priya</h3>
-              <p class="team-bio">AI/ML expert from Stanford. Leads our technical team in developing cutting-edge learning algorithms and blockchain solutions.</p>
-              <p>"Technology should empower, not replace, human connection."</p>
+              <h2>About Saranjaya</h2>
+              <p class="team-bio">I'm the Co-Founder of EduSankalp and an active Team Member of CompileX. As a Full Stack Developer and Blockchain–AI Data Analyst, I’m passionate about building intelligent systems that merge innovation with real-world impact.
+              My vision is rooted in the belief that education is the foundation of equality, and technology is the bridge that empowers it. At EduSankalp, we work towards creating solutions that blend engineering, empathy, and excellence. Collaborating with CompileX has helped me refine my technical skills and contribute to projects that redefine the future of tech learning and research.</p>
+              <p class="team-q-bottom">“Understanding fuels innovation, and innovation drives success. When knowledge meets purpose, transformation becomes unstoppable.”</p>
             </div>
           </div>
         </div>
@@ -1855,28 +1868,74 @@
         <div class="team-card scroll-animate">
           <div class="team-card-inner">
             <div class="team-card-front">
-              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="Head of Education" class="team-photo">
-              <h3 class="team-name">Rahul Verma</h3>
-              <p class="team-role">Head of Education</p>
+              <img src="/Elements/Team-members_DP/Abusina_DP.jpg" alt="CTO" class="team-photo">
+              <h3 class="team-name">Abusina Hossain</h3>
+              <p class="team-role">CEO</p>
               <div class="team-social">
-                <a href="#">📘</a>
-                <a href="#">🐦</a>
-                <a href="#">📱</a>
+
+
               </div>
+
+
             </div>
             <div class="team-card-back">
-              <h3>About Rahul</h3>
-              <p class="team-bio">Curriculum designer with expertise in pedagogy and child development. Ensures our content is engaging and effective for all age groups.</p>
-              <p>"Every child learns differently - our job is to adapt to them."</p>
+              <h2>About Abusina</h2>
+              <p class="team-bio">I'm the CEO of EduSankalp and head of the team CompileX. This team made us strong apart from others. I'm a passionate graphics designer, developer, and AI enthusiast. Our mission is to make quality education and digital skills accessible to every student, shaping a smarter and more bright future through EduSankalp.</p>
+              <p class="team-q-bottom">"Questioning is the beginning of intelligence."</p>
             </div>
           </div>
         </div>
+        
+                <div class="team-card scroll-animate">
+          <div class="team-card-inner">
+            <div class="team-card-front">
+              <img src="/Elements/Team-members_DP/Avik_DP.jpg" alt="CTO" class="team-photo">
+              <h3 class="team-name">Avik Mitra</h3>
+              <p class="team-role">Board of members</p>
+              <div class="team-social">
+
+
+              </div>
+            </div>
+            <div class="team-card-back">
+              <h2>About Avik</h2>
+              <p class="team-bio">As a Board Member at Compilex, I drive innovation and strategic growth through technology.
+              With a deep passion for coding and software development, I specialize in building scalable, high-performance solutions.
+              My work bridges the gap between business vision and technical execution.
+              I lead with a focus on excellence, collaboration, and future-ready innovation.
+              Committed to transforming ideas into impactful digital realities.
+</p>
+              <p class="team-q-bottom">"Code is not just logic — it’s the language that shapes tomorrow."</p>
+            </div>
+          </div>
+        </div>
+
+                <div class="team-card scroll-animate">
+          <div class="team-card-inner">
+            <div class="team-card-front">
+              <img src="/Elements/Team-members_DP/Adil_DP.jpg" alt="CTO" class="team-photo">
+              <h3 class="team-name">Md Adil Mukhtar</h3>
+              <p class="team-role">Board of members</p>
+              <div class="team-social">
+
+
+              </div>
+            </div>
+            <div class="team-card-back">
+              <h2>About Adil</h2>
+              <p class="team-bio">As a creative Graphic Designer, I drive brand innovation and strategic growth through visual communication. With a deep passion for design and visual storytelling, I specialize in crafting compelling, high-impact visual solutions. My work bridges the gap between strategic vision and creative execution. I lead with a focus on excellence, collaboration, and forward-thinking design. Committed to transforming ideas into impactful visual realities.</p>
+              <p class="team-q-bottom">"Technology should empower, not replace, human connection."</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
   <!-- CompileX Section -->
   <section class="compilex-section">
+    <img width="64px" class="compilex-logo-ft" src="/Elements/CompileX_logo.png" alt="">
     <div class="compilex-logo scroll-animate">Powered by CompileX</div>
   </section>
 
