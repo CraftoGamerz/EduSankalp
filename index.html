@@ -1,2250 +1,2248 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="EduSankalp - Free AI-based education platform for underprivileged students (Nursery to Class 12). Learn future skills: AI, coding, development. Blockchain funding, AI anti-cheat system.">
-  <title>EduSankalp - Free AI-Powered Education for Every Child</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary: #2563eb;
-      --primary-dark: #1d4ed8;
-      --secondary: #3b82f6;
-      --accent: #0ea5e9;
-      --dark: #0f172a;
-      --light: #f8fafc;
-      --card: #ffffff;
-      --border: #e2e8f0;
-      --success: #10b981;
-      --ethereum: #627EEA;
-      --polygon: #8247E5;
-      --hyperledger: #2F3134;
-      --gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* Header Styles */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      animation: slideDown 0.6s ease-out;
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 800;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: transform 0.3s ease;
-      width: 82px;
-    }
-
-    .logo:hover {
-      transform: scale(1.05);
-    }
-
-    /* Desktop Navigation */
-    .desktop-nav {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 768px) {
-      .desktop-nav {
-        display: none;
-      }
-    }
-
-    .desktop-nav a {
-      text-decoration: none;
-      color: var(--dark);
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      font-weight: 500;
-      position: relative;
-    }
-
-    .desktop-nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 1rem;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .desktop-nav a:hover::after {
-      width: calc(100% - 2rem);
-    }
-
-    .desktop-nav a:hover {
-      color: var(--primary);
-      transform: translateY(-2px);
-    }
-
-    /* Desktop Sidebar Toggle */
-    .desktop-sidebar-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 30px;
-      height: 30px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      z-index: 1001;
-    }
-
-    @media (min-width: 769px) {
-      .desktop-sidebar-toggle {
-        display: flex;
-      }
-    }
-
-    .desktop-sidebar-toggle span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background: var(--dark);
-      border-radius: 3px;
-      transition: all 0.3s ease;
-      transform-origin: center;
-    }
-
-    .desktop-sidebar-toggle span:nth-child(1) {
-      transform: translateY(-8px);
-    }
-
-    .desktop-sidebar-toggle span:nth-child(3) {
-      transform: translateY(8px);
-    }
-
-    .desktop-sidebar-toggle.active span:nth-child(1) {
-      transform: translateY(1px) rotate(45deg);
-    }
-
-    .desktop-sidebar-toggle.active span:nth-child(2) {
-      opacity: 0;
-      transform: scale(0);
-    }
-
-    .desktop-sidebar-toggle.active span:nth-child(3) {
-      transform: translateY(-1px) rotate(-45deg);
-    }
-
-    /* Desktop Sidebar */
-    .desktop-sidebar {
-      position: fixed;
-      top: 0;
-      right: -400px;
-      width: 350px;
-      height: 100vh;
-      background: white;
-      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-      padding: 5rem 2rem 2rem;
-      transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      z-index: 999;
-      overflow-y: auto;
-    }
-
-    .desktop-sidebar.active {
-      right: 0;
-    }
-
-    .desktop-sidebar-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-      z-index: 998;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .desktop-sidebar-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .desktop-sidebar-menu {
-      list-style: none;
-      margin-bottom: 2rem;
-    }
-
-    .desktop-sidebar-item {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .desktop-sidebar-link {
-      display: block;
-      padding: 1rem 0;
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-
-    .desktop-sidebar-link:hover {
-      color: var(--primary);
-    }
-
-    .desktop-sidebar-submenu {
-      list-style: none;
-      padding-left: 1rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .desktop-sidebar-submenu.active {
-      max-height: 500px;
-    }
-
-    .desktop-sidebar-subitem {
-      border-bottom: none;
-    }
-
-    .desktop-sidebar-sublink {
-      display: block;
-      padding: 0.75rem 0;
-      color: #64748b;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-    }
-
-    .desktop-sidebar-sublink:hover {
-      color: var(--primary);
-    }
-
-    /* Mobile Navigation */
-    .mobile-nav-toggle {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 30px;
-      height: 30px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      z-index: 1001;
-    }
-
-    @media (max-width: 768px) {
-      .mobile-nav-toggle {
-        display: flex;
-      }
-    }
-
-    .mobile-nav-toggle span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background: var(--dark);
-      border-radius: 3px;
-      transition: all 0.3s ease;
-      transform-origin: center;
-    }
-
-    .mobile-nav-toggle span:nth-child(1) {
-      transform: translateY(-8px);
-    }
-
-    .mobile-nav-toggle span:nth-child(3) {
-      transform: translateY(8px);
-    }
-
-    .mobile-nav-toggle.active span:nth-child(1) {
-      transform: translateY(1px) rotate(45deg);
-    }
-
-    .mobile-nav-toggle.active span:nth-child(2) {
-      opacity: 0;
-      transform: scale(0);
-    }
-
-    .mobile-nav-toggle.active span:nth-child(3) {
-      transform: translateY(-1px) rotate(-45deg);
-    }
-
-    .mobile-nav {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 80%;
-      max-width: 300px;
-      height: 100vh;
-      background: white;
-      box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-      padding: 5rem 2rem 2rem;
-      transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      z-index: 999;
-      overflow-y: auto;
-    }
-
-    .mobile-nav.active {
-      right: 0;
-    }
-
-    .mobile-nav-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);
-      z-index: 998;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .mobile-nav-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-nav-menu {
-      list-style: none;
-      margin-bottom: 2rem;
-    }
-
-    .mobile-nav-item {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .mobile-nav-link {
-      display: block;
-      padding: 1rem 0;
-      color: var(--dark);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-
-    .mobile-nav-link:hover {
-      color: var(--primary);
-    }
-
-    .mobile-nav-submenu {
-      list-style: none;
-      padding-left: 1rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .mobile-nav-submenu.active {
-      max-height: 500px;
-    }
-
-    .mobile-nav-subitem {
-      border-bottom: none;
-    }
-
-    .mobile-nav-sublink {
-      display: block;
-      padding: 0.75rem 0;
-      color: #64748b;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: color 0.3s ease;
-    }
-
-    .mobile-nav-sublink:hover {
-      color: var(--primary);
-    }
-
-    .mobile-nav-cta {
-      width: 100%;
-      padding: 1rem;
-      background: var(--gradient);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: center;
-      text-decoration: none;
-      display: block;
-    }
-
-    .mobile-nav-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
-      padding: 6rem 2rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -20%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -30%;
-      left: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 8s ease-in-out infinite reverse;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(30px); }
-    }
-
-    .hero-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-      animation: fadeInUp 0.8s ease-out;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 900;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-      color: var(--dark);
-    }
-
-    .hero-highlight {
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero p {
-      font-size: 1.125rem;
-      color: #64748b;
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.8;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeInUp 1s ease-out 0.2s both;
-    }
-
-    .btn {
-      padding: 1rem 2rem;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      text-decoration: none;
-      border: 2px solid transparent;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      display: inline-block;
-    }
-
-    .btn-primary {
-      background: var(--gradient);
-      color: white;
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--primary);
-      border-color: var(--primary);
-    }
-
-    .btn-secondary:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-4px) scale(1.05);
-    }
-
-    /* Stats Section */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .stat-card {
-      background: var(--card);
-      padding: 2rem;
-      border-radius: 16px;
-      text-align: center;
-      border: 1px solid var(--border);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      animation: scaleIn 0.6s ease-out;
-    }
-
-    @keyframes scaleIn {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .stat-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: var(--primary);
-      box-shadow: 0 12px 30px rgba(99, 102, 241, 0.1);
-    }
-
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-label {
-      color: #64748b;
-      font-weight: 600;
-    }
-
-    /* Blockchain Payment Section */
-    .blockchain-section {
-      padding: 6rem 2rem;
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .blockchain-section::before {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(98, 126, 234, 0.15) 0%, transparent 70%);
-      top: 10%;
-      left: 5%;
-      border-radius: 50%;
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    .blockchain-section::after {
-      content: '';
-      position: absolute;
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(130, 71, 229, 0.15) 0%, transparent 70%);
-      bottom: 15%;
-      right: 10%;
-      border-radius: 50%;
-      animation: pulse 5s ease-in-out infinite reverse;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 0.5; }
-      50% { transform: scale(1.2); opacity: 0.8; }
-    }
-
-    .blockchain-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .blockchain-header {
-      text-align: center;
-      color: white;
-      margin-bottom: 4rem;
-    }
-
-    .blockchain-header h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900;
-      margin-bottom: 1rem;
-    }
-
-    .blockchain-header p {
-      font-size: 1.125rem;
-      color: #cbd5e1;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .blockchain-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .blockchain-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      padding: 2.5rem;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .blockchain-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .blockchain-card:hover::before {
-      left: 100%;
-    }
-
-    .blockchain-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .blockchain-card.ethereum:hover {
-      border-color: var(--ethereum);
-      box-shadow: 0 20px 40px rgba(98, 126, 234, 0.3);
-    }
-
-    .blockchain-card.polygon:hover {
-      border-color: var(--polygon);
-      box-shadow: 0 20px 40px rgba(130, 71, 229, 0.3);
-    }
-
-    .blockchain-card.hyperledger:hover {
-      border-color: #fff;
-      box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
-    }
-
-    .blockchain-icon {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-
-    .blockchain-card h3 {
-      font-size: 1.75rem;
-      color: white;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .blockchain-card p {
-      color: #cbd5e1;
-      line-height: 1.8;
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-
-    .blockchain-features {
-      list-style: none;
-      padding: 0;
-    }
-
-    .blockchain-features li {
-      color: #94a3b8;
-      padding: 0.5rem 0;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-
-    .blockchain-features li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--success);
-      font-weight: bold;
-    }
-
-    .donate-btn {
-      width: 100%;
-      padding: 1rem;
-      margin-top: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      color: white;
-      border-radius: 12px;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .donate-btn:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: scale(1.05);
-    }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      animation: fadeIn 0.3s ease-out;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .modal-content {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      padding: 3rem;
-      max-width: 500px;
-      width: 90%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-      animation: slideUp 0.3s ease-out;
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(50px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .modal-close:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: rotate(90deg);
-    }
-
-    .modal-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .modal-header h3 {
-      color: white;
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-header p {
-      color: #cbd5e1;
-    }
-
-    .wallet-status {
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    .wallet-status.connected {
-      border-color: var(--success);
-      background: rgba(16, 185, 129, 0.1);
-    }
-
-    .wallet-address {
-      font-family: 'Courier New', monospace;
-      color: #94a3b8;
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-    }
-
-    .amount-input {
-      width: 100%;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      color: white;
-      font-size: 1.5rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .amount-input:focus {
-      outline: none;
-      border-color: var(--primary);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .amount-presets {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .preset-btn {
-      padding: 0.75rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 600;
-    }
-
-    .preset-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: scale(1.05);
-    }
-
-    .transaction-details {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .detail-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.75rem 0;
-      color: #cbd5e1;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .detail-row:last-child {
-      border-bottom: none;
-      font-weight: 700;
-      color: white;
-    }
-
-    .transaction-status {
-      text-align: center;
-      padding: 2rem;
-      color: white;
-    }
-
-    .spinner {
-      width: 60px;
-      height: 60px;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      border-top-color: var(--primary);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 1rem;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .success-icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      animation: scaleIn 0.5s ease-out;
-    }
-
-    .tx-hash {
-      font-family: 'Courier New', monospace;
-      font-size: 0.85rem;
-      color: #94a3b8;
-      word-break: break-all;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1rem;
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
-
-    /* Chain Animation */
-    .chain-animation {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0.1;
-      pointer-events: none;
-    }
-
-    .chain-link {
-      width: 60px;
-      height: 60px;
-      border: 3px solid white;
-      border-radius: 50%;
-      display: inline-block;
-      margin: 0 -15px;
-      animation: linkFloat 3s ease-in-out infinite;
-    }
-
-    .chain-link:nth-child(2) {
-      animation-delay: 0.3s;
-    }
-
-    .chain-link:nth-child(3) {
-      animation-delay: 0.6s;
-    }
-
-    @keyframes linkFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    /* Features Section */
-    .features {
-      padding: 6rem 2rem;
-      background: white;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      font-weight: 900;
-      margin-bottom: 1rem;
-      color: var(--dark);
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: #64748b;
-      font-size: 1.125rem;
-      margin-bottom: 4rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .feature-card {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f7ff 100%);
-      padding: 2.5rem;
-      border-radius: 16px;
-      border: 1px solid rgba(37, 99, 235, 0.1);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: var(--gradient);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s ease;
-    }
-
-    .feature-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .feature-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.1);
-    }
-
-    .feature-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      display: inline-block;
-    }
-
-    .feature-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-      color: var(--dark);
-    }
-
-    .feature-card p {
-      color: #64748b;
-      line-height: 1.8;
-    }
-
-    /* Classes Section */
-    .classes-section {
-      padding: 6rem 2rem;
-      background: white;
-    }
-
-    .class-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .class-card {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f7ff 100%);
-      padding: 1.5rem;
-      border-radius: 12px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      border: 2px solid transparent;
-    }
-
-    .class-card:hover {
-      background: var(--gradient);
-      color: white;
-      border-color: var(--primary);
-      transform: scale(1.05);
-      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-    }
-
-    .class-icon {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .class-name {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .class-desc {
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    /* Team Section */
-    .team-section {
-      padding: 6rem 2rem;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .team-section::before {
-      content: '';
-      position: absolute;
-      top: -5%;
-      right: -10%;
-      width: 400px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 8s ease-in-out infinite;
-    }
-
-    .team-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .team-card {
-      height: 500px;
-      perspective: 1000px;
-      cursor: pointer;
-    }
-
-    .team-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.8s;
-      transform-style: preserve-3d;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .team-card:hover .team-card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .team-card-front, .team-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .team-card-front {
-      background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      color: white;
-    }
-    
-
-    .team-card-back {
-      background: white;
-      transform: rotateY(180deg);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .team-photo {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid rgba(255, 255, 255, 0.3);
-      margin-bottom: 1.5rem;
-    }
-
-    .team-name {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .team-role {
-      font-size: 1rem;
-      opacity: 0.9;
-      margin-bottom: 1rem;
-    }
-
-    .team-bio {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 1em;
-      color: var(--dark);
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-
-    .team-q-bottom{
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 1em;
-      font-style: italic;
-      font-weight: 0.5em;
-      color: gray;
-    }
-
-    .team-social {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: auto;
-    }
-
-    .team-social a {
-      color: var(--primary);
-      font-size: 1.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .team-social a:hover {
-      transform: scale(1.2);
-    }
-
-    /* CompileX Logo Section */
-    .compilex-section {
-      padding: 3rem 2rem;
-      background: var(--dark);
-      text-align: center;
-    }
-
-    .compilex-logo {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      font-size: 1.5rem;
-      color: white;
-      letter-spacing: 1px;
-      align-content: center;
-      display: inline-block;
-    }
-
-    .compilex-logo::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--gradient);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s ease;
-    }
-
-    .compilex-logo:hover::after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    /* CTA Section */
-    .cta-section {
-      padding: 6rem 2rem;
-      text-align: center;
-      background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
-      color: white;
-    }
-
-    .cta-section h2 {
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-      font-weight: 900;
-      margin-bottom: 1.5rem;
-    }
-
-    .cta-section p {
-      font-size: 1.125rem;
-      margin-bottom: 2rem;
-      opacity: 0.95;
-    }
-
-    /* Footer */
-    footer {
-      background: var(--dark);
-      color: white;
-      padding: 3rem 2rem;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .footer-section h4 {
-      margin-bottom: 1rem;
-      color: var(--accent);
-    }
-
-    .footer-section ul {
-      list-style: none;
-    }
-
-    .footer-section ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-section a {
-      color: #cbd5e1;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .footer-section a:hover {
-      color: var(--accent);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 2rem;
-      text-align: center;
-      color: #cbd5e1;
-    }
-
-    /* Scroll Animations */
-    .scroll-animate {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
-
-    .scroll-animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Mobile Scroll Popup */
-    @media (max-width: 768px) {
-      .scroll-animate.visible {
-        animation: mobilePopup 0.6s ease-out;
-      }
-
-      @keyframes mobilePopup {
-        0% { transform: translateY(30px) scale(0.95); }
-        50% { transform: translateY(-5px) scale(1.02); }
-        100% { transform: translateY(0) scale(1); }
-      }
-
-      .header-container {
-        padding: 1rem;
-        gap: 1rem;
-      }
-
-      .hero {
-        padding: 4rem 1rem;
-      }
-
-      .blockchain-section {
-        padding: 4rem 1rem;
-      }
-
-      .modal-content {
-        padding: 2rem 1.5rem;
-      }
-
-      .amount-presets {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .team-card {
-        height: 350px;
-      }
-
-      .team-section{
-        display: inline-block;
-      }
-
-      .features,
-      .classes-section,
-      .compilex-section,
-      .cta-section {
-        padding: 4rem 1rem;
-      }
-
-    }
-  </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="description"
+		content="EduSankalp - Free AI-based education platform for underprivileged students (Nursery to Class 12). Learn future skills: AI, coding, development. Blockchain funding, AI anti-cheat system.">
+	<title>EduSankalp - Free AI-Powered Education for Every Child</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+	<!-- add Font Awesome for social icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		integrity="sha512-pap8+2VQqkq6twBq0zq+L6wq3Z/1QX0X6YJv2qv1n7g6Xo3o5J4m3Z6k6Y2v3Q1d2aK7YxQ1r1t1Q=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		:root {
+			--primary: #2563eb;
+			--primary-dark: #1d4ed8;
+			--secondary: #3b82f6;
+			--accent: #0ea5e9;
+			--dark: #0f172a;
+			--light: #f8fafc;
+			--card: #ffffff;
+			--border: #e2e8f0;
+			--success: #10b981;
+			--ethereum: #627EEA;
+			--polygon: #8247E5;
+			--hyperledger: #2F3134;
+			--gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
+		}
+
+		html,
+		body {
+			overflow-x: hidden;
+			box-sizing: border-box;
+			width: 100%;
+		}
+
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+			background: var(--light);
+			color: var(--dark);
+			line-height: 1.6;
+			overflow-x: hidden;
+		}
+
+		/* Header Styles */
+		header {
+			position: sticky;
+			top: 0;
+			z-index: 1000;
+			background: rgba(255, 255, 255, 0.95);
+			backdrop-filter: blur(10px);
+			border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+			animation: slideDown 0.6s ease-out;
+		}
+
+		@keyframes slideDown {
+			from {
+				opacity: 0;
+				transform: translateY(-20px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.desktop-sidebar {
+			right: -100%;
+			/* instead of fixed -400px */
+		}
+
+
+		.header-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 1rem 2rem;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 2rem;
+		}
+
+		.logo {
+			font-size: 1.5rem;
+			font-weight: 800;
+			background: var(--gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			text-decoration: none;
+			display: flex;
+			align-items: center;
+			gap: 0.5rem;
+			transition: transform 0.3s ease;
+			width: 82px;
+		}
+
+		.logo:hover {
+			transform: scale(1.05);
+		}
+
+		/* Desktop Navigation */
+		.desktop-nav {
+			display: flex;
+			gap: 0.5rem;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+
+		@media (max-width: 768px) {
+			.desktop-nav {
+				display: none;
+			}
+		}
+
+		.desktop-nav a {
+			text-decoration: none;
+			color: var(--dark);
+			padding: 0.75rem 1rem;
+			border-radius: 8px;
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			font-weight: 500;
+			position: relative;
+		}
+
+		.desktop-nav a::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 1rem;
+			width: 0;
+			height: 2px;
+			background: var(--primary);
+			transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+
+		.desktop-nav a:hover::after {
+			width: calc(100% - 2rem);
+		}
+
+		.desktop-nav a:hover {
+			color: var(--primary);
+			transform: translateY(-2px);
+		}
+
+		/* Desktop Sidebar Toggle */
+		.desktop-sidebar-toggle {
+			display: none;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 30px;
+			height: 30px;
+			background: transparent;
+			border: none;
+			cursor: pointer;
+			padding: 0;
+			z-index: 1001;
+		}
+
+		@media (min-width: 769px) {
+			.desktop-sidebar-toggle {
+				display: flex;
+			}
+		}
+
+		.desktop-sidebar-toggle span {
+			display: block;
+			width: 25px;
+			height: 3px;
+			background: var(--dark);
+			border-radius: 3px;
+			transition: all 0.3s ease;
+			transform-origin: center;
+		}
+
+		.desktop-sidebar-toggle span:nth-child(1) {
+			transform: translateY(-8px);
+		}
+
+		.desktop-sidebar-toggle span:nth-child(3) {
+			transform: translateY(8px);
+		}
+
+		.desktop-sidebar-toggle.active span:nth-child(1) {
+			transform: translateY(1px) rotate(45deg);
+		}
+
+		.desktop-sidebar-toggle.active span:nth-child(2) {
+			opacity: 0;
+			transform: scale(0);
+		}
+
+		.desktop-sidebar-toggle.active span:nth-child(3) {
+			transform: translateY(-1px) rotate(-45deg);
+		}
+
+		/* Desktop Sidebar */
+		.desktop-sidebar {
+			position: fixed;
+			top: 0;
+			right: -400px;
+			width: 350px;
+			height: 100vh;
+			background: white;
+			box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+			padding: 5rem 2rem 2rem;
+			transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			z-index: 999;
+			overflow-y: auto;
+		}
+
+		.desktop-sidebar.active {
+			right: 0;
+		}
+
+		.desktop-sidebar-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			backdrop-filter: blur(5px);
+			z-index: 998;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease;
+		}
+
+		.desktop-sidebar-overlay.active {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.desktop-sidebar-menu {
+			list-style: none;
+			margin-bottom: 2rem;
+		}
+
+		.desktop-sidebar-item {
+			border-bottom: 1px solid var(--border);
+		}
+
+		.desktop-sidebar-link {
+			display: block;
+			padding: 1rem 0;
+			color: var(--dark);
+			text-decoration: none;
+			font-weight: 600;
+			font-size: 1.1rem;
+			transition: color 0.3s ease;
+		}
+
+		.desktop-sidebar-link:hover {
+			color: var(--primary);
+		}
+
+		.desktop-sidebar-submenu {
+			list-style: none;
+			padding-left: 1rem;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.4s ease;
+		}
+
+		.desktop-sidebar-submenu.active {
+			max-height: 500px;
+		}
+
+		.desktop-sidebar-subitem {
+			border-bottom: none;
+		}
+
+		.desktop-sidebar-sublink {
+			display: block;
+			padding: 0.75rem 0;
+			color: #64748b;
+			text-decoration: none;
+			font-size: 0.95rem;
+			transition: color 0.3s ease;
+		}
+
+		.desktop-sidebar-sublink:hover {
+			color: var(--primary);
+		}
+
+		/* Mobile Navigation */
+		.mobile-nav-toggle {
+			display: none;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 30px;
+			height: 30px;
+			background: transparent;
+			border: none;
+			cursor: pointer;
+			padding: 0;
+			z-index: 1001;
+		}
+
+		@media (max-width: 768px) {
+			.mobile-nav-toggle {
+				display: flex;
+			}
+		}
+
+		.mobile-nav-toggle span {
+			display: block;
+			width: 25px;
+			height: 3px;
+			background: var(--dark);
+			border-radius: 3px;
+			transition: all 0.3s ease;
+			transform-origin: center;
+		}
+
+		.mobile-nav-toggle span:nth-child(1) {
+			transform: translateY(-8px);
+		}
+
+		.mobile-nav-toggle span:nth-child(3) {
+			transform: translateY(8px);
+		}
+
+		.mobile-nav-toggle.active span:nth-child(1) {
+			transform: translateY(1px) rotate(45deg);
+		}
+
+		.mobile-nav-toggle.active span:nth-child(2) {
+			opacity: 0;
+			transform: scale(0);
+		}
+
+		.mobile-nav-toggle.active span:nth-child(3) {
+			transform: translateY(-1px) rotate(-45deg);
+		}
+
+		.mobile-nav {
+			position: fixed;
+			top: 0;
+			right: -100%;
+			width: 80%;
+			max-width: 300px;
+			height: 100vh;
+			background: white;
+			box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+			padding: 5rem 2rem 2rem;
+			transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			z-index: 999;
+			overflow-y: auto;
+		}
+
+		.mobile-nav.active {
+			right: 0;
+		}
+
+		.mobile-nav-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.5);
+			backdrop-filter: blur(5px);
+			z-index: 998;
+			opacity: 0;
+			visibility: hidden;
+			transition: all 0.3s ease;
+		}
+
+		.mobile-nav-overlay.active {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.mobile-nav-menu {
+			list-style: none;
+			margin-bottom: 2rem;
+		}
+
+		.mobile-nav-item {
+			border-bottom: 1px solid var(--border);
+		}
+
+		.mobile-nav-link {
+			display: block;
+			padding: 1rem 0;
+			color: var(--dark);
+			text-decoration: none;
+			font-weight: 600;
+			font-size: 1.1rem;
+			transition: color 0.3s ease;
+		}
+
+		.mobile-nav-link:hover {
+			color: var(--primary);
+		}
+
+		.mobile-nav-submenu {
+			list-style: none;
+			padding-left: 1rem;
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.4s ease;
+		}
+
+		.mobile-nav-submenu.active {
+			max-height: 500px;
+		}
+
+		.mobile-nav-subitem {
+			border-bottom: none;
+		}
+
+		.mobile-nav-sublink {
+			display: block;
+			padding: 0.75rem 0;
+			color: #64748b;
+			text-decoration: none;
+			font-size: 0.95rem;
+			transition: color 0.3s ease;
+		}
+
+		.mobile-nav-sublink:hover {
+			color: var(--primary);
+		}
+
+		.mobile-nav-cta {
+			width: 100%;
+			padding: 1rem;
+			background: var(--gradient);
+			color: white;
+			border: none;
+			border-radius: 10px;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			text-align: center;
+			text-decoration: none;
+			display: block;
+		}
+
+		.mobile-nav-cta:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+		}
+
+		/* Hero Section */
+		.hero {
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
+			padding: 6rem 2rem;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero::before {
+			content: '';
+			position: absolute;
+			top: -50%;
+			right: -20%;
+			width: 600px;
+			height: 600px;
+			background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+			border-radius: 50%;
+			animation: float 6s ease-in-out infinite;
+		}
+
+		.hero::after {
+			content: '';
+			position: absolute;
+			bottom: -30%;
+			left: -10%;
+			width: 500px;
+			height: 500px;
+			background: radial-gradient(circle, rgba(14, 165, 233, 0.08) 0%, transparent 70%);
+			border-radius: 50%;
+			animation: float 8s ease-in-out infinite reverse;
+		}
+
+		@keyframes float {
+
+			0%,
+			100% {
+				transform: translateY(0px);
+			}
+
+			50% {
+				transform: translateY(30px);
+			}
+		}
+
+		.hero-content {
+			max-width: 1200px;
+			margin: 0 auto;
+			position: relative;
+			z-index: 1;
+			animation: fadeInUp 0.8s ease-out;
+		}
+
+		@keyframes fadeInUp {
+			from {
+				opacity: 0;
+				transform: translateY(40px);
+			}
+
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.hero h1 {
+			font-size: clamp(2rem, 5vw, 3.5rem);
+			font-weight: 900;
+			margin-bottom: 1.5rem;
+			line-height: 1.2;
+			color: var(--dark);
+		}
+
+		.hero-highlight {
+			background: var(--gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		.hero p {
+			font-size: 1.125rem;
+			color: #64748b;
+			margin-bottom: 2rem;
+			max-width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+			line-height: 1.8;
+		}
+
+		.hero-buttons {
+			display: flex;
+			gap: 1rem;
+			justify-content: center;
+			flex-wrap: wrap;
+			animation: fadeInUp 1s ease-out 0.2s both;
+		}
+
+		.btn {
+			padding: 1rem 2rem;
+			border-radius: 12px;
+			font-size: 1rem;
+			font-weight: 600;
+			text-decoration: none;
+			border: 2px solid transparent;
+			cursor: pointer;
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			display: inline-block;
+		}
+
+		.btn-primary {
+			background: var(--gradient);
+			color: white;
+			box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+		}
+
+		.btn-primary:hover {
+			transform: translateY(-4px) scale(1.05);
+			box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+		}
+
+		.btn-secondary {
+			background: transparent;
+			color: var(--primary);
+			border-color: var(--primary);
+		}
+
+		.btn-secondary:hover {
+			background: var(--primary);
+			color: white;
+			transform: translateY(-4px) scale(1.05);
+		}
+
+		/* Stats Section */
+		.stats {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+			padding: 4rem 2rem;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.stat-card {
+			background: var(--card);
+			padding: 2rem;
+			border-radius: 16px;
+			text-align: center;
+			border: 1px solid var(--border);
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			animation: scaleIn 0.6s ease-out;
+		}
+
+		@keyframes scaleIn {
+			from {
+				opacity: 0;
+				transform: scale(0.8);
+			}
+
+			to {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+
+		.stat-card:hover {
+			transform: translateY(-8px) scale(1.02);
+			border-color: var(--primary);
+			box-shadow: 0 12px 30px rgba(99, 102, 241, 0.1);
+		}
+
+		.stat-number {
+			font-size: 2.5rem;
+			font-weight: 800;
+			background: var(--gradient);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			margin-bottom: 0.5rem;
+		}
+
+		.stat-label {
+			color: #64748b;
+			font-weight: 600;
+		}
+
+		/* Blockchain Payment Section */
+		.blockchain-section {
+			padding: 6rem 2rem;
+			background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.blockchain-section::before {
+			content: '';
+			position: absolute;
+			width: 300px;
+			height: 300px;
+			background: radial-gradient(circle, rgba(98, 126, 234, 0.15) 0%, transparent 70%);
+			top: 10%;
+			left: 5%;
+			border-radius: 50%;
+			animation: pulse 4s ease-in-out infinite;
+		}
+
+		.blockchain-section::after {
+			content: '';
+			position: absolute;
+			width: 250px;
+			height: 250px;
+			background: radial-gradient(circle, rgba(130, 71, 229, 0.15) 0%, transparent 70%);
+			bottom: 15%;
+			right: 10%;
+			border-radius: 50%;
+			animation: pulse 5s ease-in-out infinite reverse;
+		}
+
+		@keyframes pulse {
+
+			0%,
+			100% {
+				transform: scale(1);
+				opacity: 0.5;
+			}
+
+			50% {
+				transform: scale(1.2);
+				opacity: 0.8;
+			}
+		}
+
+		.blockchain-content {
+			max-width: 1200px;
+			margin: 0 auto;
+			position: relative;
+			z-index: 1;
+		}
+
+		.blockchain-header {
+			text-align: center;
+			color: white;
+			margin-bottom: 4rem;
+		}
+
+		.blockchain-header h2 {
+			font-size: clamp(2rem, 4vw, 3rem);
+			font-weight: 900;
+			margin-bottom: 1rem;
+		}
+
+		.blockchain-header p {
+			font-size: 1.125rem;
+			color: #cbd5e1;
+			max-width: 700px;
+			margin: 0 auto;
+		}
+
+		.blockchain-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+			margin-bottom: 3rem;
+		}
+
+		.blockchain-card {
+			background: rgba(255, 255, 255, 0.05);
+			backdrop-filter: blur(10px);
+			border: 2px solid rgba(255, 255, 255, 0.1);
+			padding: 2.5rem;
+			border-radius: 20px;
+			cursor: pointer;
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.blockchain-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+			transition: left 0.5s ease;
+		}
+
+		.blockchain-card:hover::before {
+			left: 100%;
+		}
+
+		.blockchain-card:hover {
+			transform: translateY(-10px) scale(1.02);
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+		}
+
+		.blockchain-card.ethereum:hover {
+			border-color: var(--ethereum);
+			box-shadow: 0 20px 40px rgba(98, 126, 234, 0.3);
+		}
+
+		.blockchain-card.polygon:hover {
+			border-color: var(--polygon);
+			box-shadow: 0 20px 40px rgba(130, 71, 229, 0.3);
+		}
+
+		.blockchain-card.hyperledger:hover {
+			border-color: #fff;
+			box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2);
+		}
+
+		.blockchain-icon {
+			font-size: 4rem;
+			margin-bottom: 1.5rem;
+			text-align: center;
+		}
+
+		.blockchain-card h3 {
+			font-size: 1.75rem;
+			color: white;
+			margin-bottom: 1rem;
+			text-align: center;
+		}
+
+		.blockchain-card p {
+			color: #cbd5e1;
+			line-height: 1.8;
+			text-align: center;
+			margin-bottom: 1.5rem;
+		}
+
+		.blockchain-features {
+			list-style: none;
+			padding: 0;
+		}
+
+		.blockchain-features li {
+			color: #94a3b8;
+			padding: 0.5rem 0;
+			padding-left: 1.5rem;
+			position: relative;
+		}
+
+		.blockchain-features li::before {
+			content: '✓';
+			position: absolute;
+			left: 0;
+			color: var(--success);
+			font-weight: bold;
+		}
+
+		.donate-btn {
+			width: 100%;
+			padding: 1rem;
+			margin-top: 1rem;
+			background: rgba(255, 255, 255, 0.1);
+			border: 2px solid rgba(255, 255, 255, 0.2);
+			color: white;
+			border-radius: 12px;
+			font-size: 1rem;
+			font-weight: 600;
+			cursor: pointer;
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+
+		.donate-btn:hover {
+			background: rgba(255, 255, 255, 0.2);
+			transform: scale(1.05);
+		}
+
+		/* Modal Styles */
+		.modal {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, 0.8);
+			backdrop-filter: blur(5px);
+			z-index: 2000;
+			align-items: center;
+			justify-content: center;
+			animation: fadeIn 0.3s ease-out;
+		}
+
+		.modal.active {
+			display: flex;
+		}
+
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
+		}
+
+		.modal-content {
+			background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+			border: 2px solid rgba(255, 255, 255, 0.1);
+			border-radius: 24px;
+			padding: 3rem;
+			max-width: 500px;
+			width: 90%;
+			max-height: 90vh;
+			overflow-y: auto;
+			position: relative;
+			animation: slideUp 0.3s ease-out;
+		}
+
+		@keyframes slideUp {
+			from {
+				transform: translateY(50px);
+				opacity: 0;
+			}
+
+			to {
+				transform: translateY(0);
+				opacity: 1;
+			}
+		}
+
+		.modal-close {
+			position: absolute;
+			top: 1.5rem;
+			right: 1.5rem;
+			background: rgba(255, 255, 255, 0.1);
+			border: none;
+			color: white;
+			font-size: 1.5rem;
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.3s ease;
+		}
+
+		.modal-close:hover {
+			background: rgba(255, 255, 255, 0.2);
+			transform: rotate(90deg);
+		}
+
+		.modal-header {
+			text-align: center;
+			margin-bottom: 2rem;
+		}
+
+		.modal-header h3 {
+			color: white;
+			font-size: 2rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.modal-header p {
+			color: #cbd5e1;
+		}
+
+		.wallet-status {
+			background: rgba(255, 255, 255, 0.05);
+			border: 2px solid rgba(255, 255, 255, 0.1);
+			border-radius: 12px;
+			padding: 1.5rem;
+			margin-bottom: 2rem;
+			text-align: center;
+		}
+
+		.wallet-status.connected {
+			border-color: var(--success);
+			background: rgba(16, 185, 129, 0.1);
+		}
+
+		.wallet-address {
+			font-family: 'Courier New', monospace;
+			color: #94a3b8;
+			font-size: 0.9rem;
+			margin-top: 0.5rem;
+		}
+
+		.amount-input {
+			width: 100%;
+			padding: 1rem;
+			background: rgba(255, 255, 255, 0.05);
+			border: 2px solid rgba(255, 255, 255, 0.1);
+			border-radius: 12px;
+			color: white;
+			font-size: 1.5rem;
+			text-align: center;
+			margin-bottom: 1rem;
+			transition: all 0.3s ease;
+		}
+
+		.amount-input:focus {
+			outline: none;
+			border-color: var(--primary);
+			background: rgba(255, 255, 255, 0.08);
+		}
+
+		.amount-presets {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 0.5rem;
+			margin-bottom: 2rem;
+		}
+
+		.preset-btn {
+			padding: 0.75rem;
+			background: rgba(255, 255, 255, 0.05);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			color: white;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			font-weight: 600;
+		}
+
+		.preset-btn:hover {
+			background: rgba(255, 255, 255, 0.1);
+			transform: scale(1.05);
+		}
+
+		.transaction-details {
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 12px;
+			padding: 1.5rem;
+			margin-bottom: 2rem;
+		}
+
+		.detail-row {
+			display: flex;
+			justify-content: space-between;
+			padding: 0.75rem 0;
+			color: #cbd5e1;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.detail-row:last-child {
+			border-bottom: none;
+			font-weight: 700;
+			color: white;
+		}
+
+		.transaction-status {
+			text-align: center;
+			padding: 2rem;
+			color: white;
+		}
+
+		.spinner {
+			width: 60px;
+			height: 60px;
+			border: 4px solid rgba(255, 255, 255, 0.1);
+			border-top-color: var(--primary);
+			border-radius: 50%;
+			animation: spin 1s linear infinite;
+			margin: 0 auto 1rem;
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		.success-icon {
+			font-size: 4rem;
+			margin-bottom: 1rem;
+			animation: scaleIn 0.5s ease-out;
+		}
+
+		.tx-hash {
+			font-family: 'Courier New', monospace;
+			font-size: 0.85rem;
+			color: #94a3b8;
+			word-break: break-all;
+			background: rgba(255, 255, 255, 0.05);
+			padding: 1rem;
+			border-radius: 8px;
+			margin-top: 1rem;
+		}
+
+		/* Chain Animation */
+		.chain-animation {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			opacity: 0.1;
+			pointer-events: none;
+		}
+
+		.chain-link {
+			width: 60px;
+			height: 60px;
+			border: 3px solid white;
+			border-radius: 50%;
+			display: inline-block;
+			margin: 0 -15px;
+			animation: linkFloat 3s ease-in-out infinite;
+		}
+
+		.chain-link:nth-child(2) {
+			animation-delay: 0.3s;
+		}
+
+		.chain-link:nth-child(3) {
+			animation-delay: 0.6s;
+		}
+
+		@keyframes linkFloat {
+
+			0%,
+			100% {
+				transform: translateY(0);
+			}
+
+			50% {
+				transform: translateY(-20px);
+			}
+		}
+
+		/* Features Section */
+		.features {
+			padding: 6rem 2rem;
+			background: white;
+		}
+
+		.section-title {
+			text-align: center;
+			font-size: clamp(2rem, 4vw, 2.5rem);
+			font-weight: 900;
+			margin-bottom: 1rem;
+			color: var(--dark);
+		}
+
+		.section-subtitle {
+			text-align: center;
+			color: #64748b;
+			font-size: 1.125rem;
+			margin-bottom: 4rem;
+			max-width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.features-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.feature-card {
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f7ff 100%);
+			padding: 2.5rem;
+			border-radius: 16px;
+			border: 1px solid rgba(37, 99, 235, 0.1);
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.feature-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			background: var(--gradient);
+			transform: scaleX(0);
+			transform-origin: left;
+			transition: transform 0.5s ease;
+		}
+
+		.feature-card:hover::before {
+			transform: scaleX(1);
+		}
+
+		.feature-card:hover {
+			transform: translateY(-8px) scale(1.02);
+			box-shadow: 0 15px 40px rgba(99, 102, 241, 0.1);
+		}
+
+		.feature-icon {
+			font-size: 3rem;
+			margin-bottom: 1rem;
+			display: inline-block;
+		}
+
+		.feature-card h3 {
+			font-size: 1.25rem;
+			margin-bottom: 0.75rem;
+			color: var(--dark);
+		}
+
+		.feature-card p {
+			color: #64748b;
+			line-height: 1.8;
+		}
+
+		/* Classes Section */
+		.classes-section {
+			padding: 6rem 2rem;
+			background: white;
+		}
+
+		.class-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 1.5rem;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.class-card {
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f7ff 100%);
+			padding: 1.5rem;
+			border-radius: 12px;
+			text-align: center;
+			cursor: pointer;
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			border: 2px solid transparent;
+		}
+
+		.class-card:hover {
+			background: var(--gradient);
+			color: white;
+			border-color: var(--primary);
+			transform: scale(1.05);
+			box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+		}
+
+		.class-icon {
+			font-size: 2.5rem;
+			margin-bottom: 0.75rem;
+		}
+
+		.class-name {
+			font-weight: 700;
+			font-size: 1.1rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.class-desc {
+			font-size: 0.9rem;
+			opacity: 0.8;
+		}
+
+		/* Team Section */
+		.team-section {
+			padding: 6rem 2rem;
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+			position: relative;
+			overflow: hidden;
+		}
+
+		.compilex-logo-ft {
+			padding-right: 15px
+		}
+
+		.team-section::before {
+			content: '';
+			position: absolute;
+			top: -5%;
+			right: -10%;
+			width: 400px;
+			height: 800px;
+			background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+			border-radius: 50%;
+			animation: float 8s ease-in-out infinite;
+		}
+
+		.team-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			position: relative;
+			z-index: 1;
+		}
+
+		.team-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+
+		.team-card {
+			height: 500px;
+			perspective: 1000px;
+			cursor: pointer;
+			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s;
+		}
+
+		.team-card-inner {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			transition: transform 0.45s cubic-bezier(0.2, 0, 0, 1);
+			transform-style: preserve-3d;
+			border-radius: 20px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+		}
+
+		.team-card:hover .team-card-inner {
+			transform: rotateY(180deg) translateY(-6px) scale(1.02);
+		}
+
+		.team-card-front,
+		.team-card-back {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			backface-visibility: hidden;
+			border-radius: 20px;
+			overflow: hidden;
+		}
+
+		.team-card-front {
+			background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 2rem;
+			color: white;
+		}
+
+
+		.team-card-back {
+			background: white;
+			transform: rotateY(180deg);
+			padding: 2rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		}
+
+		.team-photo {
+			width: 150px;
+			height: 150px;
+			border-radius: 50%;
+			object-fit: cover;
+			border: 5px solid rgba(255, 255, 255, 0.3);
+			margin-bottom: 1.5rem;
+		}
+
+		.team-name {
+			font-size: 1.5rem;
+			font-weight: 800;
+			margin-bottom: 0.5rem;
+		}
+
+		.team-role {
+			font-size: 1rem;
+			opacity: 0.9;
+			margin-bottom: 1rem;
+		}
+
+		.team-bio {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 1em;
+			color: var(--dark);
+			line-height: 1.2;
+			margin-bottom: 1rem;
+		}
+
+		.team-q-bottom {
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 1em;
+			font-style: italic;
+			font-weight: 0.5em;
+			color: gray;
+		}
+
+		.team-social {
+			display: flex;
+			gap: 1rem;
+			justify-content: center;
+			margin-top: auto;
+		}
+
+		.team-social a {
+			color: var(--primary);
+			font-size: 1.5rem;
+			transition: all 0.3s ease;
+		}
+
+		.team-social a:hover {
+			transform: scale(1.2);
+		}
+
+		/* CompileX Logo Section */
+		.compilex-section {
+			display: flex;
+			padding: 3rem 20rem;
+			background: var(--dark);
+			text-align: center;
+		}
+
+		.logo-title {
+			display: flex;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
+
+		}
+
+
+
+		.compilex-logo {
+			font-family: 'Poppins', sans-serif;
+			font-weight: 600;
+			font-size: 1.5rem;
+			color: white;
+			letter-spacing: 1px;
+			align-content: center;
+			display: inline-block;
+		}
+
+		.compilex-logo::after {
+			content: '';
+			position: absolute;
+			bottom: -5px;
+			left: 0;
+			width: 100%;
+			height: 3px;
+			background: var(--gradient);
+			transform: scaleX(0);
+			transform-origin: right;
+			transition: transform 0.4s ease;
+		}
+
+		.compilex-logo:hover::after {
+			transform: scaleX(1);
+			transform-origin: left;
+		}
+
+		/* CTA Section */
+		.cta-section {
+			padding: 6rem 2rem;
+			text-align: center;
+			background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+			color: white;
+		}
+
+		.cta-section h2 {
+			font-size: clamp(1.75rem, 3vw, 2.5rem);
+			font-weight: 900;
+			margin-bottom: 1.5rem;
+		}
+
+		.cta-section p {
+			font-size: 1.125rem;
+			margin-bottom: 2rem;
+			opacity: 0.95;
+		}
+
+		/* Footer */
+		footer {
+			background: var(--dark);
+			color: white;
+			padding: 3rem 2rem;
+		}
+
+		.footer-content {
+			max-width: 1200px;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 2rem;
+			margin-bottom: 2rem;
+		}
+
+		.footer-section h4 {
+			margin-bottom: 1rem;
+			color: var(--accent);
+		}
+
+		.footer-section ul {
+			list-style: none;
+		}
+
+		.footer-section ul li {
+			margin-bottom: 0.5rem;
+		}
+
+		.footer-section a {
+			color: #cbd5e1;
+			text-decoration: none;
+			transition: color 0.3s ease;
+		}
+
+		.footer-section a:hover {
+			color: var(--accent);
+		}
+
+		.footer-bottom {
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			padding-top: 2rem;
+			text-align: center;
+			color: #cbd5e1;
+		}
+
+		/* Scroll Animations */
+		.scroll-animate {
+			opacity: 0;
+			transform: translateY(30px);
+			transition: all 0.6s ease;
+		}
+
+		.scroll-animate.visible {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		/* Mobile Scroll Popup */
+		@media (max-width: 768px) {
+			.scroll-animate.visible {
+				animation: mobilePopup 0.6s ease-out;
+			}
+
+			@keyframes mobilePopup {
+				0% {
+					transform: translateY(20px) scale(0.98);
+				}
+
+				50% {
+					transform: translateY(-4px) scale(1.01);
+				}
+
+				100% {
+					transform: translateY(0) scale(1);
+				}
+			}
+
+			.header-container {
+				padding: 1rem;
+				gap: 1rem;
+			}
+
+			.hero {
+				padding: 4rem 1rem;
+			}
+
+			.blockchain-section {
+				padding: 4rem 1rem;
+			}
+
+			.modal-content {
+				padding: 2rem 1.5rem;
+			}
+
+			.amount-presets {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			.team-card {
+				height: 350px;
+			}
+
+			.team-section {
+				display: inline-block;
+			}
+
+			.features,
+			.classes-section,
+			.compilex-section,
+			.cta-section {
+				padding: 4rem 1rem;
+				justify-content: center;
+
+			}
+
+			.compilex-logo {
+				text-align: center;
+			}
+
+			.team-card {
+				height: auto;
+				min-height: 350px;
+				/* ensure some minimum */
+				perspective: 1000px;
+			}
+
+			.team-social {
+				opacity: 0;
+				transition: opacity 0.3s;
+			}
+
+			.team-card-front:hover .team-social {
+				opacity: 1;
+			}
+
+			/* Remove or disable this hover rule */
+			.team-card:hover .team-card-inner {
+				transform: rotateY(180deg);
+			}
+		}
+	</style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-container">
-      <a href="#" class="logo"> <img src="Elements/EduSankalp_logo.svg" alt="EduSankalp"></a>
-      
-      <!-- Desktop Navigation -->
-      <nav class="desktop-nav">
-        <a href="#features">Features</a>
-        <a href="#blockchain">Donate</a>
-        <a href="#classes">Classes</a>
-        <a href="#team">Team</a>
-        <a href="#about">About</a>
-      </nav>
-
-      <!-- Desktop Sidebar Toggle -->
-      <button class="desktop-sidebar-toggle" aria-label="Toggle sidebar">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <!-- Mobile Navigation Toggle -->
-      <button class="mobile-nav-toggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-
-    <!-- Desktop Sidebar -->
-    <div class="desktop-sidebar-overlay"></div>
-    <nav class="desktop-sidebar">
-      <ul class="desktop-sidebar-menu">
-        <li class="desktop-sidebar-item">
-          <a href="terms-conditions.html" class="desktop-sidebar-link">Terms & Conditions</a>
-        </li>
-        <li class="desktop-sidebar-item">
-          <a href="privacy-policy.html" class="desktop-sidebar-link">Privacy Policy</a>
-        </li>
-        <li class="desktop-sidebar-item">
-          <a href="contact-us.html" class="desktop-sidebar-link">Contact Us</a>
-        </li>
-        <li class="desktop-sidebar-item">
-          <a href="cancellation-refund.html" class="desktop-sidebar-link">Cancellation & Refund</a>
-        </li>
-        <li class="desktop-sidebar-item">
-          <a href="shipping-delivery.html" class="desktop-sidebar-link">Shipping & Delivery</a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- Mobile Navigation -->
-    <div class="mobile-nav-overlay"></div>
-    <nav class="mobile-nav">
-      <ul class="mobile-nav-menu">
-        <li class="mobile-nav-item">
-          <a href="#features" class="mobile-nav-link">Features</a>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#blockchain" class="mobile-nav-link">Donate</a>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#classes" class="mobile-nav-link">Classes</a>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#team" class="mobile-nav-link">Team</a>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#about" class="mobile-nav-link">About</a>
-        </li>
-        <li class="mobile-nav-item">
-          <a href="#" class="mobile-nav-link" onclick="toggleSubmenu('legalSubmenu')">Legal <span class="down-arrow">&#129171;</span></a>
-          <ul class="mobile-nav-submenu" id="legalSubmenu">
-            <li class="mobile-nav-subitem">
-              <a href="terms-conditions.html" class="mobile-nav-sublink">Terms & Conditions</a>
-            </li>
-            <li class="mobile-nav-subitem">
-              <a href="privacy-policy.html" class="mobile-nav-sublink">Privacy Policy</a>
-            </li>
-            <li class="mobile-nav-subitem">
-              <a href="cancellation-refund.html" class="mobile-nav-sublink">Cancellation & Refund</a>
-            </li>
-            <li class="mobile-nav-subitem">
-              <a href="shipping-delivery.html" class="mobile-nav-sublink">Shipping & Delivery</a>
-            </li>
-            <li class="mobile-nav-subitem">
-              <a href="contact-us.html" class="mobile-nav-sublink">Contact Us</a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <a href="donate.html" class="mobile-nav-cta">Support Education</a>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Education Revolutionized by <span class="hero-highlight">AI Technology</span></h1>
-      <p>Free, world-class education for every child from Nursery to Class 12. Learn future-ready skills: AI, coding, development, and more. Empowering underprivileged students with technology and opportunity.</p>
-      <div class="hero-buttons">
-        <button class="btn btn-primary">Start Learning Now</button>
-        <button class="btn btn-secondary">Watch Demo</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Section -->
-  <section class="stats">
-    <div class="stat-card scroll-animate">
-      <div class="stat-number">100%</div>
-      <div class="stat-label">Free Education</div>
-    </div>
-    <div class="stat-card scroll-animate">
-      <div class="stat-number">10K+</div>
-      <div class="stat-label">Students Empowered</div>
-    </div>
-    <div class="stat-card scroll-animate">
-      <div class="stat-number">50+</div>
-      <div class="stat-label">Expert Courses</div>
-    </div>
-    <div class="stat-card scroll-animate">
-      <div class="stat-number">24/7</div>
-      <div class="stat-label">AI-Powered Support</div>
-    </div>
-  </section>
-
-  <!-- Blockchain Payment Section -->
-  <section class="blockchain-section" id="blockchain">
-    <div class="chain-animation">
-      <span class="chain-link"></span>
-      <span class="chain-link"></span>
-      <span class="chain-link"></span>
-    </div>
-    
-    <div class="blockchain-content">
-      <div class="blockchain-header">
-        <h2 class="scroll-animate">Support Education Through Blockchain</h2>
-        <p class="scroll-animate">Make transparent, secure donations using cutting-edge blockchain technology. Every transaction is recorded on the blockchain, ensuring complete transparency and accountability.</p>
-      </div>
-
-      <div class="blockchain-grid">
-        <!-- Ethereum Card -->
-        <div class="blockchain-card ethereum scroll-animate" onclick="openPaymentModal('ethereum')">
-          <div class="blockchain-icon">⟠</div>
-          <h3>Ethereum</h3>
-          <p>The world's leading smart contract platform powering decentralized applications.</p>
-          <ul class="blockchain-features">
-            <li>Fast transactions</li>
-            <li>Smart contract support</li>
-            <li>Global network</li>
-            <li>Secure & transparent</li>
-          </ul>
-          <a href="donate.html"><button class="donate-btn">Donate with ETH</button></a>
-        </div>
-
-        <!-- Polygon Card -->
-        <div class="blockchain-card polygon scroll-animate" onclick="openPaymentModal('polygon')">
-          <div class="blockchain-icon">⬡</div>
-          <h3>Polygon</h3>
-          <p>Layer 2 scaling solution with low fees and high-speed transactions on Ethereum.</p>
-          <ul class="blockchain-features">
-            <li>Ultra-low gas fees</li>
-            <li>Lightning fast</li>
-            <li>Ethereum compatible</li>
-            <li>Eco-friendly</li>
-          </ul>
-          <a href="donate.html"><button class="donate-btn">Donate with MATIC</button></a>
-        </div>
-
-        <!-- Hyperledger Card -->
-        <div class="blockchain-card hyperledger scroll-animate" onclick="openPaymentModal('hyperledger')">
-          <div class="blockchain-icon">🔗</div>
-          <h3>Hyperledger Fabric</h3>
-          <p>Enterprise-grade permissioned blockchain framework for institutional partnerships.</p>
-          <ul class="blockchain-features">
-            <li>Enterprise security</li>
-            <li>Permissioned access</li>
-            <li>High throughput</li>
-            <li>Institutional grade</li>
-          </ul>
-          <a href="donate.html"><button class="donate-btn">Donate via Hyperledger</button></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Payment Modal -->
-  <div id="paymentModal" class="modal">
-    <div class="modal-content">
-      <button class="modal-close" onclick="closeModal()">✕</button>
-      
-      <div id="modalStep1">
-        <div class="modal-header">
-          <h3 id="modalTitle">Connect Wallet</h3>
-          <p id="modalSubtitle">Choose your blockchain network</p>
-        </div>
-
-        <div class="wallet-status" id="walletStatus">
-          <div style="color: white; font-weight: 600;">Wallet Status</div>
-          <div id="connectionStatus" style="color: #94a3b8; margin-top: 0.5rem;">Not Connected</div>
-          <div class="wallet-address" id="walletAddress"></div>
-        </div>
-
-        <button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;" onclick="connectWallet()">
-          Connect Wallet
-        </button>
-
-        <div style="opacity: 0.7; text-align: center; color: #94a3b8; font-size: 0.9rem;">
-          Supported wallets: MetaMask, WalletConnect, Coinbase Wallet
-        </div>
-      </div>
-
-      <div id="modalStep2" style="display: none;">
-        <div class="modal-header">
-          <h3>Enter Donation Amount</h3>
-          <p id="networkName">Network: Ethereum</p>
-        </div>
-
-        <input type="number" class="amount-input" id="donationAmount" placeholder="0.00" min="0" step="0.01">
-        
-        <div class="amount-presets">
-          <button class="preset-btn" onclick="setAmount(0.01)">0.01</button>
-          <button class="preset-btn" onclick="setAmount(0.05)">0.05</button>
-          <button class="preset-btn" onclick="setAmount(0.1)">0.1</button>
-          <button class="preset-btn" onclick="setAmount(0.5)">0.5</button>
-        </div>
-
-        <div class="transaction-details">
-          <div class="detail-row">
-            <span>Network</span>
-            <span id="detailNetwork">Ethereum</span>
-          </div>
-          <div class="detail-row">
-            <span>Gas Fee (est.)</span>
-            <span id="gasFee">~$2.50</span>
-          </div>
-          <div class="detail-row">
-            <span>Total Amount</span>
-            <span id="totalAmount">0.00 ETH</span>
-          </div>
-        </div>
-
-        <button class="btn btn-primary" style="width: 100%;" onclick="processDonation()">
-          Confirm Donation
-        </button>
-      </div>
-
-      <div id="modalStep3" style="display: none;">
-        <div class="transaction-status">
-          <div class="spinner"></div>
-          <h3 style="margin-bottom: 0.5rem;">Processing Transaction</h3>
-          <p style="color: #94a3b8;">Please wait while we confirm your transaction on the blockchain...</p>
-        </div>
-      </div>
-
-      <div id="modalStep4" style="display: none;">
-        <div class="transaction-status">
-          <div class="success-icon">✅</div>
-          <h3 style="margin-bottom: 1rem;">Transaction Successful!</h3>
-          <p style="color: #94a3b8; margin-bottom: 1rem;">Thank you for supporting education! Your donation will help students access quality learning.</p>
-          <div class="tx-hash">
-            <strong>Transaction Hash:</strong><br>
-            <span id="txHash">0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1...</span>
-          </div>
-          <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="closeModal()">
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Features Section -->
-  <section class="features" id="features">
-    <h2 class="section-title scroll-animate">What Makes Us Different</h2>
-    <p class="section-subtitle scroll-animate">A complete learning ecosystem designed for success</p>
-    
-    <div class="features-grid">
-      <div class="feature-card scroll-animate">
-        <div class="feature-icon">🤖</div>
-        <h3>AI-Powered Learning</h3>
-        <p>Personalized learning paths that adapt to each student's pace and learning style using advanced AI algorithms.</p>
-      </div>
-
-      <div class="feature-card scroll-animate">
-        <div class="feature-icon">💻</div>
-        <h3>Future Skills Curriculum</h3>
-        <p>Beyond traditional education: AI, coding, web development, cybersecurity, and digital marketing integrated into the curriculum.</p>
-      </div>
-
-      <div class="feature-card scroll-animate">
-        <div class="feature-icon">🎮</div>
-        <h3>Gamified Learning</h3>
-        <p>Make learning fun with interactive missions, badges, levels, and real-world challenges that keep students engaged.</p>
-      </div>
-
-      <div class="feature-card scroll-animate">
-        <div class="feature-icon">👨‍👩‍👧‍👦</div>
-        <h3>Parent Dashboard</h3>
-        <p>Real-time progress tracking, attendance monitoring, and actionable insights to support your child's learning journey.</p>
-      </div>
-
-      <div class="feature-card scroll-animate">
-        <div class="feature-icon">📈</div>
-        <h3>Advanced Analytics</h3>
-        <p>Detailed performance reports, skill mastery tracking, and personalized recommendations for improvement.</p>
-      </div>
-
-      <div class="feature-card scroll-animate">
-        <div class="feature-icon">🌍</div>
-        <h3>Accessible to All</h3>
-        <p>Low bandwidth support, offline learning modes, and mobile-first design for students in underserved communities.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Classes Section -->
-  <section class="classes-section" id="classes">
-    <h2 class="section-title scroll-animate">Classes & Programs</h2>
-    <p class="section-subtitle scroll-animate">Comprehensive education from Nursery to Class 12 + Future Skills</p>
-    
-    <div class="class-grid">
-      <div class="class-card scroll-animate">
-        <div class="class-icon">🌱</div>
-        <div class="class-name">Nursery</div>
-        <div class="class-desc">Foundational play & basics</div>
-      </div>
-
-      <div class="class-card scroll-animate">
-        <div class="class-icon">📚</div>
-        <div class="class-name">Classes 1-5</div>
-        <div class="class-desc">Core subjects & concepts</div>
-      </div>
-
-      <div class="class-card scroll-animate">
-        <div class="class-icon">🔭</div>
-        <div class="class-name">Classes 6-8</div>
-        <div class="class-desc">Concepts & experiments</div>
-      </div>
-
-      <div class="class-card scroll-animate">
-        <div class="class-icon">🧩</div>
-        <div class="class-name">Classes 9-10</div>
-        <div class="class-desc">Exam prep & applications</div>
-      </div>
-
-      <div class="class-card scroll-animate">
-        <div class="class-icon">🎓</div>
-        <div class="class-name">Classes 11-12</div>
-        <div class="class-desc">Streams & career guidance</div>
-      </div>
-
-      <div class="class-card scroll-animate">
-        <div class="class-icon">💡</div>
-        <div class="class-name">Tech Skills</div>
-        <div class="class-desc">AI, coding & development</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section class="team-section" id="team">
-    <div class="team-container">
-      <h2 class="section-title scroll-animate">Meet Our Team</h2>
-      <p class="section-subtitle scroll-animate">The passionate individuals driving the EduSankalp mission forward</p>
-      
-      <div class="team-grid">
-        <div class="team-card scroll-animate">
-          <div class="team-card-inner">
-            <div class="team-card-front">
-              <img src="Elements/Team-members_DP/Sankirtans_DP.jpg" alt="Founder" class="team-photo">
-              <h3 class="team-name">Sankirtans Yadav</h3>
-              <p class="team-role">Founder</p>
-              <div class="team-social">
-
-                
-              </div>
-            </div>
-            <div class="team-card-back">
-              <h2>About Sankirtans</h2>
-              <p class="team-bio">I'm the founder of EduSankalp - A data Analyst, AI model Researcher, Full stack Developer and the leading idea creator at CompileX. I thrive on building innovative solutions that blend empathy with engineering. This platform is one such vision—education is the foundation of equality, and technology is the bridge. If you share the same vision you're cordially invited to be part of this Revolution.</p>
-              <p class="team-q-bottom">"Let your action speak louder than your words". Life is a game of action so it depends on you how better you perform."</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card scroll-animate">
-          <div class="team-card-inner">
-            <div class="team-card-front">
-              <img src="Elements/Team-members_DP/Saranjaya_DP.jpg" alt="Head of Education" class="team-photo">
-              <h2 class="team-name">Saranjaya Yadav</h3>
-              <p class="team-role">Co-Founder</p>
-              <div class="team-social">
-              </div>
-            </div>
-            <div class="team-card-back">
-              <h2>About Saranjaya</h2>
-              <p class="team-bio">I'm the Co-Founder of EduSankalp and an active Team Member of CompileX. As a Full Stack Developer and Blockchain–AI Data Analyst, I’m passionate about building intelligent systems that merge innovation with real-world impact.
-              My vision is rooted in the belief that education is the foundation of equality, and technology is the bridge that empowers it. At EduSankalp, we work towards creating solutions that blend engineering, empathy, and excellence. Collaborating with CompileX has helped me refine my technical skills and contribute to projects that redefine the future of tech learning and research.</p>
-              <p class="team-q-bottom">“Understanding fuels innovation, and innovation drives success. When knowledge meets purpose, transformation becomes unstoppable.”</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="team-card scroll-animate">
-          <div class="team-card-inner">
-            <div class="team-card-front">
-              <img src="Elements/Team-members_DP/Abusina_DP.jpg" alt="CTO" class="team-photo">
-              <h3 class="team-name">Abusina Hossain</h3>
-              <p class="team-role">CEO</p>
-              <div class="team-social">
-
-
-              </div>
-
-
-            </div>
-            <div class="team-card-back">
-              <h2>About Abusina</h2>
-              <p class="team-bio">I'm the CEO of EduSankalp and head of the team CompileX. This team made us strong apart from others. I'm a passionate graphics designer, developer, and AI enthusiast. Our mission is to make quality education and digital skills accessible to every student, shaping a smarter and more bright future through EduSankalp.</p>
-              <p class="team-q-bottom">"Questioning is the beginning of intelligence."</p>
-            </div>
-          </div>
-        </div>
-        
-                <div class="team-card scroll-animate">
-          <div class="team-card-inner">
-            <div class="team-card-front">
-              <img src="Elements/Team-members_DP/Avik_DP.jpg" alt="CTO" class="team-photo">
-              <h3 class="team-name">Avik Mitra</h3>
-              <p class="team-role">Board of members</p>
-              <div class="team-social">
-
-
-              </div>
-            </div>
-            <div class="team-card-back">
-              <h2>About Avik</h2>
-              <p class="team-bio">As a Board Member at Compilex, I drive innovation and strategic growth through technology.
-              With a deep passion for coding and software development, I specialize in building scalable, high-performance solutions.
-              My work bridges the gap between business vision and technical execution.
-              I lead with a focus on excellence, collaboration, and future-ready innovation.
-              Committed to transforming ideas into impactful digital realities.
-</p>
-              <p class="team-q-bottom">"Code is not just logic — it’s the language that shapes tomorrow."</p>
-            </div>
-          </div>
-        </div>
-
-                <div class="team-card scroll-animate">
-          <div class="team-card-inner">
-            <div class="team-card-front">
-              <img src="Elements/Team-members_DP/Adil_DP.jpg" alt="CTO" class="team-photo">
-              <h3 class="team-name">Md Adil Mukhtar</h3>
-              <p class="team-role">Board of members</p>
-              <div class="team-social">
-
-
-              </div>
-            </div>
-            <div class="team-card-back">
-              <h2>About Adil</h2>
-              <p class="team-bio">As a creative Graphic Designer, I drive brand innovation and strategic growth through visual communication. With a deep passion for design and visual storytelling, I specialize in crafting compelling, high-impact visual solutions. My work bridges the gap between strategic vision and creative execution. I lead with a focus on excellence, collaboration, and forward-thinking design. Committed to transforming ideas into impactful visual realities.</p>
-              <p class="team-q-bottom">"Technology should empower, not replace, human connection."</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CompileX Section -->
-  <section class="compilex-section">
-    <img width="64px" class="compilex-logo-ft" src="Elements/CompileX_logo.png" alt="">
-    <div class="compilex-logo scroll-animate">Powered by CompileX</div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section" id="about">
-    <h2 class="scroll-animate">Join 10,000+ Students Transforming Their Future</h2>
-    <p class="scroll-animate">Start your free journey to success today. No credit card required.</p>
-    <button class="btn btn-primary scroll-animate">Explore All Courses</button>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-section">
-        <h4>About EduSankalp</h4>
-        <p>Revolutionizing education through AI and technology, making quality learning accessible to every child regardless of background.</p>
-      </div>
-
-      <div class="footer-section">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#blockchain">Donate</a></li>
-          <li><a href="#classes">Classes</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#about">About Us</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="cancellation-refund.html">Cancellation & Refund</a></li>
-          <li><a href="shipping-delivery.html">Shipping & Delivery</a></li>
-          <li><a href="contact-us.html">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-section">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="contact-us.html">Help Center</a></li>
-          <li><a href="contact-us.html">Community</a></li>
-          <li><a href="donate.html">Donate</a></li>
-          <li><a href="contact-us.html">Partnerships</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 EduSankalp. Free education for all. Powered by cutting-edge AI and blockchain technology.</p>
-    </div>
-  </footer>
-
-  <script>
-    let currentBlockchain = '';
-    let walletConnected = false;
-
-    // Desktop Sidebar Toggle
-    const desktopSidebarToggle = document.querySelector('.desktop-sidebar-toggle');
-    const desktopSidebar = document.querySelector('.desktop-sidebar');
-    const desktopSidebarOverlay = document.querySelector('.desktop-sidebar-overlay');
-
-    function toggleDesktopSidebar() {
-      desktopSidebarToggle.classList.toggle('active');
-      desktopSidebar.classList.toggle('active');
-      desktopSidebarOverlay.classList.toggle('active');
-      document.body.style.overflow = desktopSidebar.classList.contains('active') ? 'hidden' : '';
-    }
-
-    desktopSidebarToggle.addEventListener('click', toggleDesktopSidebar);
-    desktopSidebarOverlay.addEventListener('click', toggleDesktopSidebar);
-
-    // Close desktop sidebar when clicking on a link
-    document.querySelectorAll('.desktop-sidebar-link').forEach(link => {
-      link.addEventListener('click', () => {
-        desktopSidebarToggle.classList.remove('active');
-        desktopSidebar.classList.remove('active');
-        desktopSidebarOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    });
-
-    // Mobile Navigation Toggle
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const mobileNav = document.querySelector('.mobile-nav');
-    const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
-
-    function toggleMobileNav() {
-      mobileNavToggle.classList.toggle('active');
-      mobileNav.classList.toggle('active');
-      mobileNavOverlay.classList.toggle('active');
-      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-    }
-
-    mobileNavToggle.addEventListener('click', toggleMobileNav);
-    mobileNavOverlay.addEventListener('click', toggleMobileNav);
-
-// Close mobile nav when clicking on a link (except submenu toggles)
-document.querySelectorAll('.mobile-nav-link, .mobile-nav-sublink').forEach(link => {
-  link.addEventListener('click', (e) => {
-    // Don't close if it's a submenu toggle
-    if (link.getAttribute('onclick') && link.getAttribute('onclick').includes('toggleSubmenu')) {
-      return;
-    }
-    mobileNavToggle.classList.remove('active');
-    mobileNav.classList.remove('active');
-    mobileNavOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  });
-});
-
-// Mobile submenu toggle
-function toggleSubmenu(id, event) {
-  if (event) {
-    event.preventDefault();
-    event.stopPropagation();
-  }
-
-  const submenu = document.getElementById(id);
-  submenu.classList.toggle('active');
-}
-
-    function scrollToBlockchain() {
-      document.getElementById('blockchain').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function openPaymentModal(blockchain) {
-      currentBlockchain = blockchain;
-      const modal = document.getElementById('paymentModal');
-      modal.classList.add('active');
-      
-      resetModal();
-      
-      // Update modal title based on blockchain
-      const titles = {
-        ethereum: 'Donate with Ethereum',
-        polygon: 'Donate with Polygon',
-        hyperledger: 'Donate via Hyperledger'
-      };
-      
-      document.getElementById('modalTitle').textContent = titles[blockchain] || 'Connect Wallet';
-    }
-
-    function closeModal() {
-      document.getElementById('paymentModal').classList.remove('active');
-      setTimeout(resetModal, 300);
-    }
-
-    function resetModal() {
-      document.getElementById('modalStep1').style.display = 'block';
-      document.getElementById('modalStep2').style.display = 'none';
-      document.getElementById('modalStep3').style.display = 'none';
-      document.getElementById('modalStep4').style.display = 'none';
-      document.getElementById('donationAmount').value = '';
-      walletConnected = false;
-    }
-
-    function connectWallet() {
-      // Simulate wallet connection
-      const walletStatus = document.getElementById('walletStatus');
-      const connectionStatus = document.getElementById('connectionStatus');
-      const walletAddress = document.getElementById('walletAddress');
-      
-      connectionStatus.textContent = 'Connecting...';
-      
-      setTimeout(() => {
-        walletConnected = true;
-        walletStatus.classList.add('connected');
-        connectionStatus.textContent = '✓ Connected';
-        
-        // Generate mock wallet address
-        const mockAddress = '0x' + Math.random().toString(16).substr(2, 40);
-        walletAddress.textContent = mockAddress.substring(0, 10) + '...' + mockAddress.substring(mockAddress.length - 8);
-        
-        // Move to next step
-        setTimeout(() => {
-          document.getElementById('modalStep1').style.display = 'none';
-          document.getElementById('modalStep2').style.display = 'block';
-          updateNetworkInfo();
-        }, 1000);
-      }, 1500);
-    }
-
-    function updateNetworkInfo() {
-      const networks = {
-        ethereum: { name: 'Ethereum Mainnet', currency: 'ETH', gasFee: '~$2.50' },
-        polygon: { name: 'Polygon Network', currency: 'MATIC', gasFee: '~$0.05' },
-        hyperledger: { name: 'Hyperledger Fabric', currency: 'USD', gasFee: '~$0.00' }
-      };
-      
-      const network = networks[currentBlockchain];
-      document.getElementById('networkName').textContent = `Network: ${network.name}`;
-      document.getElementById('detailNetwork').textContent = network.name;
-      document.getElementById('gasFee').textContent = network.gasFee;
-    }
-
-    function setAmount(amount) {
-      document.getElementById('donationAmount').value = amount;
-      updateTotal();
-    }
-
-    function updateTotal() {
-      const amount = parseFloat(document.getElementById('donationAmount').value) || 0;
-      const currencies = {
-        ethereum: 'ETH',
-        polygon: 'MATIC',
-        hyperledger: 'USD'
-      };
-      
-      const currency = currencies[currentBlockchain];
-      document.getElementById('totalAmount').textContent = `${amount.toFixed(2)} ${currency}`;
-    }
-
-    // Update total on input change
-    document.addEventListener('DOMContentLoaded', function() {
-      const amountInput = document.getElementById('donationAmount');
-      if (amountInput) {
-        amountInput.addEventListener('input', updateTotal);
-      }
-    });
-
-    function processDonation() {
-      const amount = parseFloat(document.getElementById('donationAmount').value);
-      
-      if (!amount || amount <= 0) {
-        alert('Please enter a valid donation amount');
-        return;
-      }
-      
-      // Show processing step
-      document.getElementById('modalStep2').style.display = 'none';
-      document.getElementById('modalStep3').style.display = 'block';
-      
-      // Simulate transaction processing
-      setTimeout(() => {
-        const txHash = '0x' + Math.random().toString(16).substr(2, 64);
-        document.getElementById('txHash').textContent = txHash.substring(0, 20) + '...' + txHash.substring(txHash.length - 20);
-        
-        document.getElementById('modalStep3').style.display = 'none';
-        document.getElementById('modalStep4').style.display = 'block';
-      }, 3000);
-    }
-
-    // Scroll animations
-    document.addEventListener('DOMContentLoaded', function() {
-      const scrollElements = document.querySelectorAll('.scroll-animate');
-      
-      const elementInView = (el, dividend = 1) => {
-        const elementTop = el.getBoundingClientRect().top;
-        return (
-          elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-        );
-      };
-      
-      const displayScrollElement = (element) => {
-        element.classList.add('visible');
-      };
-      
-      const hideScrollElement = (element) => {
-        element.classList.remove('visible');
-      };
-      
-      const handleScrollAnimation = () => {
-        scrollElements.forEach((el) => {
-          if (elementInView(el, 1.2)) {
-            displayScrollElement(el);
-          } else {
-            hideScrollElement(el);
-          }
-        });
-      };
-      
-      // Initial check
-      handleScrollAnimation();
-      
-      // Listen for scroll events
-      window.addEventListener('scroll', () => {
-        handleScrollAnimation();
-      });
-    });
-
-    // Smooth scroll for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Add interactive hover effects for all cards
-    document.querySelectorAll('.feature-card, .class-card, .stat-card, .blockchain-card').forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px) scale(1.02)';
-      });
-      
-      card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-      });
-
-    });
-  </script>
+	<!-- Header -->
+	<header>
+		<div class="header-container">
+			<a href="#" class="logo"> <img src="Elements/EduSankalp_logo.svg" alt="EduSankalp"></a>
+
+			<!-- Desktop Navigation -->
+			<nav class="desktop-nav">
+				<a href="#features">Features</a>
+				<a href="#blockchain">Donate</a>
+				<a href="#classes">Classes</a>
+				<a href="#team">Team</a>
+				<a href="#about">About</a>
+			</nav>
+
+			<!-- Desktop Sidebar Toggle -->
+			<button class="desktop-sidebar-toggle" aria-label="Toggle sidebar">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+
+			<!-- Mobile Navigation Toggle -->
+			<button class="mobile-nav-toggle" aria-label="Toggle navigation">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+
+		<!-- Desktop Sidebar -->
+		<div class="desktop-sidebar-overlay"></div>
+		<nav class="desktop-sidebar">
+			<ul class="desktop-sidebar-menu">
+				<li class="desktop-sidebar-item">
+					<a href="terms-conditions.html" class="desktop-sidebar-link">Terms & Conditions</a>
+				</li>
+				<li class="desktop-sidebar-item">
+					<a href="privacy-policy.html" class="desktop-sidebar-link">Privacy Policy</a>
+				</li>
+				<li class="desktop-sidebar-item">
+					<a href="contact-us.html" class="desktop-sidebar-link">Contact Us</a>
+				</li>
+				<li class="desktop-sidebar-item">
+					<a href="cancellation-refund.html" class="desktop-sidebar-link">Cancellation & Refund</a>
+				</li>
+				<li class="desktop-sidebar-item">
+					<a href="shipping-delivery.html" class="desktop-sidebar-link">Shipping & Delivery</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- Mobile Navigation -->
+		<div class="mobile-nav-overlay"></div>
+		<nav class="mobile-nav">
+			<ul class="mobile-nav-menu">
+				<li class="mobile-nav-item">
+					<a href="#features" class="mobile-nav-link">Features</a>
+				</li>
+				<li class="mobile-nav-item">
+					<a href="#blockchain" class="mobile-nav-link">Donate</a>
+				</li>
+				<li class="mobile-nav-item">
+					<a href="#classes" class="mobile-nav-link">Classes</a>
+				</li>
+				<li class="mobile-nav-item">
+					<a href="#team" class="mobile-nav-link">Team</a>
+				</li>
+				<li class="mobile-nav-item">
+					<a href="#about" class="mobile-nav-link">About</a>
+				</li>
+				<li class="mobile-nav-item">
+					<a href="#" class="mobile-nav-link" onclick="toggleSubmenu('legalSubmenu')">Legal <span
+							class="down-arrow">&#129171;</span></a>
+					<ul class="mobile-nav-submenu" id="legalSubmenu">
+						<li class="mobile-nav-subitem">
+							<a href="terms-conditions.html" class="mobile-nav-sublink">Terms & Conditions</a>
+						</li>
+						<li class="mobile-nav-subitem">
+							<a href="privacy-policy.html" class="mobile-nav-sublink">Privacy Policy</a>
+						</li>
+						<li class="mobile-nav-subitem">
+							<a href="cancellation-refund.html" class="mobile-nav-sublink">Cancellation & Refund</a>
+						</li>
+						<li class="mobile-nav-subitem">
+							<a href="shipping-delivery.html" class="mobile-nav-sublink">Shipping & Delivery</a>
+						</li>
+						<li class="mobile-nav-subitem">
+							<a href="contact-us.html" class="mobile-nav-sublink">Contact Us</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<a href="donate.html" class="mobile-nav-cta">Support Education</a>
+		</nav>
+	</header>
+
+	<!-- Hero Section -->
+	<section class="hero">
+		<div class="hero-content">
+			<h1>Education Revolutionized by <span class="hero-highlight">AI Technology</span></h1>
+			<p>Free, world-class education for every child from Nursery to Class 12. Learn future-ready skills: AI, coding,
+				development, and more. Empowering underprivileged students with technology and opportunity.</p>
+			<div class="hero-buttons">
+				<button class="btn btn-primary">Start Learning Now</button>
+				<button class="btn btn-secondary">Watch Demo</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- Stats Section -->
+	<section class="stats">
+		<div class="stat-card scroll-animate">
+			<div class="stat-number">100%</div>
+			<div class="stat-label">Free Education</div>
+		</div>
+		<div class="stat-card scroll-animate">
+			<div class="stat-number">10K+</div>
+			<div class="stat-label">Students Empowered</div>
+		</div>
+		<div class="stat-card scroll-animate">
+			<div class="stat-number">50+</div>
+			<div class="stat-label">Expert Courses</div>
+		</div>
+		<div class="stat-card scroll-animate">
+			<div class="stat-number">24/7</div>
+			<div class="stat-label">AI-Powered Support</div>
+		</div>
+	</section>
+
+	<!-- Blockchain Payment Section -->
+	<section class="blockchain-section" id="blockchain">
+		<div class="chain-animation">
+			<span class="chain-link"></span>
+			<span class="chain-link"></span>
+			<span class="chain-link"></span>
+		</div>
+
+		<div class="blockchain-content">
+			<div class="blockchain-header">
+				<h2 class="scroll-animate">Support Education Through Blockchain</h2>
+				<p class="scroll-animate">Make transparent, secure donations using cutting-edge blockchain technology. Every
+					transaction is recorded on the blockchain, ensuring complete transparency and accountability.</p>
+			</div>
+
+			<div class="blockchain-grid">
+				<!-- Ethereum Card -->
+				<div class="blockchain-card ethereum scroll-animate" onclick="openPaymentModal('ethereum')">
+					<div class="blockchain-icon">⟠</div>
+					<h3>Ethereum</h3>
+					<p>The world's leading smart contract platform powering decentralized applications.</p>
+					<ul class="blockchain-features">
+						<li>Fast transactions</li>
+						<li>Smart contract support</li>
+						<li>Global network</li>
+						<li>Secure & transparent</li>
+					</ul>
+					<a href="donate.html"><button class="donate-btn">Donate with ETH</button></a>
+				</div>
+
+				<!-- Polygon Card -->
+				<div class="blockchain-card polygon scroll-animate" onclick="openPaymentModal('polygon')">
+					<div class="blockchain-icon">⬡</div>
+					<h3>Polygon</h3>
+					<p>Layer 2 scaling solution with low fees and high-speed transactions on Ethereum.</p>
+					<ul class="blockchain-features">
+						<li>Ultra-low gas fees</li>
+						<li>Lightning fast</li>
+						<li>Ethereum compatible</li>
+						<li>Eco-friendly</li>
+					</ul>
+					<a href="donate.html"><button class="donate-btn">Donate with MATIC</button></a>
+				</div>
+
+				<!-- Hyperledger Card -->
+				<div class="blockchain-card hyperledger scroll-animate" onclick="openPaymentModal('hyperledger')">
+					<div class="blockchain-icon">🔗</div>
+					<h3>Hyperledger Fabric</h3>
+					<p>Enterprise-grade permissioned blockchain framework for institutional partnerships.</p>
+					<ul class="blockchain-features">
+						<li>Enterprise security</li>
+						<li>Permissioned access</li>
+						<li>High throughput</li>
+						<li>Institutional grade</li>
+					</ul>
+					<a href="donate.html"><button class="donate-btn">Donate via Hyperledger</button></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Payment Modal -->
+	<div id="paymentModal" class="modal">
+		<div class="modal-content">
+			<button class="modal-close" onclick="closeModal()">✕</button>
+
+			<div id="modalStep1">
+				<div class="modal-header">
+					<h3 id="modalTitle">Connect Wallet</h3>
+					<p id="modalSubtitle">Choose your blockchain network</p>
+				</div>
+
+				<div class="wallet-status" id="walletStatus">
+					<div style="color: white; font-weight: 600;">Wallet Status</div>
+					<div id="connectionStatus" style="color: #94a3b8; margin-top: 0.5rem;">Not Connected</div>
+					<div class="wallet-address" id="walletAddress"></div>
+				</div>
+
+				<button class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;" onclick="connectWallet()">
+					Connect Wallet
+				</button>
+
+				<div style="opacity: 0.7; text-align: center; color: #94a3b8; font-size: 0.9rem;">
+					Supported wallets: MetaMask, WalletConnect, Coinbase Wallet
+				</div>
+			</div>
+
+			<div id="modalStep2" style="display: none;">
+				<div class="modal-header">
+					<h3>Enter Donation Amount</h3>
+					<p id="networkName">Network: Ethereum</p>
+				</div>
+
+				<input type="number" class="amount-input" id="donationAmount" placeholder="0.00" min="0" step="0.01">
+
+				<div class="amount-presets">
+					<button class="preset-btn" onclick="setAmount(0.01)">0.01</button>
+					<button class="preset-btn" onclick="setAmount(0.05)">0.05</button>
+					<button class="preset-btn" onclick="setAmount(0.1)">0.1</button>
+					<button class="preset-btn" onclick="setAmount(0.5)">0.5</button>
+				</div>
+
+				<div class="transaction-details">
+					<div class="detail-row">
+						<span>Network</span>
+						<span id="detailNetwork">Ethereum</span>
+					</div>
+					<div class="detail-row">
+						<span>Gas Fee (est.)</span>
+						<span id="gasFee">~$2.50</span>
+					</div>
+					<div class="detail-row">
+						<span>Total Amount</span>
+						<span id="totalAmount">0.00 ETH</span>
+					</div>
+				</div>
+
+				<button class="btn btn-primary" style="width: 100%;" onclick="processDonation()">
+					Confirm Donation
+				</button>
+			</div>
+
+			<div id="modalStep3" style="display: none;">
+				<div class="transaction-status">
+					<div class="spinner"></div>
+					<h3 style="margin-bottom: 0.5rem;">Processing Transaction</h3>
+					<p style="color: #94a3b8;">Please wait while we confirm your transaction on the blockchain...</p>
+				</div>
+			</div>
+
+			<div id="modalStep4" style="display: none;">
+				<div class="transaction-status">
+					<div class="success-icon">✅</div>
+					<h3 style="margin-bottom: 1rem;">Transaction Successful!</h3>
+					<p style="color: #94a3b8; margin-bottom: 1rem;">Thank you for supporting education! Your donation will help
+						students access quality learning.</p>
+					<div class="tx-hash">
+						<strong>Transaction Hash:</strong><br>
+						<span id="txHash">0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1...</span>
+					</div>
+					<button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="closeModal()">
+						Close
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Features Section -->
+	<section class="features" id="features">
+		<h2 class="section-title scroll-animate">What Makes Us Different</h2>
+		<p class="section-subtitle scroll-animate">A complete learning ecosystem designed for success</p>
+
+		<div class="features-grid">
+			<div class="feature-card scroll-animate">
+				<div class="feature-icon">🤖</div>
+				<h3>AI-Powered Learning</h3>
+				<p>Personalized learning paths that adapt to each student's pace and learning style using advanced AI
+					algorithms.</p>
+			</div>
+
+			<div class="feature-card scroll-animate">
+				<div class="feature-icon">💻</div>
+				<h3>Future Skills Curriculum</h3>
+				<p>Beyond traditional education: AI, coding, web development, cybersecurity, and digital marketing integrated
+					into the curriculum.</p>
+			</div>
+
+			<div class="feature-card scroll-animate">
+				<div class="feature-icon">🎮</div>
+				<h3>Gamified Learning</h3>
+				<p>Make learning fun with interactive missions, badges, levels, and real-world challenges that keep students
+					engaged.</p>
+			</div>
+
+			<div class="feature-card scroll-animate">
+				<div class="feature-icon">👨‍👩‍👧‍👦</div>
+				<h3>Parent Dashboard</h3>
+				<p>Real-time progress tracking, attendance monitoring, and actionable insights to support your child's learning
+					journey.</p>
+			</div>
+
+			<div class="feature-card scroll-animate">
+				<div class="feature-icon">📈</div>
+				<h3>Advanced Analytics</h3>
+				<p>Detailed performance reports, skill mastery tracking, and personalized recommendations for improvement.</p>
+			</div>
+
+			<div class="feature-card scroll-animate">
+				<div class="feature-icon">🌍</div>
+				<h3>Accessible to All</h3>
+				<p>Low bandwidth support, offline learning modes, and mobile-first design for students in underserved
+					communities.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Classes Section -->
+	<section class="classes-section" id="classes">
+		<h2 class="section-title scroll-animate">Classes & Programs</h2>
+		<p class="section-subtitle scroll-animate">Comprehensive education from Nursery to Class 12 + Future Skills</p>
+
+		<div class="class-grid">
+			<div class="class-card scroll-animate">
+				<div class="class-icon">🌱</div>
+				<div class="class-name">Nursery</div>
+				<div class="class-desc">Foundational play & basics</div>
+			</div>
+
+			<div class="class-card scroll-animate">
+				<div class="class-icon">📚</div>
+				<div class="class-name">Classes 1-5</div>
+				<div class="class-desc">Core subjects & concepts</div>
+			</div>
+
+			<div class="class-card scroll-animate">
+				<div class="class-icon">🔭</div>
+				<div class="class-name">Classes 6-8</div>
+				<div class="class-desc">Concepts & experiments</div>
+			</div>
+
+			<div class="class-card scroll-animate">
+				<div class="class-icon">🧩</div>
+				<div class="class-name">Classes 9-10</div>
+				<div class="class-desc">Exam prep & applications</div>
+			</div>
+
+			<div class="class-card scroll-animate">
+				<div class="class-icon">🎓</div>
+				<div class="class-name">Classes 11-12</div>
+				<div class="class-desc">Streams & career guidance</div>
+			</div>
+
+			<div class="class-card scroll-animate">
+				<div class="class-icon">💡</div>
+				<div class="class-name">Tech Skills</div>
+				<div class="class-desc">AI, coding & development</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Team Section -->
+	<section class="team-section" id="team">
+		<div class="team-container">
+			<h2 class="section-title scroll-animate">Meet Our Team</h2>
+			<p class="section-subtitle scroll-animate">The passionate individuals driving the EduSankalp mission forward</p>
+
+			<div class="team-grid">
+				<div class="team-card scroll-animate">
+					<div class="team-card-inner">
+						<div class="team-card-front">
+							<img src="Elements/Team-members_DP/Sankirtans_DP.jpg" alt="Founder" class="team-photo">
+							<h3 class="team-name">Sankirtans Yadav</h3>
+							<p class="team-role">Founder</p>
+							<div class="team-social">
+								<a href="https://instagram.com/USER" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+								<a href="https://github.com/USER" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+								<a href="https://linkedin.com/in/USER" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+							</div>
+						</div>
+						<div class="team-card-back">
+							<h2>About Sankirtans</h2>
+							<p class="team-bio">I'm the founder of EduSankalp - A data Analyst, AI model Researcher, Full stack
+								Developer and the leading idea creator at CompileX. I thrive on building innovative solutions that blend
+								empathy with engineering. This platform is one such vision—education is the foundation of equality, and
+								technology is the bridge. If you share the same vision you're cordially invited to be part of this
+								Revolution.</p>
+							<p class="team-q-bottom">"Let your action speak louder than your words". Life is a game of action so it
+								depends on you how better you perform."</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="team-card scroll-animate">
+					<div class="team-card-inner">
+						<div class="team-card-front">
+							<img src="Elements/Team-members_DP/Saranjaya_DP.jpg" alt="Head of Education" class="team-photo">
+							<h3 class="team-name">Saranjaya Yadav</h3> <!-- fixed tag from h2->h3 -->
+							<p class="team-role">Co-Founder</p>
+							<div class="team-social">
+								<a href="https://instagram.com/USER" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+								<a href="https://github.com/USER" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+								<a href="https://linkedin.com/in/USER" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+							</div>
+						</div>
+						<div class="team-card-back">
+							<h2>About Saranjaya</h2>
+							<p class="team-bio">I'm the Co-Founder of EduSankalp and an active Team Member of CompileX. As a Full
+								Stack Developer and Blockchain–AI Data Analyst, I’m passionate about building intelligent systems that
+								merge innovation with real-world impact.
+								My vision is rooted in the belief that education is the foundation of equality, and technology is the
+								bridge that empowers it. At EduSankalp, we work towards creating solutions that blend engineering,
+								empathy, and excellence. Collaborating with CompileX has helped me refine my technical skills and
+								contribute to projects that redefine the future of tech learning and research.</p>
+							<p class="team-q-bottom">“Understanding fuels innovation, and innovation drives success. When knowledge
+								meets purpose, transformation becomes unstoppable.”</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="team-card scroll-animate">
+					<div class="team-card-inner">
+						<div class="team-card-front">
+							<img src="Elements/Team-members_DP/Abusina_DP.jpg" alt="CTO" class="team-photo">
+							<h3 class="team-name">Abusina Hossain</h3>
+							<p class="team-role">CEO</p>
+							<div class="team-social">
+								<a href="https://instagram.com/USER" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+								<a href="https://github.com/USER" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+								<a href="https://linkedin.com/in/USER" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+							</div>
+
+
+						</div>
+						<div class="team-card-back">
+							<h2>About Abusina</h2>
+							<p class="team-bio">I'm the CEO of EduSankalp and head of the team CompileX. This team made us strong
+								apart from others. I'm a passionate graphics designer, developer, and AI enthusiast. Our mission is to
+								make quality education and digital skills accessible to every student, shaping a smarter and more bright
+								future through EduSankalp.</p>
+							<p class="team-q-bottom">"Questioning is the beginning of intelligence."</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="team-card scroll-animate">
+					<div class="team-card-inner">
+						<div class="team-card-front">
+							<img src="Elements/Team-members_DP/Avik_DP.jpg" alt="CTO" class="team-photo">
+							<h3 class="team-name">Avik Mitra</h3>
+							<p class="team-role">Management team</p>
+							<div class="team-social">
+								<a href="https://instagram.com/USER" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+								<a href="https://github.com/USER" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+								<a href="https://linkedin.com/in/USER" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+							</div>
+						</div>
+						<div class="team-card-back">
+							<h2>About Avik</h2>
+							<p class="team-bio">As a Board Member at Compilex, I drive innovation and strategic growth through
+								technology.
+								With a deep passion for coding and software development, I specialize in building scalable,
+								high-performance solutions.
+								My work bridges the gap between business vision and technical execution.
+								I lead with a focus on excellence, collaboration, and future-ready innovation.
+								Committed to transforming ideas into impactful digital realities.
+							</p>
+							<p class="team-q-bottom">"Code is not just logic — it’s the language that shapes tomorrow."</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="team-card scroll-animate">
+					<div class="team-card-inner">
+						<div class="team-card-front">
+							<img src="Elements/Team-members_DP/Adil_DP.jpg" alt="CTO" class="team-photo">
+							<h3 class="team-name">Md Adil Mukhtar</h3>
+							<p class="team-role">Management team</p>
+							<div class="team-social">
+								<a href="https://instagram.com/USER" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+								<a href="https://github.com/USER" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+								<a href="https://linkedin.com/in/USER" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
+							</div>
+						</div>
+						<div class="team-card-back">
+							<h2>About Adil</h2>
+							<p class="team-bio">As a creative Graphic Designer, I drive brand innovation and strategic growth through
+								visual communication. With a deep passion for design and visual storytelling, I specialize in crafting
+								compelling, high-impact visual solutions. My work bridges the gap between strategic vision and creative
+								execution. I lead with a focus on excellence, collaboration, and forward-thinking design. Committed to
+								transforming ideas into impactful visual realities.</p>
+							<p class="team-q-bottom">"Technology should empower, not replace, human connection."</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- CompileX Section -->
+	<section class="compilex-section">
+		<span class="logo-title">
+			<div class="compilex-logo-ft"><img width="64px" src="Elements/CompileX_logo.png" alt="CompileX"></div>
+			<div class="compilex-logo scroll-animate">Powered by CompileX</div>
+		</span>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="cta-section" id="about">
+		<h2 class="scroll-animate">Join 10,000+ Students Transforming Their Future</h2>
+		<p class="scroll-animate">Start your free journey to success today. No credit card required.</p>
+		<button class="btn btn-primary scroll-animate">Explore All Courses</button>
+	</section>
+
+	<!-- Footer -->
+	<footer>
+		<div class="footer-content">
+			<div class="footer-section">
+				<h4>About EduSankalp</h4>
+				<p>Revolutionizing education through AI and technology, making quality learning accessible to every child
+					regardless of background.</p>
+			</div>
+
+			<div class="footer-section">
+				<h4>Quick Links</h4>
+				<ul>
+					<li><a href="#features">Features</a></li>
+					<li><a href="#blockchain">Donate</a></li>
+					<li><a href="#classes">Classes</a></li>
+					<li><a href="#team">Team</a></li>
+					<li><a href="#about">About Us</a></li>
+				</ul>
+			</div>
+
+			<div class="footer-section">
+				<h4>Legal</h4>
+				<ul>
+					<li><a href="terms-conditions.html">Terms & Conditions</a></li>
+					<li><a href="privacy-policy.html">Privacy Policy</a></li>
+					<li><a href="cancellation-refund.html">Cancellation & Refund</a></li>
+					<li><a href="shipping-delivery.html">Shipping & Delivery</a></li>
+					<li><a href="contact-us.html">Contact Us</a></li>
+				</ul>
+			</div>
+
+			<div class="footer-section">
+				<h4>Support</h4>
+				<ul>
+					<li><a href="contact-us.html">Help Center</a></li>
+					<li><a href="contact-us.html">Community</a></li>
+					<li><a href="donate.html">Donate</a></li>
+					<li><a href="contact-us.html">Partnerships</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<p>&copy; 2025 EduSankalp. Free education for all. Powered by cutting-edge AI and blockchain technology.</p>
+		</div>
+	</footer>
+
+	<script>
+		let currentBlockchain = '';
+		let walletConnected = false;
+
+		// Desktop Sidebar Toggle
+		const desktopSidebarToggle = document.querySelector('.desktop-sidebar-toggle');
+		const desktopSidebar = document.querySelector('.desktop-sidebar');
+		const desktopSidebarOverlay = document.querySelector('.desktop-sidebar-overlay');
+
+		// Guard: Only allow desktop sidebar toggling on wide screens
+		function toggleDesktopSidebar() {
+			if (window.innerWidth < 769) return; // prevent flyout on phones
+			desktopSidebarToggle.classList.toggle('active');
+			desktopSidebar.classList.toggle('active');
+			desktopSidebarOverlay.classList.toggle('active');
+			document.body.style.overflow = desktopSidebar.classList.contains('active') ? 'hidden' : '';
+		}
+
+		// Re-attach handlers safely (if they exist)
+		if (desktopSidebarToggle) desktopSidebarToggle.addEventListener('click', toggleDesktopSidebar);
+		if (desktopSidebarOverlay) desktopSidebarOverlay.addEventListener('click', toggleDesktopSidebar);
+
+		// Make mobile-safe: don't open desktop sidebar on orientation/resize to small
+		window.addEventListener('resize', () => {
+			if (window.innerWidth < 769) {
+				desktopSidebar.classList.remove('active');
+				desktopSidebarToggle.classList.remove('active');
+				desktopSidebarOverlay.classList.remove('active');
+				document.body.style.overflow = '';
+			}
+		});
+
+		// Smooth, performant scroll reveal using IntersectionObserver
+		function setupScrollReveal() {
+			const elems = document.querySelectorAll('.scroll-animate');
+			const io = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, {
+				threshold: 0.18,
+				rootMargin: '0px 0px -10% 0px'
+			});
+			elems.forEach(e => io.observe(e));
+		}
+
+		document.addEventListener('DOMContentLoaded', () => {
+			setupScrollReveal();
+		});
+
+		// Team card flip: use JS to avoid accidental flips when interacting with social icons
+		document.querySelectorAll('.team-card').forEach(card => {
+			const inner = card.querySelector('.team-card-inner');
+			const social = card.querySelector('.team-social');
+
+			// desktop hover behavior
+			card.addEventListener('mouseenter', (e) => {
+				// if hovering social area, don't trigger flip
+				if (e.target.closest('.team-social') || (social && social.matches(':hover'))) return;
+				inner.classList.add('is-flipped'); // use class so CSS fallback can be implemented if desired
+				inner.style.transform = 'rotateY(180deg) translateY(-6px) scale(1.02)';
+			});
+
+			card.addEventListener('mouseleave', () => {
+				inner.classList.remove('is-flipped');
+				inner.style.transform = 'rotateY(0deg) translateY(0) scale(1)';
+			});
+
+			// touch: tap toggles flip; ignore taps on social icons (allow their default)
+			card.addEventListener('touchend', (e) => {
+				const targetLink = e.target.closest('a');
+				if (targetLink) return; // let links work
+				// small delay to ensure it's a tap, not a scroll
+				if (inner.classList.contains('is-flipped')) {
+					inner.classList.remove('is-flipped');
+					inner.style.transform = 'rotateY(0deg) translateY(0) scale(1)';
+				} else {
+					inner.classList.add('is-flipped');
+					inner.style.transform = 'rotateY(180deg) translateY(-6px) scale(1.02)';
+				}
+			});
+
+			// prevent social area from propagating hover/click to card
+			if (social) {
+				social.addEventListener('mouseenter', (e) => e.stopPropagation());
+				social.addEventListener('mouseleave', (e) => e.stopPropagation());
+				social.querySelectorAll('a').forEach(a => {
+					a.addEventListener('click', (ev) => ev.stopPropagation());
+				});
+			}
+		});
+
+		// remove older, possibly duplicate scroll handlers (if present earlier)
+		document.removeEventListener('scroll', handleScrollAnimation);
+		document.removeEventListener('resize', handleScrollAnimation);
+	</script>
 </body>
+
 </html>
