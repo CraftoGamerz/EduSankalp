@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1277,6 +1278,10 @@
 			transform: rotateY(180deg) translateY(-6px) scale(1.02);
 		}
 
+		.team-card.hovered .team-card-inner {
+			transform: rotateY(180deg) translateY(-6px) scale(1.02);
+		}
+
 		.team-card-front,
 		.team-card-back {
 			position: absolute;
@@ -1290,14 +1295,12 @@
 		.team-card-front {
 			background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
 			display: flex;
-			justify-content: center;
 			flex-direction: column;
 			align-items: center;
-			justify-content: center;
+			justify-content: space-between;
 			padding: 2rem;
 			color: white;
 		}
-
 
 		.team-card-back {
 			background: white;
@@ -1306,6 +1309,7 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
+			color: var(--dark);
 		}
 
 		.team-photo {
@@ -1345,29 +1349,135 @@
 			color: gray;
 		}
 
+		/* Debug: Ensure social icons are visible */
 		.team-social {
-			display: flex;
+			display: flex !important;
 			gap: 1rem;
 			justify-content: center;
+			align-items: center;
 			margin-top: auto;
+			padding: 1rem 0;
+			opacity: 1 !important;
+			transition: opacity 0.3s;
+			min-height: 50px;
+			visibility: visible !important;
+			background: rgba(255, 255, 255, 0.05);
+			border-radius: 10px;
 		}
 
 		.team-social a {
-			color: var(--primary);
+			color: white;
 			font-size: 1.5rem;
 			transition: all 0.3s ease;
+			padding: 0.5rem;
+			border-radius: 50%;
+			background: rgba(255, 255, 255, 0.1);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 45px;
+			height: 45px;
+			text-decoration: none;
 		}
 
 		.team-social a:hover {
 			transform: scale(1.2);
+			background: rgba(255, 255, 255, 0.2);
 		}
 
-		/* CompileX Logo Section */
-		.compilex-section {
-			display: flex;
-			padding: 3rem 20rem;
-			background: var(--dark);
+		.team-social a i {
+			display: block !important;
+			line-height: 1;
+			font-style: normal;
+			font-weight: normal;
+		}
+
+		/* Force visibility for social icons */
+		.team-social a {
+			visibility: visible !important;
+			display: flex !important;
+			opacity: 1 !important;
+		}
+		.team-social-section {
+			padding: 4rem 2rem;
+			background: white;
+		}
+
+		.team-social-container {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.team-social-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 2rem;
+			margin-top: 3rem;
+		}
+
+		.team-social-item {
 			text-align: center;
+			padding: 2rem;
+			border-radius: 16px;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+			transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		}
+
+		.team-social-item:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+		}
+
+		.team-social-item h3 {
+			font-size: 1.25rem;
+			font-weight: 700;
+			margin-bottom: 0.5rem;
+			color: var(--dark);
+		}
+
+		.team-social-item p {
+			color: #64748b;
+			margin-bottom: 1.5rem;
+			font-size: 0.95rem;
+		}
+
+		.social-links {
+			display: flex;
+			gap: 1rem;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.social-link {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.25rem;
+			transition: all 0.3s ease;
+			text-decoration: none;
+		}
+
+		.social-link.instagram {
+			background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+			color: white;
+		}
+
+		.social-link.github {
+			background: #333;
+			color: white;
+		}
+
+		.social-link.linkedin {
+			background: #0077b5;
+			color: white;
+		}
+
+		.social-link:hover {
+			transform: scale(1.2) translateY(-2px);
+			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 		}
 
 		.logo-title {
@@ -1528,47 +1638,15 @@
 			}
 
 			.team-card {
-				height: 350px;
-			}
-
-			.team-section {
-				display: inline-block;
-			}
-
-			.features,
-			.classes-section,
-			.compilex-section,
-			.cta-section {
-				padding: 4rem 1rem;
-				justify-content: center;
-
-			}
-
-			.compilex-logo {
-				text-align: center;
-			}
-
-			.team-card {
 				height: auto;
 				min-height: 350px;
 				/* ensure some minimum */
 				perspective: 1000px;
 			}
 
-			.team-social {
-				opacity: 0;
-				transition: opacity 0.3s;
-			}
-
-			.team-card-front:hover .team-social {
-				opacity: 1;
-			}
-
-			/* Remove or disable this hover rule */
-			.team-card:hover .team-card-inner {
-				transform: rotateY(180deg);
-			}
 		}
+
+		/* Mobile Responsive */
 	</style>
 </head>
 
@@ -1644,8 +1722,7 @@
 					<a href="#about" class="mobile-nav-link">About</a>
 				</li>
 				<li class="mobile-nav-item">
-					<a href="#" class="mobile-nav-link" onclick="toggleSubmenu('legalSubmenu')">Legal <span
-							class="down-arrow">&#129171;</span></a>
+					<a href="#" class="mobile-nav-link" onclick="toggleSubmenu('legalSubmenu')">Legal <span class="down-arrow">&#129171;</span></a>
 					<ul class="mobile-nav-submenu" id="legalSubmenu">
 						<li class="mobile-nav-subitem">
 							<a href="terms-conditions.html" class="mobile-nav-sublink">Terms & Conditions</a>
@@ -1956,11 +2033,6 @@
 							<img src="Elements/Team-members_DP/Sankirtans_DP.jpg" alt="Founder" class="team-photo">
 							<h3 class="team-name">Sankirtans Yadav</h3>
 							<p class="team-role">Founder</p>
-							<div class="team-social">
-								<a href="https://instagram.com/USER" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-								<a href="https://github.com/USER" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-								<a href="https://linkedin.com/in/USER" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-							</div>
 						</div>
 						<div class="team-card-back">
 							<h2>About Sankirtans</h2>
@@ -1981,11 +2053,6 @@
 							<img src="Elements/Team-members_DP/Saranjaya_DP.jpg" alt="Head of Education" class="team-photo">
 							<h3 class="team-name">Saranjaya Yadav</h3> <!-- fixed tag from h2->h3 -->
 							<p class="team-role">Co-Founder</p>
-							<div class="team-social">
-								<a href="https://instagram.com/USER" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-								<a href="https://github.com/USER" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-								<a href="https://linkedin.com/in/USER" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-							</div>
 						</div>
 						<div class="team-card-back">
 							<h2>About Saranjaya</h2>
@@ -1997,7 +2064,7 @@
 								empathy, and excellence. Collaborating with CompileX has helped me refine my technical skills and
 								contribute to projects that redefine the future of tech learning and research.</p>
 							<p class="team-q-bottom">“Understanding fuels innovation, and innovation drives success. When knowledge
-								meets purpose, transformation becomes unstoppable.”</p>
+								meets purpose, transformation becomes unstoppable.”</p>
 						</div>
 					</div>
 				</div>
@@ -2008,13 +2075,6 @@
 							<img src="Elements/Team-members_DP/Abusina_DP.jpg" alt="CTO" class="team-photo">
 							<h3 class="team-name">Abusina Hossain</h3>
 							<p class="team-role">CEO</p>
-							<div class="team-social">
-								<a href="https://instagram.com/USER" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-								<a href="https://github.com/USER" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-								<a href="https://linkedin.com/in/USER" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-							</div>
-
-
 						</div>
 						<div class="team-card-back">
 							<h2>About Abusina</h2>
@@ -2033,11 +2093,6 @@
 							<img src="Elements/Team-members_DP/Avik_DP.jpg" alt="CTO" class="team-photo">
 							<h3 class="team-name">Avik Mitra</h3>
 							<p class="team-role">Management team</p>
-							<div class="team-social">
-								<a href="https://instagram.com/USER" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-								<a href="https://github.com/USER" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-								<a href="https://linkedin.com/in/USER" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-							</div>
 						</div>
 						<div class="team-card-back">
 							<h2>About Avik</h2>
@@ -2049,7 +2104,7 @@
 								I lead with a focus on excellence, collaboration, and future-ready innovation.
 								Committed to transforming ideas into impactful digital realities.
 							</p>
-							<p class="team-q-bottom">"Code is not just logic — it’s the language that shapes tomorrow."</p>
+							<p class="team-q-bottom">"Code is not just logic — it’s the language that shapes tomorrow."</p>
 						</div>
 					</div>
 				</div>
@@ -2060,11 +2115,6 @@
 							<img src="Elements/Team-members_DP/Adil_DP.jpg" alt="CTO" class="team-photo">
 							<h3 class="team-name">Md Adil Mukhtar</h3>
 							<p class="team-role">Management team</p>
-							<div class="team-social">
-								<a href="https://instagram.com/USER" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
-								<a href="https://github.com/USER" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-								<a href="https://linkedin.com/in/USER" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i></a>
-							</div>
 						</div>
 						<div class="team-card-back">
 							<h2>About Adil</h2>
@@ -2075,9 +2125,97 @@
 								transforming ideas into impactful visual realities.</p>
 							<p class="team-q-bottom">"Technology should empower, not replace, human connection."</p>
 						</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Team Social Media Section -->
+	<section class="team-social-section">
+		<div class="team-social-container">
+			<h2 class="section-title scroll-animate">Connect With Our Team</h2>
+			<p class="section-subtitle scroll-animate">Follow our team members on social media</p>
+
+			<div class="team-social-grid">
+				<div class="team-social-item scroll-animate">
+					<h3>Sankirtans Yadav</h3>
+					<p>Founder</p>
+					<div class="social-links">
+						<a href="https://instagram.com/sankirtans.yadav" target="_blank" rel="noopener" class="social-link instagram">
+							<i class="fab fa-instagram"></i>
+						</a>
+						<a href="https://github.com/sankirtans-yadav" target="_blank" rel="noopener" class="social-link github">
+							<i class="fab fa-github"></i>
+						</a>
+						<a href="https://linkedin.com/in/sankirtans-yadav" target="_blank" rel="noopener" class="social-link linkedin">
+							<i class="fab fa-linkedin"></i>
+						</a>
 					</div>
 				</div>
 
+				<div class="team-social-item scroll-animate">
+					<h3>Saranjaya Yadav</h3>
+					<p>Co-Founder</p>
+					<div class="social-links">
+						<a href="https://instagram.com/saranjaya.yadav" target="_blank" rel="noopener" class="social-link instagram">
+							<i class="fab fa-instagram"></i>
+						</a>
+						<a href="https://github.com/saranjaya-yadav" target="_blank" rel="noopener" class="social-link github">
+							<i class="fab fa-github"></i>
+						</a>
+						<a href="https://linkedin.com/in/saranjaya-yadav" target="_blank" rel="noopener" class="social-link linkedin">
+							<i class="fab fa-linkedin"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="team-social-item scroll-animate">
+					<h3>Abusina Hossain</h3>
+					<p>CEO</p>
+					<div class="social-links">
+						<a href="https://instagram.com/abusina.hossain" target="_blank" rel="noopener" class="social-link instagram">
+							<i class="fab fa-instagram"></i>
+						</a>
+						<a href="https://github.com/abusina-hossain" target="_blank" rel="noopener" class="social-link github">
+							<i class="fab fa-github"></i>
+						</a>
+						<a href="https://linkedin.com/in/abusina-hossain" target="_blank" rel="noopener" class="social-link linkedin">
+							<i class="fab fa-linkedin"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="team-social-item scroll-animate">
+					<h3>Avik Mitra</h3>
+					<p>Management Team</p>
+					<div class="social-links">
+						<a href="https://instagram.com/avik.mitra" target="_blank" rel="noopener" class="social-link instagram">
+							<i class="fab fa-instagram"></i>
+						</a>
+						<a href="https://github.com/avik-mitra" target="_blank" rel="noopener" class="social-link github">
+							<i class="fab fa-github"></i>
+						</a>
+						<a href="https://linkedin.com/in/avik-mitra" target="_blank" rel="noopener" class="social-link linkedin">
+							<i class="fab fa-linkedin"></i>
+						</a>
+					</div>
+				</div>
+
+				<div class="team-social-item scroll-animate">
+					<h3>Md Adil Mukhtar</h3>
+					<p>Management Team</p>
+					<div class="social-links">
+						<a href="https://instagram.com/adil.mukhtar" target="_blank" rel="noopener" class="social-link instagram">
+							<i class="fab fa-instagram"></i>
+						</a>
+						<a href="https://github.com/adil-mukhtar" target="_blank" rel="noopener" class="social-link github">
+							<i class="fab fa-github"></i>
+						</a>
+						<a href="https://linkedin.com/in/adil-mukhtar" target="_blank" rel="noopener" class="social-link linkedin">
+							<i class="fab fa-linkedin"></i>
+						</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -2197,51 +2335,65 @@
 			setupScrollReveal();
 		});
 
-		// Team card flip: use JS to avoid accidental flips when interacting with social icons
+		// Team card flip: simple hover behavior
 		document.querySelectorAll('.team-card').forEach(card => {
-			const inner = card.querySelector('.team-card-inner');
-			const social = card.querySelector('.team-social');
-
-			// desktop hover behavior
-			card.addEventListener('mouseenter', (e) => {
-				// if hovering social area, don't trigger flip
-				if (e.target.closest('.team-social') || (social && social.matches(':hover'))) return;
-				inner.classList.add('is-flipped'); // use class so CSS fallback can be implemented if desired
-				inner.style.transform = 'rotateY(180deg) translateY(-6px) scale(1.02)';
+			card.addEventListener('mouseenter', () => {
+				card.classList.add('hovered');
 			});
 
 			card.addEventListener('mouseleave', () => {
-				inner.classList.remove('is-flipped');
-				inner.style.transform = 'rotateY(0deg) translateY(0) scale(1)';
+				card.classList.remove('hovered');
 			});
+		});
 
-			// touch: tap toggles flip; ignore taps on social icons (allow their default)
-			card.addEventListener('touchend', (e) => {
-				const targetLink = e.target.closest('a');
-				if (targetLink) return; // let links work
-				// small delay to ensure it's a tap, not a scroll
-				if (inner.classList.contains('is-flipped')) {
-					inner.classList.remove('is-flipped');
-					inner.style.transform = 'rotateY(0deg) translateY(0) scale(1)';
-				} else {
-					inner.classList.add('is-flipped');
-					inner.style.transform = 'rotateY(180deg) translateY(-6px) scale(1.02)';
-				}
+		// Mobile Navigation Toggle
+		const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+		const mobileNav = document.querySelector('.mobile-nav');
+		const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
+
+		function toggleMobileNav() {
+			mobileNavToggle.classList.toggle('active');
+			mobileNav.classList.toggle('active');
+			mobileNavOverlay.classList.toggle('active');
+			document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+		}
+
+		// Attach mobile navigation event listeners
+		if (mobileNavToggle) mobileNavToggle.addEventListener('click', toggleMobileNav);
+		if (mobileNavOverlay) mobileNavOverlay.addEventListener('click', toggleMobileNav);
+
+		// Close mobile nav when clicking on nav links
+		document.querySelectorAll('.mobile-nav-link, .mobile-nav-sublink').forEach(link => {
+			link.addEventListener('click', () => {
+				mobileNav.classList.remove('active');
+				mobileNavToggle.classList.remove('active');
+				mobileNavOverlay.classList.remove('active');
+				document.body.style.overflow = '';
 			});
+		});
 
-			// prevent social area from propagating hover/click to card
-			if (social) {
-				social.addEventListener('mouseenter', (e) => e.stopPropagation());
-				social.addEventListener('mouseleave', (e) => e.stopPropagation());
-				social.querySelectorAll('a').forEach(a => {
-					a.addEventListener('click', (ev) => ev.stopPropagation());
+		// Mobile submenu toggle functionality
+		function toggleSubmenu(submenuId) {
+			const submenu = document.getElementById(submenuId);
+			if (submenu) {
+				submenu.classList.toggle('active');
+			}
+		}
+
+		// Make mobile nav responsive: close on window resize if screen becomes wide
+		window.addEventListener('resize', () => {
+			if (window.innerWidth > 768) {
+				mobileNav.classList.remove('active');
+				mobileNavToggle.classList.remove('active');
+				mobileNavOverlay.classList.remove('active');
+				document.body.style.overflow = '';
+
+				// Close any open submenus
+				document.querySelectorAll('.mobile-nav-submenu').forEach(submenu => {
+					submenu.classList.remove('active');
 				});
 			}
 		});
-
-		// remove older, possibly duplicate scroll handlers (if present earlier)
-		document.removeEventListener('scroll', handleScrollAnimation);
-		document.removeEventListener('resize', handleScrollAnimation);
 	</script>
 </body>
 
