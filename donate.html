@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support Education - EduSankalp</title>
+  <title>Support Education - EduSankalp (Blockchain)</title>
   <style>
     * {
       margin: 0;
@@ -25,6 +25,7 @@
       --gradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #0ea5e9 100%);
       --gradient-green: linear-gradient(135deg, #10b981 0%, #34d399 100%);
       --gradient-orange: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+      --gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
     }
 
     html {
@@ -41,7 +42,6 @@
       position: relative;
     }
 
-    /* Animated Background */
     body::before {
       content: '';
       position: fixed;
@@ -73,7 +73,6 @@
       50% { transform: translateY(30px); }
     }
 
-    /* Header */
     .header {
       position: relative;
       z-index: 10;
@@ -119,7 +118,6 @@
       line-height: 1.8;
     }
 
-    /* Trust Badges */
     .trust-badges {
       display: flex;
       justify-content: center;
@@ -150,7 +148,6 @@
       font-size: 1.2rem;
     }
 
-    /* Main Container */
     .container {
       position: relative;
       z-index: 10;
@@ -159,17 +156,15 @@
       padding: 2rem;
     }
 
-    /* Amount Selection Section */
-    .amount-section {
-      background: rgba(255, 255, 255, 0.08);
+    .wallet-banner {
+      background: rgba(139, 92, 246, 0.1);
       backdrop-filter: blur(20px);
-      border: 2px solid rgba(255, 255, 255, 0.15);
-      border-radius: 24px;
-      padding: 3rem;
-      margin-bottom: 3rem;
+      border: 2px solid rgba(139, 92, 246, 0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      animation: fadeInUp 1s ease-out 0.2s both;
+      animation: fadeInUp 0.8s ease-out;
     }
 
     @keyframes fadeInUp {
@@ -181,6 +176,71 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    .wallet-connected {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .wallet-connected.show {
+      display: flex;
+    }
+
+    .wallet-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+    }
+
+    .wallet-address {
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #a78bfa;
+    }
+
+    .network-badge {
+      background: var(--gradient-green);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .connect-wallet-btn {
+      padding: 1rem 2rem;
+      background: var(--gradient-purple);
+      border: none;
+      color: white;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    }
+
+    .connect-wallet-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(139, 92, 246, 0.5);
+    }
+
+    .amount-section {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 1s ease-out 0.2s both;
     }
 
     .amount-section h2 {
@@ -263,7 +323,6 @@
       color: rgba(255, 255, 255, 0.9);
     }
 
-    /* Custom Amount */
     .custom-amount-wrapper {
       max-width: 400px;
       margin: 0 auto;
@@ -280,6 +339,7 @@
     .custom-input {
       width: 100%;
       padding: 1.25rem;
+      padding-left: 3rem;
       background: rgba(255, 255, 255, 0.05);
       border: 2px solid rgba(255, 255, 255, 0.15);
       border-radius: 16px;
@@ -310,7 +370,6 @@
       pointer-events: none;
     }
 
-    /* Payment Methods Section */
     .payment-section {
       margin-bottom: 3rem;
       animation: fadeInUp 1.2s ease-out 0.4s both;
@@ -342,7 +401,6 @@
       border: 2px solid rgba(255, 255, 255, 0.1);
       padding: 2.5rem;
       border-radius: 20px;
-      cursor: pointer;
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       overflow: hidden;
@@ -369,19 +427,19 @@
       border-color: rgba(255, 255, 255, 0.3);
     }
 
-    .payment-card.phonepe:hover {
-      border-color: #5F259F;
-      box-shadow: 0 20px 50px rgba(95, 37, 159, 0.4);
+    .payment-card.ethereum:hover {
+      border-color: #627EEA;
+      box-shadow: 0 20px 50px rgba(98, 126, 234, 0.4);
     }
 
-    .payment-card.gpay:hover {
-      border-color: #4285F4;
-      box-shadow: 0 20px 50px rgba(66, 133, 244, 0.4);
+    .payment-card.polygon:hover {
+      border-color: #8247E5;
+      box-shadow: 0 20px 50px rgba(130, 71, 229, 0.4);
     }
 
-    .payment-card.paytm:hover {
-      border-color: #002970;
-      box-shadow: 0 20px 50px rgba(0, 41, 112, 0.4);
+    .payment-card.metamask:hover {
+      border-color: #F6851B;
+      box-shadow: 0 20px 50px rgba(246, 133, 27, 0.4);
     }
 
     .payment-icon {
@@ -442,9 +500,14 @@
       position: relative;
     }
 
-    .payment-btn:hover {
+    .payment-btn:hover:not(:disabled) {
       transform: translateY(-2px);
       box-shadow: 0 6px 25px rgba(99, 102, 241, 0.5);
+    }
+
+    .payment-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .payment-btn .spinner {
@@ -470,7 +533,6 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Guarantee Section */
     .guarantee-section {
       background: var(--gradient-green);
       backdrop-filter: blur(10px);
@@ -539,6 +601,7 @@
       text-align: center;
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
+      position: relative;
     }
 
     .guarantee-item:hover {
@@ -564,7 +627,6 @@
       line-height: 1.6;
     }
 
-    /* Security Section */
     .security-section {
       background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
@@ -630,7 +692,6 @@
       line-height: 1.6;
     }
 
-    /* Impact Stats */
     .impact-section {
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(10px);
@@ -673,7 +734,6 @@
       font-weight: 600;
     }
 
-    /* Back Button */
     .back-btn {
       display: inline-flex;
       align-items: center;
@@ -694,7 +754,6 @@
       transform: translateX(-5px);
     }
 
-    /* Message Overlay */
     .message-overlay {
       display: none;
       position: fixed;
@@ -725,6 +784,7 @@
       border-radius: 24px;
       padding: 3rem;
       max-width: 500px;
+      width: 90%;
       text-align: center;
       animation: scaleIn 0.4s ease-out;
     }
@@ -771,6 +831,7 @@
       justify-content: space-between;
       padding: 0.5rem 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      gap: 1rem;
     }
 
     .transaction-row:last-child {
@@ -780,12 +841,15 @@
     .transaction-label {
       color: #94a3b8;
       font-size: 0.9rem;
+      flex-shrink: 0;
     }
 
     .transaction-value {
       color: white;
       font-weight: 600;
       font-size: 0.9rem;
+      word-break: break-all;
+      text-align: right;
     }
 
     .close-btn {
@@ -798,19 +862,21 @@
       cursor: pointer;
       font-weight: 600;
       transition: all 0.3s ease;
+      font-size: 1rem;
     }
 
     .close-btn:hover {
       background: rgba(255, 255, 255, 0.2);
     }
 
-    /* Footer */
     footer {
       background: rgba(0, 0, 0, 0.5);
       color: white;
       padding: 3rem 2rem;
       margin-top: 3rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      z-index: 10;
     }
 
     .footer-content {
@@ -881,7 +947,6 @@
       transform-origin: left;
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .header {
         padding: 1.5rem 1rem 1rem;
@@ -919,8 +984,7 @@
       }
 
       .message-content {
-        padding: 2rem;
-        margin: 1rem;
+        padding: 2rem 1.5rem;
       }
 
       .guarantee-features,
@@ -928,30 +992,35 @@
       .stats-grid {
         grid-template-columns: 1fr;
       }
+
+      .wallet-info {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="logo">🎓 EduSankalp</div>
-    <h1>Support Education Through Secure Payments</h1>
-    <p>Make secure, transparent donations that directly empower underprivileged students. Every contribution helps build a brighter future.</p>
+    <h1>Support Education Through Blockchain</h1>
+    <p>Make secure, transparent crypto donations that directly empower underprivileged students. Every contribution is recorded on the blockchain.</p>
     <div class="trust-badges">
       <div class="badge">
         <span class="badge-icon">🔒</span>
         <span>100% Secure</span>
       </div>
       <div class="badge">
-        <span class="badge-icon">✅</span>
-        <span>Verified Platform</span>
+        <span class="badge-icon">⛓️</span>
+        <span>Blockchain Verified</span>
       </div>
       <div class="badge">
         <span class="badge-icon">🎯</span>
         <span>Direct Impact</span>
       </div>
       <div class="badge">
-        <span class="badge-icon">💯</span>
-        <span>Money-Back Guarantee</span>
+        <span class="badge-icon">🔍</span>
+        <span>Transparent</span>
       </div>
     </div>
   </div>
@@ -961,31 +1030,49 @@
       ← Back to Main Site
     </a>
 
+    <!-- Wallet Connection Banner -->
+    <div class="wallet-banner">
+      <div id="walletNotConnected">
+        <h3 style="margin-bottom: 1rem;">🦊 Connect Your Wallet to Donate</h3>
+        <p style="color: #cbd5e1; margin-bottom: 1.5rem;">Connect MetaMask to make secure blockchain donations</p>
+        <button class="connect-wallet-btn" onclick="connectWallet()">
+          Connect MetaMask
+        </button>
+      </div>
+      <div class="wallet-connected" id="walletConnected">
+        <div class="wallet-info">
+          <span>✅ Connected:</span>
+          <span class="wallet-address" id="walletAddress"></span>
+        </div>
+        <div class="network-badge" id="networkBadge">Ethereum</div>
+      </div>
+    </div>
+
     <!-- Amount Selection -->
     <div class="amount-section">
       <h2>Choose Your Contribution</h2>
-      <p class="subtitle">Select an amount or enter your own</p>
+      <p class="subtitle">Select an amount in USD (will be converted to crypto)</p>
       
       <div class="amount-grid">
-        <div class="amount-card" onclick="selectAmount(99)">
-          <div class="amount-value">₹99</div>
+        <div class="amount-card" onclick="selectAmount(10)">
+          <div class="amount-value">$10</div>
           <div class="amount-label">Starter</div>
         </div>
         
-        <div class="amount-card popular" onclick="selectAmount(199)">
-          <div class="amount-value">₹199</div>
+        <div class="amount-card popular" onclick="selectAmount(25)">
+          <div class="amount-value">$25</div>
           <div class="amount-label">Most Chosen</div>
         </div>
         
-        <div class="amount-card" onclick="selectAmount(399)">
-          <div class="amount-value">₹399</div>
+        <div class="amount-card" onclick="selectAmount(50)">
+          <div class="amount-value">$50</div>
           <div class="amount-label">Champion</div>
         </div>
       </div>
 
       <div class="custom-amount-wrapper">
-        <label class="custom-amount-label">Or enter a custom amount</label>
-        <span class="currency-symbol">₹</span>
+        <label class="custom-amount-label">Or enter a custom amount (USD)</label>
+        <span class="currency-symbol">$</span>
         <input 
           type="number" 
           class="custom-input" 
@@ -999,54 +1086,54 @@
 
     <!-- Payment Methods -->
     <div class="payment-section">
-      <h2>Select Your Payment Method</h2>
-      <p class="payment-subtitle">Choose your preferred payment method to complete the donation</p>
+      <h2>Select Your Blockchain Network</h2>
+      <p class="payment-subtitle">Choose your preferred blockchain network to complete the donation</p>
       
       <div class="payment-grid">
-        <!-- PhonePe -->
-        <div class="payment-card phonepe">
-          <div class="payment-icon">📱</div>
-          <h3>PhonePe</h3>
-          <p>Fast, secure payments through India's most trusted UPI app</p>
+        <!-- Ethereum -->
+        <div class="payment-card ethereum">
+          <div class="payment-icon">⟠</div>
+          <h3>Ethereum</h3>
+          <p>Donate using ETH on the world's leading smart contract platform</p>
           <ul class="payment-features">
-            <li>Instant processing</li>
-            <li>Zero transaction fees</li>
-            <li>Complete security</li>
+            <li>Most secure network</li>
+            <li>Widely supported</li>
+            <li>Instant confirmation</li>
           </ul>
-          <button class="payment-btn" onclick="processPayment('phonepe')">
-            <span class="btn-text">Pay with PhonePe</span>
+          <button class="payment-btn" onclick="processPayment('ethereum')" id="ethBtn">
+            <span class="btn-text">Donate with ETH</span>
             <div class="spinner"></div>
           </button>
         </div>
 
-        <!-- Google Pay -->
-        <div class="payment-card gpay">
-          <div class="payment-icon">💳</div>
-          <h3>Google Pay</h3>
-          <p>Simple and secure payments through Google's UPI platform</p>
+        <!-- Polygon -->
+        <div class="payment-card polygon">
+          <div class="payment-icon">⬡</div>
+          <h3>Polygon</h3>
+          <p>Fast, low-cost donations using MATIC on Polygon network</p>
           <ul class="payment-features">
-            <li>Google-grade security</li>
-            <li>Quick transactions</li>
-            <li>Widely accepted</li>
+            <li>Near-zero gas fees</li>
+            <li>Lightning fast</li>
+            <li>Eco-friendly</li>
           </ul>
-          <button class="payment-btn" onclick="processPayment('gpay')">
-            <span class="btn-text">Pay with Google Pay</span>
+          <button class="payment-btn" onclick="processPayment('polygon')" id="polyBtn">
+            <span class="btn-text">Donate with MATIC</span>
             <div class="spinner"></div>
           </button>
         </div>
 
-        <!-- Paytm -->
-        <div class="payment-card paytm">
-          <div class="payment-icon">💰</div>
-          <h3>Paytm</h3>
-          <p>Convenient payments through India's leading digital wallet</p>
+        <!-- MetaMask Quick Pay -->
+        <div class="payment-card metamask">
+          <div class="payment-icon">🦊</div>
+          <h3>MetaMask Auto</h3>
+          <p>Let MetaMask choose the best network for your donation</p>
           <ul class="payment-features">
-            <li>Wallet & UPI support</li>
-            <li>Cashback offers</li>
-            <li>Easy to use</li>
+            <li>Automatic network selection</li>
+            <li>Optimized gas fees</li>
+            <li>One-click donation</li>
           </ul>
-          <button class="payment-btn" onclick="processPayment('paytm')">
-            <span class="btn-text">Pay with Paytm</span>
+          <button class="payment-btn" onclick="processPayment('auto')" id="autoBtn">
+            <span class="btn-text">Quick Donate</span>
             <div class="spinner"></div>
           </button>
         </div>
@@ -1057,27 +1144,27 @@
     <div class="guarantee-section">
       <div class="guarantee-header">
         <span class="guarantee-icon">💯</span>
-        <h3>100% Money-Back Guarantee</h3>
+        <h3>100% Blockchain Transparency</h3>
       </div>
       <p class="guarantee-content">
-        We stand behind our mission. If you're not satisfied with how your donation is being used, 
-        we'll refund your contribution within 30 days. No questions asked.
+        Every transaction is recorded on the blockchain and publicly verifiable. 
+        Track your donation in real-time and see exactly how it's being used to change lives.
       </p>
       <div class="guarantee-features">
         <div class="guarantee-item">
-          <span class="guarantee-item-icon">🔄</span>
-          <h4>Easy Refund Process</h4>
-          <p>Simple request form with quick processing</p>
+          <span class="guarantee-item-icon">🔗</span>
+          <h4>Immutable Records</h4>
+          <p>All donations permanently recorded on blockchain</p>
         </div>
         <div class="guarantee-item">
-          <span class="guarantee-item-icon">⏱️</span>
-          <h4>30-Day Window</h4>
-          <p>Plenty of time to request a refund</p>
+          <span class="guarantee-item-icon">👁️</span>
+          <h4>Full Visibility</h4>
+          <p>Track every transaction on block explorer</p>
         </div>
         <div class="guarantee-item">
-          <span class="guarantee-item-icon">💬</span>
-          <h4>No Questions Asked</h4>
-          <p>We trust your judgment completely</p>
+          <span class="guarantee-item-icon">🔐</span>
+          <h4>Secure & Private</h4>
+          <p>Your wallet, your control, always</p>
         </div>
       </div>
     </div>
@@ -1086,26 +1173,26 @@
     <div class="security-section">
       <div class="security-header">
         <span class="security-icon">🛡️</span>
-        <h3>Your Security is Our Priority</h3>
+        <h3>Bank-Grade Blockchain Security</h3>
       </div>
       <p style="text-align: center; color: #cbd5e1; margin-bottom: 2rem;">
-        We use industry-standard security measures to protect your information and ensure your donation reaches the right hands.
+        Your funds are protected by the most secure technology in the world - blockchain cryptography.
       </p>
       <div class="security-grid">
         <div class="security-item">
           <span class="security-item-icon">🔐</span>
-          <h4>Encrypted Transactions</h4>
-          <p>All payments are processed through secure, encrypted channels</p>
+          <h4>Smart Contract Security</h4>
+          <p>Donations sent directly to verified wallet address</p>
         </div>
         <div class="security-item">
           <span class="security-item-icon">📊</span>
-          <h4>Full Transparency</h4>
-          <p>Track your donation and see exactly how it's being used</p>
+          <h4>Real-Time Tracking</h4>
+          <p>View transaction status instantly on blockchain</p>
         </div>
         <div class="security-item">
           <span class="security-item-icon">✅</span>
-          <h4>Verified Recipients</h4>
-          <p>Funds go directly to verified educational programs</p>
+          <h4>No Intermediaries</h4>
+          <p>Direct peer-to-peer donations, no middlemen</p>
         </div>
       </div>
     </div>
@@ -1139,7 +1226,7 @@
     <div class="footer-content">
       <div class="footer-section">
         <h4>About EduSankalp</h4>
-        <p>Revolutionizing education through AI and technology, making quality learning accessible to every child regardless of background.</p>
+        <p>Revolutionizing education through blockchain and AI technology, making quality learning accessible to every child.</p>
       </div>
 
       <div class="footer-section">
@@ -1174,7 +1261,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2025 EduSankalp. Free education for all. Powered by cutting-edge AI and technology.</p>
+      <p>&copy; 2025 EduSankalp. Free education for all. Powered by blockchain technology.</p>
       <div class="compilex-logo">Powered by CompileX</div>
     </div>
   </footer>
@@ -1183,16 +1270,107 @@
   <div class="message-overlay" id="messageOverlay">
     <div class="message-content">
       <div class="message-icon" id="messageIcon">⏳</div>
-      <h3 id="messageTitle">Processing Payment</h3>
-      <p id="messageText">Redirecting you to the payment app...</p>
-      <div class="transaction-info" id="transactionInfo"></div>
+      <h3 id="messageTitle">Processing Transaction</h3>
+      <p id="messageText">Please confirm the transaction in MetaMask...</p>
+      <div class="transaction-info" id="transactionInfo" style="display: none;"></div>
       <button class="close-btn" id="closeBtn" onclick="closeOverlay()" style="display: none;">Close</button>
     </div>
   </div>
 
   <script>
-    const UPI_ID = 'sankirtansyadavofficial@oksbi';
+    // Your receiving wallet address
+    const RECEIVING_WALLET = '0xfe0952944c061d8acc6131ccf8d4709fb5a7756c';
+    
+    // Network configurations
+    const NETWORKS = {
+      ethereum: {
+        chainId: '0x1',
+        name: 'Ethereum Mainnet',
+        currency: 'ETH'
+      },
+      polygon: {
+        chainId: '0x89',
+        name: 'Polygon Mainnet',
+        currency: 'MATIC',
+        rpcUrl: 'https://polygon-rpc.com/',
+        blockExplorer: 'https://polygonscan.com/'
+      }
+    };
+
+    // Approximate conversion rates (you should use real-time API in production)
+    const CONVERSION_RATES = {
+      ETH: 0.0003, // ~$3333 per ETH
+      MATIC: 1.2    // ~$0.83 per MATIC
+    };
+
     let selectedAmount = null;
+    let connectedAccount = null;
+    let currentNetwork = null;
+
+    // Check if MetaMask is installed
+    function isMetaMaskInstalled() {
+      return typeof window.ethereum !== 'undefined';
+    }
+
+    // Connect wallet
+    async function connectWallet() {
+      if (!isMetaMaskInstalled()) {
+        showOverlay('❌', 'MetaMask Not Found', 'Please install MetaMask browser extension from metamask.io to make donations.', null, true);
+        return;
+      }
+
+      try {
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts'
+        });
+        
+        connectedAccount = accounts[0];
+        await checkNetwork();
+        updateWalletUI();
+        showOverlay('✅', 'Wallet Connected!', 'Your wallet has been connected successfully. You can now make donations.', null, true);
+      } catch (error) {
+        console.error('Connection error:', error);
+        showOverlay('❌', 'Connection Failed', 'Failed to connect wallet. Please try again.', null, true);
+      }
+    }
+
+    // Check current network
+    async function checkNetwork() {
+      try {
+        const chainId = await window.ethereum.request({
+          method: 'eth_chainId'
+        });
+        
+        if (chainId === NETWORKS.ethereum.chainId) {
+          currentNetwork = 'ethereum';
+        } else if (chainId === NETWORKS.polygon.chainId) {
+          currentNetwork = 'polygon';
+        } else {
+          currentNetwork = 'unknown';
+        }
+        
+        updateWalletUI();
+      } catch (error) {
+        console.error('Network check error:', error);
+      }
+    }
+
+    // Update wallet UI
+    function updateWalletUI() {
+      if (connectedAccount) {
+        document.getElementById('walletNotConnected').style.display = 'none';
+        document.getElementById('walletConnected').classList.add('show');
+        document.getElementById('walletAddress').textContent = 
+          connectedAccount.substring(0, 6) + '...' + connectedAccount.substring(38);
+        
+        const networkNames = {
+          ethereum: '🔷 Ethereum',
+          polygon: '⬡ Polygon',
+          unknown: '⚠️ Unsupported Network'
+        };
+        document.getElementById('networkBadge').textContent = networkNames[currentNetwork] || 'Unknown';
+      }
+    }
 
     // Amount selection
     function selectAmount(amount) {
@@ -1220,10 +1398,61 @@
       }
     }
 
+    // Switch network
+    async function switchNetwork(network) {
+      try {
+        await window.ethereum.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: NETWORKS[network].chainId }]
+        });
+        currentNetwork = network;
+        updateWalletUI();
+        return true;
+      } catch (error) {
+        // Network not added, try to add it
+        if (error.code === 4902 && network === 'polygon') {
+          try {
+            await window.ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [{
+                chainId: NETWORKS.polygon.chainId,
+                chainName: NETWORKS.polygon.name,
+                nativeCurrency: {
+                  name: 'MATIC',
+                  symbol: 'MATIC',
+                  decimals: 18
+                },
+                rpcUrls: [NETWORKS.polygon.rpcUrl],
+                blockExplorerUrls: [NETWORKS.polygon.blockExplorer]
+              }]
+            });
+            currentNetwork = 'polygon';
+            updateWalletUI();
+            return true;
+          } catch (addError) {
+            console.error('Error adding network:', addError);
+            return false;
+          }
+        }
+        console.error('Error switching network:', error);
+        return false;
+      }
+    }
+
     // Process payment
-    function processPayment(method) {
+    async function processPayment(method) {
+      if (!isMetaMaskInstalled()) {
+        showOverlay('❌', 'MetaMask Required', 'Please install MetaMask to make donations.', null, true);
+        return;
+      }
+
+      if (!connectedAccount) {
+        showOverlay('⚠️', 'Wallet Not Connected', 'Please connect your wallet first before making a donation.', null, true);
+        return;
+      }
+
       if (!selectedAmount || selectedAmount <= 0) {
-        alert('Please select or enter an amount first');
+        showOverlay('⚠️', 'Select Amount', 'Please select or enter a donation amount first.', null, true);
         return;
       }
 
@@ -1232,135 +1461,17 @@
       button.disabled = true;
 
       try {
-        // Show processing overlay
-        showOverlay('⏳', 'Processing Payment', 'Redirecting you to the payment app...');
-
-        // Create UPI URL
-        let upiUrl;
-        const payeeName = 'EduSankalp';
-        const transactionNote = 'Education Donation';
+        let targetNetwork = method === 'auto' ? currentNetwork : method;
         
-        if (method === 'phonepe') {
-          upiUrl = `phonepe://pay?pa=${UPI_ID}&pn=${encodeURIComponent(payeeName)}&am=${selectedAmount}&cu=INR&tn=${encodeURIComponent(transactionNote)}`;
-        } else if (method === 'gpay') {
-          upiUrl = `tez://upi/pay?pa=${UPI_ID}&pn=${encodeURIComponent(payeeName)}&am=${selectedAmount}&cu=INR&tn=${encodeURIComponent(transactionNote)}`;
-        } else if (method === 'paytm') {
-          upiUrl = `paytmmp://pay?pa=${UPI_ID}&pn=${encodeURIComponent(payeeName)}&am=${selectedAmount}&cu=INR&tn=${encodeURIComponent(transactionNote)}`;
-        }
-
-        // Show transaction info
-        showOverlay('⏳', 'Redirecting to Payment', `Opening ${method} to complete your payment of ₹${selectedAmount}`, {
-          'Payment Method': method.charAt(0).toUpperCase() + method.slice(1),
-          'Amount': `₹${selectedAmount}`,
-          'UPI ID': UPI_ID
-        });
-
-        // Try to redirect to the payment app
-        setTimeout(() => {
-          window.location.href = upiUrl;
-          
-          // Fallback if redirect doesn't work
-          setTimeout(() => {
-            showOverlay('ℹ️', 'Manual Payment Required', `If the payment app didn't open automatically, please use the details below to complete your payment manually.`, {
-              'UPI ID': UPI_ID,
-              'Amount': `₹${selectedAmount}`,
-              'Payee Name': 'EduSankalp'
-            }, true);
-            
-            // Copy UPI ID to clipboard
-            navigator.clipboard.writeText(UPI_ID).then(() => {
-              console.log('UPI ID copied to clipboard');
-            }).catch(() => {
-              console.log('Failed to copy UPI ID');
-            });
-          }, 3000);
-        }, 1500);
-
-      } catch (error) {
-        console.error('Payment error:', error);
-        showOverlay('❌', 'Payment Failed', 'An error occurred while processing your payment. Please try again.', null, true);
-      } finally {
-        button.classList.remove('loading');
-        button.disabled = false;
-      }
-    }
-
-    // Show overlay
-    function showOverlay(icon, title, text, info = null, showClose = false) {
-      const overlay = document.getElementById('messageOverlay');
-      const messageIcon = document.getElementById('messageIcon');
-      const messageTitle = document.getElementById('messageTitle');
-      const messageText = document.getElementById('messageText');
-      const transactionInfo = document.getElementById('transactionInfo');
-      const closeBtn = document.getElementById('closeBtn');
-
-      messageIcon.textContent = icon;
-      messageTitle.textContent = title;
-      messageText.textContent = text;
-
-      if (info) {
-        let infoHTML = '';
-        for (const [key, value] of Object.entries(info)) {
-          infoHTML += `
-            <div class="transaction-row">
-              <span class="transaction-label">${key}</span>
-              <span class="transaction-value">${value}</span>
-            </div>
-          `;
-        }
-        transactionInfo.innerHTML = infoHTML;
-        transactionInfo.style.display = 'block';
-      } else {
-        transactionInfo.style.display = 'none';
-      }
-
-      closeBtn.style.display = showClose ? 'inline-block' : 'none';
-      overlay.classList.add('show');
-    }
-
-    // Close overlay
-    function closeOverlay() {
-      document.getElementById('messageOverlay').classList.remove('show');
-    }
-
-    // Close overlay on background click
-    document.getElementById('messageOverlay').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeOverlay();
-      }
-    });
-
-    // Add scroll animations
-    document.addEventListener('DOMContentLoaded', function() {
-      const scrollElements = document.querySelectorAll('.amount-section, .payment-section, .guarantee-section, .security-section, .impact-section');
-      
-      const elementInView = (el, dividend = 1) => {
-        const elementTop = el.getBoundingClientRect().top;
-        return (
-          elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
-        );
-      };
-      
-      const displayScrollElement = (element) => {
-        element.classList.add('visible');
-      };
-      
-      const handleScrollAnimation = () => {
-        scrollElements.forEach((el) => {
-          if (elementInView(el, 1.2)) {
-            displayScrollElement(el);
+        // Switch network if needed
+        if (currentNetwork !== targetNetwork && method !== 'auto') {
+          const switched = await switchNetwork(targetNetwork);
+          if (!switched) {
+            throw new Error('Failed to switch network');
           }
-        });
-      };
-      
-      // Initial check
-      handleScrollAnimation();
-      
-      // Listen for scroll events
-      window.addEventListener('scroll', () => {
-        handleScrollAnimation();
-      });
-    });
-  </script>
-</body>
-</html>
+        }
+
+        // Calculate crypto amount
+        const currency = targetNetwork === 'polygon' ? 'MATIC' : 'ETH';
+        const cryptoAmount = selectedAmount * CONVERSION_RATES[currency];
+        const valueInWei = '0x' + Math.floor(cryptoAmount * 1e18).toString(16);
