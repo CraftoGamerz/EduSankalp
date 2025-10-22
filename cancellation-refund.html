@@ -100,6 +100,26 @@
       font-size: 1rem;
     }
 
+    .demo-notice {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 2px solid var(--warning);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .demo-notice h3 {
+      color: #92400e;
+      margin-bottom: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .demo-notice p {
+      color: #78350f;
+      font-weight: 500;
+    }
+
     .content-section {
       background: white;
       padding: 2.5rem;
@@ -140,6 +160,11 @@
     .policy-card.warning {
       background: linear-gradient(135deg, #fef3c7 0%, #fef7cd 100%);
       border-left-color: var(--warning);
+    }
+
+    .policy-card.blockchain {
+      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+      border-left-color: #9333ea;
     }
 
     .policy-icon {
@@ -274,6 +299,11 @@
       <p class="last-updated">Last updated on Oct 9, 2025</p>
     </div>
 
+    <div class="demo-notice">
+      <h3>⚠️ Important Notice: Demo Wallet in Use</h3>
+      <p>Currently, we are using a demo wallet for testing purposes. This is NOT a real payment method. No actual cryptocurrency transactions are being processed at this time.</p>
+    </div>
+
     <div class="content-section">
       <h2 class="section-title">Our Refund Policy</h2>
       <p class="content-text">
@@ -290,7 +320,13 @@
         <div class="policy-card">
           <div class="policy-icon">⏱️</div>
           <h3>Refund Processing Time</h3>
-          <p>Refunds are processed within 5-7 business days. The amount will be credited back to your original payment method through Razorpay.</p>
+          <p>Refunds are processed within 5-7 business days. For blockchain transactions, the refund will be sent back to your original wallet address.</p>
+        </div>
+
+        <div class="policy-card blockchain">
+          <div class="policy-icon">🔗</div>
+          <h3>Blockchain Payment System</h3>
+          <p>We use secure blockchain technology for donations. All transactions are transparent, immutable, and can be verified on the blockchain explorer.</p>
         </div>
 
         <div class="policy-card warning">
@@ -306,15 +342,26 @@
       <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
         <ol style="color: #374151; line-height: 1.8; padding-left: 1.5rem;">
           <li>Send an email to <strong>contactedusankalp@gmail.com</strong> with the subject "Refund Request"</li>
-          <li>Include your full name and the transaction ID from your donation receipt</li>
+          <li>Include your full name and the blockchain transaction hash (TXID) from your donation</li>
+          <li>Provide your wallet address for the refund</li>
           <li>Mention the reason for your refund request (optional)</li>
           <li>We will process your request within 24-48 hours</li>
         </ol>
       </div>
 
-      <h2 class="section-title">Payment Processing</h2>
+      <h2 class="section-title">Blockchain Payment Processing</h2>
       <p class="content-text">
-        All donations are processed through Razorpay, our secure payment partner. Refunds will be issued to the original payment method used during the donation process. Please note that international transaction fees or bank charges cannot be refunded.
+        All donations are processed through our secure blockchain payment system. Refunds will be issued to the original wallet address used during the donation process. Please note that blockchain network fees (gas fees) cannot be refunded as they are paid to network validators, not to EduSankalp.
+      </p>
+
+      <div style="background: linear-gradient(135deg, #fef3c7 0%, #fef7cd 100%); padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; border-left: 4px solid var(--warning);">
+        <p style="color: #92400e; font-weight: 600; margin-bottom: 0.5rem;">⚠️ Demo Wallet Disclaimer:</p>
+        <p style="color: #78350f;">The current implementation uses a demo wallet for testing and development purposes only. No real cryptocurrency is being transferred. When we launch the live payment system, this notice will be removed and proper wallet infrastructure will be in place.</p>
+      </div>
+
+      <h2 class="section-title">Transaction Verification</h2>
+      <p class="content-text">
+        All blockchain transactions are transparent and can be verified using blockchain explorers. When you make a donation, you'll receive a transaction hash (TXID) that you can use to track your transaction on the blockchain. This ensures complete transparency and accountability.
       </p>
 
       <h2 class="section-title">Contact for Refund Issues</h2>
@@ -330,7 +377,7 @@
 
       <h2 class="section-title">Policy Updates</h2>
       <p class="content-text">
-        We reserve the right to modify this cancellation and refund policy at any time. Any changes will be reflected on this page with an updated "Last updated" date.
+        We reserve the right to modify this cancellation and refund policy at any time. Any changes will be reflected on this page with an updated "Last updated" date. Major changes, especially regarding payment methods, will be communicated to our donors via email.
       </p>
 
       <a href="index.html" class="back-btn">← Back to Home</a>
