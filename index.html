@@ -481,16 +481,17 @@
   .blockchain-card::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: -200%;
             left: -200%;
-            width: 200%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
-            transition: all 0.8s ease;
+            width: 400%;
+            height: 400%;
+            background: linear-gradient(135deg, transparent 48%, rgba(255, 255, 255, 0.12) 50%, transparent 52%);
+            transition: all 1s ease;
             pointer-events: none;
         }
 
         .blockchain-card:hover::before {
+            top: 200%;
             left: 200%;
         }
 
@@ -1417,6 +1418,7 @@
     </script>
 </body>
 </html>
+
 
 
 
