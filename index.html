@@ -478,21 +478,22 @@
 			cursor: pointer;
         }
 
-    .blockchain-card::before {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: -100%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.2) 50%, transparent 60%);
-    transition: all 0.6s ease;
-}
+   .blockchain-card::before {
+            content: '';
+            position: absolute;
+            top: -150%;
+            left: -150%;
+            width: 300%;
+            height: 300%;
+            background: linear-gradient(135deg, transparent 45%, rgba(255, 255, 255, 0.15) 50%, transparent 55%);
+            transition: all 0.8s ease;
+            pointer-events: none;
+        }
 
-.blockchain-card:hover::before {
-    top: 100%;
-    left: 100%;
-}
+        .blockchain-card:hover::before {
+            top: 150%;
+            left: 150%;
+        }
 
         .blockchain-card:hover {
             transform: translateY(-10px);
@@ -1417,5 +1418,6 @@
     </script>
 </body>
 </html>
+
 
 
