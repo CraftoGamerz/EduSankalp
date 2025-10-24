@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="EduSankalp - Free AI-based education platform for underprivileged students">
     <title>EduSankalp - Free AI-Powered Education for Every Child</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        * {
         * {
             margin: 0;
             padding: 0;
@@ -83,7 +85,6 @@
         .logo:hover {
             transform: scale(1.05);
         }
-
 
         /* Apple-style Navigation */
         .desktop-nav {
@@ -293,8 +294,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(40px) scale(1.1); }
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+            }
+
+            50% {
+                transform: translateY(40px) scale(1.1);
+            }
         }
 
         .hero-content {
@@ -478,24 +486,24 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-			cursor: pointer;
+            cursor: pointer;
         }
 
-  .blockchain-card::before {
+        .blockchain-card::before {
             content: '';
             position: absolute;
-            top: -200%;
-            left: -200%;
-            width: 400%;
-            height: 400%;
-            background: linear-gradient(135deg, transparent 48%, rgba(255, 255, 255, 0.12) 50%, transparent 52%);
+            top: -400%;
+            left: -300%;
+            width: 500%;
+            height: 600%;
+            background: linear-gradient(135deg, transparent 46%, rgba(255, 255, 255, 0.25) 50%, transparent 54%);
             transition: all 1s ease;
             pointer-events: none;
         }
 
         .blockchain-card:hover::before {
-            top: 200%;
-            left: 200%;
+            top: 300%;
+            left: 300%;
         }
 
         .blockchain-card:hover {
@@ -600,6 +608,7 @@
 
         .feature-card:hover::before {
             transform: scaleX(1);
+
         }
 
         .feature-card:hover {
@@ -631,7 +640,7 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             gap: 2rem;
             max-width: 1400px;
             margin: 3rem auto 0;
@@ -760,190 +769,143 @@
 
         /* Clash of Clans Style Footer */
         .footer {
-      background-color: #111;
-      padding: 80px 10%;
-      display: flex;
-      flex-direction: column;
-      gap: 60px;
-    }
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .footer-top-text h2 {
-      font-size: 2rem;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-    .footer-top-text span {
-      color: #5f9171;
-      letter-spacing: 1px;
-      font-size: 0.9rem;
-    }
-    .footer-input {
-      margin-top: 25px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #666;
-      width: 300px;
-    }
-    .footer-input input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #fff;
-      flex: 1;
-      padding: 10px;
-      font-size: 1rem;
-    }
-    .footer-input button {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      color: #0298d2;
-      font-size: 1.2rem;
-    }
-    .footer-main {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-    .footer-section {
-      flex: 1 1 200px;
-      min-width: 200px;
-    }
-    .footer-section h3 {
-      font-size: 1rem;
-      color: #fff;
-      margin-bottom: 15px;
-    }
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .footer-section ul li {
-      margin-bottom: 10px;
-      color: #aaa;
-      font-size: 0.95rem;
-    }
-    .footer-section ul li:hover {
-      color: #fff;
-      cursor: pointer;
-    }
-    .footer-logo {
-      font-size: 1.8rem;
-      color: #fff;
-      font-weight: 600;
-    }
-    
-    
-    .footer-socials {
-      display: flex;
-      gap: 15px;
-      margin-top: 10px;
-    }
-    .footer-socials a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.3rem;
-      transition: color 0.3s ease;
-    }
-    .footer-socials a:hover {
-      color: #0298d2;
-    }
-    .footer-image {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .footer-image img {
-      width: 250px;
-      max-width: 100%;
-    }
-    @media(max-width:900px){
-      .footer-top{
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-      }
-      .footer-main{
-        flex-direction: column;
-        align-items: center;
-      }
-      .footer-image img{
-        width: 200px;
-      }
-    }
-
-        /* Scroll Animations */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+            background-color: #111;
+            padding: 80px 10%;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
         }
 
-        .scroll-animate.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .desktop-nav {
-                display: none;
+        .footer-top-text h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .footer-top-text span {
+            color: #5f9171;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .footer-input {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #666;
+            width: 300px;
+        }
+
+        .footer-input input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            flex: 1;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .footer-input button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #0298d2;
+            font-size: 1.2rem;
+        }
+
+        .footer-main {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-section {
+            flex: 1 1 200px;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+            color: #aaa;
+            font-size: 0.95rem;
+        }
+
+        .footer-section ul li:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: 600;
+        }
+
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-socials a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: #0298d2;
+        }
+
+        .footer-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-image img {
+            width: 250px;
+            max-width: 100%;
+        }
+
+        @media(max-width:900px) {
+            .footer-top {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
             }
 
-            .mobile-toggle {
-                display: flex;
+            .footer-main {
+                flex-direction: column;
+                align-items: center;
             }
 
-            .hero {
-                padding: 5rem 1.5rem 4rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.0625rem;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 3rem 1.5rem;
-            }
-
-            .blockchain-section {
-                padding: 4rem 1.5rem;
-            }
-
-            .features {
-                padding: 4rem 1.5rem;
-            }
-
-            .team-section {
-                padding: 4rem 1.5rem;
-            }
-
-            .team-card {
-                height: auto;
-                min-height: 480px;
-            }
-
-            .footer {
-                padding: 3rem 1.5rem 2rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .footer-image img {
+                width: 200px;
             }
         }
 
@@ -958,6 +920,7 @@
             z-index: 9999;
             transition: width 0.1s ease;
         }
+
         /* Smart Search Styles */
         .search-container {
             width: 100%;
@@ -1157,7 +1120,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         @media (max-width: 768px) {
@@ -1197,8 +1162,13 @@
             line-height: 1.8;
             font-size: 16px;
         }
+
+        .mail-link {
+            text-decoration: none;
+        }
     </style>
 </head>
+
 <body>
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
@@ -1206,28 +1176,23 @@
     <!-- Header -->
     <header id="header">
         <div class="header-container">
-			<img src="Elements/EduSankalp_logo.svg" alt="EduSankalp Logo" style="width:64px;">
-            
+            <img src="Elements/EduSankalp_logo.svg" alt="EduSankalp Logo" style="width:64px;">
+
 
             <!-- Add Search Container -->
-    <div class="search-container">
-        <div class="search-wrapper" id="searchWrapper">
-            <div class="search-box">
-                <i class="fas fa-search search-icon" id="searchIconBtn"></i>
-                <input 
-                    type="text" 
-                    id="searchInput" 
-                    placeholder="Search pages, features, team..."
-                    autocomplete="off"
-                    spellcheck="false"
-                >
-                <i class="fas fa-times clear-icon" id="clearBtn"></i>
-                <div class="loading" id="loading"></div>
-            </div>
+            <div class="search-container">
+                <div class="search-wrapper" id="searchWrapper">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon" id="searchIconBtn"></i>
+                        <input type="text" id="searchInput" placeholder="Search pages, features, team..."
+                            autocomplete="off" spellcheck="false">
+                        <i class="fas fa-times clear-icon" id="clearBtn"></i>
+                        <div class="loading" id="loading"></div>
+                    </div>
 
-            <div class="suggestions" id="suggestions"></div>
-        </div>
-    </div>
+                    <div class="suggestions" id="suggestions"></div>
+                </div>
+            </div>
 
             <!-- Desktop Navigation -->
             <nav class="desktop-nav">
@@ -1235,7 +1200,7 @@
                 <a href="#blockchain" class="nav-link">Donate</a>
                 <a href="#classes" class="nav-link">Classes</a>
                 <a href="#team" class="nav-link">Team</a>
-                
+
                 <div class="nav-item">
                     <a href="#" class="nav-link">
                         More <i class="fas fa-chevron-down nav-dropdown-icon"></i>
@@ -1277,7 +1242,8 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Education Revolutionized by <span class="hero-highlight">AI Technology</span></h1>
-            <p>Free, world-class education for every child from Nursery to Class 12. Learn future-ready skills: AI, coding, development, and more.</p>
+            <p>Free, world-class education for every child from Nursery to Class 12. Learn future-ready skills: AI,
+                coding, development, and more.</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary">
                     Start Learning Now <i class="fas fa-arrow-right"></i>
@@ -1397,21 +1363,27 @@
                         <h3 class="team-name">Sankirtans Yadav</h3>
                         <p class="team-role">Founder</p>
                         <div class="team-social">
-                            <a href="https://www.instagram.com/sankirtans_yaduvanshi?igsh=MXQ4YXZ1YXdndGtyZg==" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://www.instagram.com/sankirtans_yaduvanshi?igsh=MXQ4YXZ1YXdndGtyZg=="
+                                target="_blank" onclick="event.stopPropagation()">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://github.com/sankirtansyadavofficial-Hack" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://github.com/sankirtansyadavofficial-Hack" target="_blank"
+                                onclick="event.stopPropagation()">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/sankirtans-yadav-a0374230a" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://www.linkedin.com/in/sankirtans-yadav-a0374230a" target="_blank"
+                                onclick="event.stopPropagation()">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </div>
                     </div>
                     <div class="team-card-back">
                         <h2>About Sankirtans</h2>
-                        <p class="team-bio">Data Analyst, AI model Researcher, Full stack Developer and leading idea creator at CompileX. I thrive on building innovative solutions that blend empathy with engineering.</p>
-                        <p class="team-quote">"Let your action speak louder than your words. Life is a game of action so it depends on you how better you perform."</p>
+                        <p class="team-bio">Data Analyst, AI model Researcher, Full stack Developer and leading idea
+                            creator at CompileX. I thrive on building innovative solutions that blend empathy with
+                            engineering.</p>
+                        <p class="team-quote">"Let your action speak louder than your words. Life is a game of action so
+                            it depends on you how better you perform."</p>
                     </div>
                 </div>
             </div>
@@ -1423,20 +1395,24 @@
                         <h3 class="team-name">Saranjaya Yadav</h3>
                         <p class="team-role">Co-Founder</p>
                         <div class="team-social">
-                            <a href="https://www.instagram.com/saranjaya_yadav?igsh=MTIyaWl3MzN0ZDUwdQ==" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://www.instagram.com/saranjaya_yadav?igsh=MTIyaWl3MzN0ZDUwdQ=="
+                                target="_blank" onclick="event.stopPropagation()">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://github.com/saranjayayadav12-coder" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://github.com/saranjayayadav12-coder" target="_blank"
+                                onclick="event.stopPropagation()">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/saranjaya-yadav-a12b562a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://www.linkedin.com/in/saranjaya-yadav-a12b562a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank" onclick="event.stopPropagation()">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </div>
                     </div>
                     <div class="team-card-back">
                         <h2>About Saranjaya</h2>
-                        <p class="team-bio">Full Stack Developer and Blockchain–AI Data Analyst, passionate about building intelligent systems that merge innovation with real-world impact.</p>
+                        <p class="team-bio">Full Stack Developer and Blockchain–AI Data Analyst, passionate about
+                            building intelligent systems that merge innovation with real-world impact.</p>
                         <p class="team-quote">"Understanding fuels innovation, and innovation drives success."</p>
                     </div>
                 </div>
@@ -1449,20 +1425,23 @@
                         <h3 class="team-name">Abusina Hossain</h3>
                         <p class="team-role">CEO</p>
                         <div class="team-social">
-                            <a href="https://www.instagram.com/abusina_007?igsh=ZmM5N2dtZWFwMnFk" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://www.instagram.com/abusina_007?igsh=ZmM5N2dtZWFwMnFk" target="_blank"
+                                onclick="event.stopPropagation()">
                                 <i class="fab fa-instagram"></i>
                             </a>
                             <a href="https://github.com/CraftoGamerz" target="_blank" onclick="event.stopPropagation()">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/abusina-hossain-600466388/" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://www.linkedin.com/in/abusina-hossain-600466388/" target="_blank"
+                                onclick="event.stopPropagation()">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </div>
                     </div>
                     <div class="team-card-back">
                         <h2>About Abusina</h2>
-                        <p class="team-bio">CEO and head of CompileX. Passionate graphics designer, developer, and AI enthusiast making quality education accessible.</p>
+                        <p class="team-bio">CEO and head of CompileX. Passionate graphics designer, developer, and AI
+                            enthusiast making quality education accessible.</p>
                         <p class="team-quote">"Questioning is the beginning of intelligence."</p>
                     </div>
                 </div>
@@ -1475,20 +1454,23 @@
                         <h3 class="team-name">Avik Mitra</h3>
                         <p class="team-role">Management Team</p>
                         <div class="team-social">
-                            <a href="https://www.instagram.com/ur_songbirdavik?igsh=YXgweGp1a2J4eGRp" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://www.instagram.com/ur_songbirdavik?igsh=YXgweGp1a2J4eGRp" target="_blank"
+                                onclick="event.stopPropagation()">
                                 <i class="fab fa-instagram"></i>
                             </a>
                             <a href="https://github.com/CoderwizAvik" target="_blank" onclick="event.stopPropagation()">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/avik-mitra-450a43388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://www.linkedin.com/in/avik-mitra-450a43388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                                target="_blank" onclick="event.stopPropagation()">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </div>
                     </div>
                     <div class="team-card-back">
                         <h2>About Avik</h2>
-                        <p class="team-bio">Board Member at Compilex driving innovation through technology. Specializing in building scalable, high-performance solutions.</p>
+                        <p class="team-bio">Board Member at Compilex driving innovation through technology. Specializing
+                            in building scalable, high-performance solutions.</p>
                         <p class="team-quote">"Code is not just logic — it's the language that shapes tomorrow."</p>
                     </div>
                 </div>
@@ -1501,79 +1483,114 @@
                         <h3 class="team-name">Md Adil Mukhtar</h3>
                         <p class="team-role">Management Team</p>
                         <div class="team-social">
-                            <a href="https://instagram.com/adil.mukhtar" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://instagram.com/adil.mukhtar" target="_blank"
+                                onclick="event.stopPropagation()">
                                 <i class="fab fa-instagram"></i>
                             </a>
                             <a href="https://github.com/adil-mukhtar" target="_blank" onclick="event.stopPropagation()">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/adil-mukhtar-21ab72388" target="_blank" onclick="event.stopPropagation()">
+                            <a href="https://www.linkedin.com/in/adil-mukhtar-21ab72388" target="_blank"
+                                onclick="event.stopPropagation()">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </div>
                     </div>
                     <div class="team-card-back">
                         <h2>About Adil</h2>
-                        <p class="team-bio">Creative Graphic Designer driving brand innovation through visual communication. Transforming ideas into impactful visual realities.</p>
+                        <p class="team-bio">Creative Graphic Designer driving brand innovation through visual
+                            communication. Transforming ideas into impactful visual realities.</p>
                         <p class="team-quote">"Technology should empower, not replace, human connection."</p>
                     </div>
                 </div>
             </div>
+
+            <div class="team-card scroll-animate" data-member="6">
+                <div class="team-card-inner">
+                    <div class="team-card-front">
+                        <img src="Elements/Team-members_DP/Suparna_DP.jpg" alt="Suparna Kundu" class="team-photo">
+                        <h3 class="team-name">Suparna Kundu</h3>
+                        <p class="team-role">Management Team</p>
+                        <div class="team-social">
+                            <a href="https://www.instagram.com/suparna_4599?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                target="_blank" onclick="event.stopPropagation()">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com/#" target="_blank" onclick="event.stopPropagation()">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/#" target="_blank" onclick="event.stopPropagation()">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="team-card-back">
+                        <h2>Suparna Kundu</h2>
+                        <p class="team-bio">Everyday Nashey motivates me to do more nashey.</p>
+                        <p class="team-quote">"Nashey is the key"</p>
+                    </div>
+                </div>
+            </div>
         </div>
+        </div>
+
+
     </section>
 
     <!-- Footer -->
-<footer class="footer">
-    <div class="footer-top">
-      <div class="footer-top-text">
-        <span>AI Driven Free Education For All</span>
-        <h2>Start using EduSankalp today.</h2>
-        <div class="footer-input">
-          <input type="email" placeholder="Your Email">
-          <button><i class="fa-solid fa-paper-plane"></i></button>
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-top-text">
+                <span>AI Driven Free Education For All</span>
+                <h2>Start using EduSankalp today.</h2>
+                <div class="footer-input">
+                    <input type="email" placeholder="Your Email">
+                    <button><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+            <div class="footer-image">
+                <img src="Elements/cuteboy-removebg-preview.png" alt="Footer Illustration">
+            </div>
         </div>
-      </div>
-      <div class="footer-image">
-        <img src="Elements/cuteboy-removebg-preview.png" alt="Footer Illustration">
-      </div>
-    </div>
 
-    <div class="footer-main">
-      <div class="footer-section">
-        <div class="footer-logo">Edu<span class="hero-highlight">Sankalp</span></div>
-        <p style="color:#aaa;margin-top:10px;max-width:250px;">Make the right decisions for your child, choose EduSankalp.</p>
-      </div>
+        <div class="footer-main">
+            <div class="footer-section">
+                <div class="footer-logo">Edu<span class="hero-highlight">Sankalp</span></div>
+                <p style="color:#aaa;margin-top:10px;max-width:250px;">Make the right decisions for your child, choose
+                    EduSankalp.</p>
+            </div>
 
-      <div class="footer-section">
-        <ul>
-    
-          <li>Our mission</li>
-          <li>Our team</li>
-          <li>Demo</li>
-        </ul>
-      </div>
+            <div class="footer-section">
+                <ul>
 
-      <div class="footer-section">
-        <ul>
-          <li>Terms and Conditions</li>
-          <li>Privacy Policy</li>
-          <li>Cookie Policy</li>
-          <li>Funding System</li>
-        </ul>
-      </div>
+                    <li>Our mission</li>
+                    <li>Our team</li>
+                    <li>Demo</li>
+                </ul>
+            </div>
 
-      <div class="footer-section">
-        <h3>Let's chat!</h3>
-        <p style="color:#aaa;"><a  class="mail-link hero-highlight"href="mailto:contactedusankalp@gmail.com">contactedusankalp@gmail.com</a></p>
-        <div class="footer-socials">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-x-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="footer-section">
+                <ul>
+                    <li>Terms and Conditions</li>
+                    <li>Privacy Policy</li>
+                    <li>Cookie Policy</li>
+                    <li>Funding System</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Let's chat!</h3>
+                <p style="color:#aaa;"><a class="mail-link hero-highlight"
+                        href="mailto:contactedusankalp@gmail.com">contactedusankalp@gmail.com</a></p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
     <script>
         // Mobile Menu Toggle
@@ -1609,7 +1626,7 @@
         // Team Card Flip (only on card area, not social icons)
         document.querySelectorAll('.team-card').forEach(card => {
             const cardInner = card.querySelector('.team-card-inner');
-            
+
             card.addEventListener('click', (e) => {
                 // Don't flip if clicking on social links
                 if (!e.target.closest('.team-social')) {
@@ -1713,10 +1730,10 @@
             }
 
             const searchTerm = query.toLowerCase().trim();
-            
+
             filteredResults = searchDatabase.filter(item => {
                 const titleMatch = item.title.toLowerCase().includes(searchTerm);
-                const keywordMatch = item.keywords?.some(keyword => 
+                const keywordMatch = item.keywords?.some(keyword =>
                     keyword.toLowerCase().includes(searchTerm)
                 );
                 return titleMatch || keywordMatch;
@@ -1799,7 +1816,7 @@
 
         searchInput.addEventListener('keydown', (e) => {
             const items = document.querySelectorAll('.suggestion-item');
-            
+
             if (e.key === 'ArrowDown') {
                 e.preventDefault();
                 if (selectedIndex < items.length - 1) {
@@ -1861,4 +1878,5 @@
         });
     </script>
 </body>
+
 </html>
