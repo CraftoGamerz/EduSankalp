@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -82,6 +83,7 @@
         .logo:hover {
             transform: scale(1.05);
         }
+
 
         /* Apple-style Navigation */
         .desktop-nav {
@@ -479,21 +481,21 @@
 			cursor: pointer;
         }
 
- .blockchain-card::before {
+  .blockchain-card::before {
             content: '';
             position: absolute;
-            top: -400%;
-            left: -300%;
-            width: 500%;
-            height: 600%;
-            background: linear-gradient(135deg, transparent 46%, rgba(255, 255, 255, 0.25) 50%, transparent 54%);
+            top: -200%;
+            left: -200%;
+            width: 400%;
+            height: 400%;
+            background: linear-gradient(135deg, transparent 48%, rgba(255, 255, 255, 0.12) 50%, transparent 52%);
             transition: all 1s ease;
             pointer-events: none;
         }
 
         .blockchain-card:hover::before {
-            top: 300%;
-            left: 300%;
+            top: 200%;
+            left: 200%;
         }
 
         .blockchain-card:hover {
@@ -581,6 +583,7 @@
             border: 1px solid rgba(37, 99, 235, 0.1);
             transition: all 0.4s ease;
             position: relative;
+            overflow: hidden;
         }
 
         .feature-card::before {
@@ -955,9 +958,245 @@
             z-index: 9999;
             transition: width 0.1s ease;
         }
-        .footer {
+        /* Smart Search Styles */
+        .search-container {
+            width: 100%;
+            max-width: 650px;
+            position: relative;
+            padding: 0 5%;
+        }
 
+        .search-wrapper {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.02);
+            overflow: visible;
+            transition: all 0.3s ease;
+        }
 
+        .search-wrapper.active {
+            border-radius: 16px 16px 0 0;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            padding: 18px 24px;
+            gap: 16px;
+        }
+
+        .search-icon {
+            color: #667eea;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-icon:hover {
+            transform: scale(1.15);
+            color: #764ba2;
+        }
+
+        #searchInput {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 17px;
+            background: transparent;
+            color: #1a202c;
+            font-weight: 500;
+        }
+
+        #searchInput::placeholder {
+            color: #a0aec0;
+        }
+
+        .clear-icon {
+            color: #a0aec0;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .clear-icon.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .clear-icon:hover {
+            color: #e53e3e;
+        }
+
+        .suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            transition: max-height 0.3s ease;
+            z-index: 1000;
+        }
+
+        .suggestions.active {
+            max-height: 400px;
+            overflow-y: auto;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .suggestions::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .suggestions::-webkit-scrollbar-track {
+            background: #f7fafc;
+        }
+
+        .suggestions::-webkit-scrollbar-thumb {
+            background: #cbd5e0;
+            border-radius: 4px;
+        }
+
+        .suggestions::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }
+
+        .suggestion-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 24px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid #f7fafc;
+            gap: 14px;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-item:hover,
+        .suggestion-item.selected {
+            background: linear-gradient(90deg, #f0f4ff 0%, #e8eeff 100%);
+        }
+
+        .suggestion-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .suggestion-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .suggestion-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 2px;
+        }
+
+        .suggestion-type {
+            font-size: 12px;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .suggestion-title mark {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a202c;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: 700;
+        }
+
+        .no-results {
+            padding: 30px 24px;
+            text-align: center;
+            color: #718096;
+        }
+
+        .no-results i {
+            font-size: 48px;
+            margin-bottom: 12px;
+            opacity: 0.3;
+        }
+
+        .no-results p {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .loading {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #e2e8f0;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .search-box {
+                padding: 14px 18px;
+            }
+
+            #searchInput {
+                font-size: 16px;
+            }
+
+            .suggestion-item {
+                padding: 12px 18px;
+            }
+
+            .suggestions.active {
+                max-height: 300px;
+            }
+        }
+
+        .demo-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .demo-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .demo-section p {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -969,6 +1208,26 @@
         <div class="header-container">
 			<img src="Elements/EduSankalp_logo.svg" alt="EduSankalp Logo" style="width:64px;">
             
+
+            <!-- Add Search Container -->
+    <div class="search-container">
+        <div class="search-wrapper" id="searchWrapper">
+            <div class="search-box">
+                <i class="fas fa-search search-icon" id="searchIconBtn"></i>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search pages, features, team..."
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+                <i class="fas fa-times clear-icon" id="clearBtn"></i>
+                <div class="loading" id="loading"></div>
+            </div>
+
+            <div class="suggestions" id="suggestions"></div>
+        </div>
+    </div>
 
             <!-- Desktop Navigation -->
             <nav class="desktop-nav">
@@ -1393,13 +1652,213 @@
                 header.classList.remove('scrolled');
             }
         });
+
+        const searchDatabase = [];
+
+        function initializeSearchDatabase() {
+            const pages = [
+                { title: 'Home', url: 'index.html', type: 'page', icon: 'fa-home', keywords: ['main', 'landing', 'start'] },
+                { title: 'Donate', url: 'donate.html', type: 'page', icon: 'fa-hand-holding-heart', keywords: ['contribution', 'support', 'give'] },
+                { title: 'Contact Us', url: 'contact-us.html', type: 'page', icon: 'fa-envelope', keywords: ['email', 'message', 'reach'] },
+                { title: 'Terms & Conditions', url: 'terms-conditions.html', type: 'page', icon: 'fa-file-contract', keywords: ['legal', 'agreement', 'rules'] },
+                { title: 'Privacy Policy', url: 'privacy-policy.html', type: 'page', icon: 'fa-shield-alt', keywords: ['data', 'protection', 'security'] },
+                { title: 'Cancellation & Refund', url: 'cancellation-refund.html', type: 'page', icon: 'fa-undo', keywords: ['return', 'money back'] },
+                { title: 'Shipping & Delivery', url: 'shipping-delivery.html', type: 'page', icon: 'fa-truck', keywords: ['transport', 'shipping'] }
+            ];
+
+            const sections = [
+                { title: 'Features', url: '#features', type: 'section', icon: 'fa-star', keywords: ['ai', 'learning', 'gamified', 'curriculum'] },
+                { title: 'Blockchain Donations', url: '#blockchain', type: 'section', icon: 'fa-coins', keywords: ['ethereum', 'polygon', 'crypto', 'donate'] },
+                { title: 'Our Team', url: '#team', type: 'section', icon: 'fa-users', keywords: ['founders', 'members', 'about us'] },
+                { title: 'Classes', url: '#classes', type: 'section', icon: 'fa-graduation-cap', keywords: ['courses', 'subjects', 'education'] }
+            ];
+
+            searchDatabase.push(...pages, ...sections);
+
+            document.querySelectorAll('[id]').forEach(element => {
+                const id = element.id;
+                if (!['searchInput', 'suggestions', 'searchWrapper', 'clearBtn', 'loading', 'searchIconBtn'].includes(id)) {
+                    const existingSection = searchDatabase.find(item => item.url === `#${id}`);
+                    if (!existingSection) {
+                        const title = element.querySelector('h1, h2, h3')?.textContent || id.replace(/-/g, ' ');
+                        searchDatabase.push({
+                            title: title,
+                            url: `#${id}`,
+                            type: 'section',
+                            icon: 'fa-bookmark',
+                            keywords: [id]
+                        });
+                    }
+                }
+            });
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        const suggestions = document.getElementById('suggestions');
+        const searchWrapper = document.getElementById('searchWrapper');
+        const clearBtn = document.getElementById('clearBtn');
+        const searchIconBtn = document.getElementById('searchIconBtn');
+
+        let selectedIndex = -1;
+        let filteredResults = [];
+
+        initializeSearchDatabase();
+
+        function performSearch(query) {
+            if (!query.trim()) {
+                suggestions.innerHTML = '';
+                suggestions.classList.remove('active');
+                searchWrapper.classList.remove('active');
+                return;
+            }
+
+            const searchTerm = query.toLowerCase().trim();
+            
+            filteredResults = searchDatabase.filter(item => {
+                const titleMatch = item.title.toLowerCase().includes(searchTerm);
+                const keywordMatch = item.keywords?.some(keyword => 
+                    keyword.toLowerCase().includes(searchTerm)
+                );
+                return titleMatch || keywordMatch;
+            });
+
+            displayResults(filteredResults, searchTerm);
+        }
+
+        function displayResults(results, query) {
+            selectedIndex = -1;
+
+            if (results.length === 0) {
+                suggestions.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search"></i>
+                        <p>No results found for "${query}"</p>
+                    </div>
+                `;
+                suggestions.classList.add('active');
+                searchWrapper.classList.add('active');
+                return;
+            }
+
+            suggestions.innerHTML = results.map((item, index) => {
+                const highlightedTitle = highlightMatch(item.title, query);
+                return `
+                    <div class="suggestion-item" data-index="${index}">
+                        <div class="suggestion-icon">
+                            <i class="fas ${item.icon}"></i>
+                        </div>
+                        <div class="suggestion-content">
+                            <div class="suggestion-title">${highlightedTitle}</div>
+                            <div class="suggestion-type">${item.type}</div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            suggestions.classList.add('active');
+            searchWrapper.classList.add('active');
+
+            document.querySelectorAll('.suggestion-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const index = parseInt(item.dataset.index);
+                    navigateToResult(filteredResults[index]);
+                });
+            });
+        }
+
+        function highlightMatch(text, query) {
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<mark>$1</mark>');
+        }
+
+        function navigateToResult(item) {
+            if (item.url.startsWith('#')) {
+                const element = document.querySelector(item.url);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    closeSuggestions();
+                }
+            } else {
+                window.location.href = item.url;
+            }
+        }
+
+        function closeSuggestions() {
+            suggestions.classList.remove('active');
+            searchWrapper.classList.remove('active');
+            searchInput.value = '';
+            clearBtn.classList.remove('visible');
+            selectedIndex = -1;
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            const value = e.target.value;
+            clearBtn.classList.toggle('visible', value.length > 0);
+            performSearch(value);
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            const items = document.querySelectorAll('.suggestion-item');
+            
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (selectedIndex < items.length - 1) {
+                    selectedIndex++;
+                    updateSelection(items);
+                }
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (selectedIndex > 0) {
+                    selectedIndex--;
+                    updateSelection(items);
+                }
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (selectedIndex >= 0 && filteredResults[selectedIndex]) {
+                    navigateToResult(filteredResults[selectedIndex]);
+                } else if (filteredResults.length > 0) {
+                    navigateToResult(filteredResults[0]);
+                }
+            } else if (e.key === 'Escape') {
+                closeSuggestions();
+            }
+        });
+
+        function updateSelection(items) {
+            items.forEach((item, index) => {
+                item.classList.toggle('selected', index === selectedIndex);
+            });
+
+            if (items[selectedIndex]) {
+                items[selectedIndex].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            }
+        }
+
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            clearBtn.classList.remove('visible');
+            closeSuggestions();
+            searchInput.focus();
+        });
+
+        searchIconBtn.addEventListener('click', () => {
+            if (filteredResults.length > 0) {
+                navigateToResult(filteredResults[selectedIndex >= 0 ? selectedIndex : 0]);
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!searchWrapper.contains(e.target)) {
+                closeSuggestions();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                searchInput.focus();
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
